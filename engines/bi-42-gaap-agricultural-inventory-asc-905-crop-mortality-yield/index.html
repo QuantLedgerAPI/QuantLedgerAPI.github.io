@@ -133,13 +133,65 @@ footer {
   color: var(--muted);
   font-size: 0.85rem;
 }
+.calc-panel {
+  background: linear-gradient(180deg, #131b33 0%, #0e1529 100%);
+  border: 1px solid #35508c;
+  border-radius: 12px;
+  padding: 22px;
+  margin: 26px 0 30px;
+}
+.calc-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(235px, 1fr));
+  gap: 12px;
+  margin: 14px 0;
+}
+.calc-field label {
+  display: block;
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: #bcd0f7;
+  margin-bottom: 4px;
+}
+.calc-input {
+  width: 100%;
+  padding: 9px 11px;
+  border-radius: 7px;
+  border: 1px solid var(--border);
+  background: var(--code-bg);
+  color: #fff;
+  font-size: 0.92rem;
+}
+.kpi-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(210px, 1fr));
+  gap: 11px;
+  margin: 14px 0;
+}
+.kpi-box {
+  background: var(--code-bg);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 11px 13px;
+}
+.kpi-box .k-lbl { font-size: 0.77rem; color: var(--muted); margin-bottom: 4px; }
+.kpi-box .k-val { font-size: 1.08rem; font-weight: 700; color: var(--green); word-break: break-word; }
+.xlsx-box {
+  background: rgba(52, 211, 153, 0.07);
+  border: 1px solid rgba(52, 211, 153, 0.35);
+  border-radius: 10px;
+  padding: 16px 18px;
+  margin-top: 16px;
+}
+.btn.green { background: #10b981; border-color: #10b981; color: #04130d; font-weight: 700; cursor: pointer; }
 </style>
   <script type="application/ld+json">{"@context": "https://schema.org", "@type": "TechArticle", "headline": "GAAP Agricultural Inventory (ASC 905), Crop Mortality Yield & Crush-Margin Schedule — FASB ASC 905-330 Biological Asset Costing, Grade-Yield Shrinkage & Seasonal Ag-Line DSCR Workpaper API & MCP Reference (BI-42)", "alternateName": ["GAAP Agricultural Inventory (ASC 905), Crop Mortality Yield & Crush-Margin Schedule", "FASB ASC 905-330 Biological Asset Costing, Grade-Yield Shrinkage & Seasonal Ag-Line DSCR Workpaper", "ASC 905 Agricultural Inventory Costing", "Growing Crop NRV Ceiling Test", "Commodity Crush Spread Margin", "Livestock and Crop Mortality Shrinkage", "Seasonal Ag Borrowing Base DSCR"], "keywords": "BI-42, GAAP Agricultural Inventory (ASC 905), Crop Mortality Yield & Crush-Margin Schedule, FASB ASC 905-330 Agricultural Costing & Farm-Credit Borrowing-Base Schedule, ASC 905 Agricultural Inventory Costing, Growing Crop NRV Ceiling Test, Commodity Crush Spread Margin, Livestock and Crop Mortality Shrinkage, Seasonal Ag Borrowing Base DSCR, QuantLedger, MCP Server, REST API, Calculator API, ASC 905, ASC 905-330", "description": "GAAP Agricultural Inventory (ASC 905), Crop Mortality Yield & Crush-Margin Schedule (BI-42 — FASB ASC 905-330 Agricultural Costing & Farm-Credit Borrowing-Base ", "url": "https://quantledgerapi.github.io/engines/bi-42-gaap-agricultural-inventory-asc-905-crop-mortality-yield/", "author": {"@type": "Organization", "name": "QuantLedger"}, "about": "Von Bertalanffy / Gompertz Biological Growth & Mortality Hazard Econometrics; USDA NASS / AMS Commodity Grading Standards; FASB ASC 905 (Agriculture — Biological Assets & Inventory Costing)"}</script>
+  <script src="https://quantledgerapi.github.io/assets/calculator.js" defer></script>
 </head>
 <body>
   <header class="top">
     <div class="wrap nav">
-      <a class="brand" href="https://quantledgerapi.github.io/">QuantLedger API &amp; MCP Docs <span style="color:#9fb0d9;font-weight:400;font-size:0.84rem;">v2.3.1</span></a>
+      <a class="brand" href="https://quantledgerapi.github.io/">QuantLedger API &amp; MCP Docs <span style="color:#9fb0d9;font-weight:400;font-size:0.84rem;">v2.4.1</span></a>
       <nav class="nav-links">
         <a href="https://quantledgerapi.github.io/#engines">All Engines</a>
         <a href="https://quantledgerapi.github.io/sec-edgar-10k-xbrl-covenants/">SEC EDGAR 10-K API</a>
@@ -153,18 +205,71 @@ footer {
     
     <section class="hero">
       <span class="badge">BI-42 &middot; Regulatory Defense, REA Quantum, USDA &amp; Utility Rate-Design Suite</span>
-      <h1>GAAP Agricultural Inventory (ASC 905), Crop Mortality Yield &amp; Crush-Margin Schedule — API &amp; MCP Calculator (BI-42)</h1>
+      <h1>GAAP Agricultural Inventory (ASC 905), Crop Mortality Yield &amp; Crush-Margin Schedule — Calculator, Excel Workpaper &amp; API (BI-42)</h1>
       <p class="lead">Inventories) &amp; ASC 330-10-35 LCNRV Rule] — Carrying_Val = min(Cost_Seed_Feed_Labor_OH, Gross_Harvest_Rev - Selling_Completion_Cost. Applies FASB ASC 905-330 Growing-Crop &amp; Biological Inventory Cost Accumulation vs. NRV Ceiling [FASB ASC 905-330-25 / 35 (Agriculture; Historical Cohort Mortality, Handling Shrinkage &amp; USDA AMS Grade-Yield Adjustment [FASB ASC 905-330 Abnormal vs. Normal Mortality &amp; USDA AMS Market Grading Standards]; Feedstock-to-Output Crush Gross-Margin Spread &amp; Forward-Hedge Price Floor [USDA ERS Commodity Cost-and-Return Framework &amp; FASB ASC 815 Normal Purchases/Sales]; Farm Credit Seasonal Crop-Line Borrowing Base &amp; Post-Harvest Coverage Covenant [12 U.S.C. Sec. 2011 (Farm Credit Act) &amp; FCA 12 CFR Part 614 Seasonal Production Lending]. Outputs: 00 Exec BioEcon Dashboard, 01 VonBertalanffy Growth Curve, 02 Weibull Mortality Cohort, 03 ASC905 Biological Inventory. Calibrated across all 57 US States, Washington, D.C., US Territories, and Federal IRC &sect; 11 baselines in sub-millisecond deterministic Python &amp; NumPy CPU execution.</p>
       <p><strong>Official Statutory &amp; Regulatory Workpaper Title:</strong> FASB ASC 905-330 Biological Asset Costing, Grade-Yield Shrinkage &amp; Seasonal Ag-Line DSCR Workpaper</p>
       <p><strong>Official Agency Form / Workpaper Standard:</strong> <code>FASB ASC 905-330 Agricultural Costing &amp; Farm-Credit Borrowing-Base Schedule</code></p>
       <p><strong>Governing Accounting, Tax &amp; Statutory Authorities:</strong> Von Bertalanffy / Gompertz Biological Growth &amp; Mortality Hazard Econometrics; USDA NASS / AMS Commodity Grading Standards; FASB ASC 905 (Agriculture — Biological Assets &amp; Inventory Costing)</p>
       <p style="font-size:0.9rem;color:#9fb0d9;"><strong>Common Practitioner &amp; Search Aliases:</strong> ASC 905 Agricultural Inventory Costing, Growing Crop NRV Ceiling Test, Commodity Crush Spread Margin, Livestock and Crop Mortality Shrinkage, Seasonal Ag Borrowing Base DSCR</p>
       <div class="cta-row">
+        <a class="btn green" href="#ql-calculator">Open Free Live Calculator &darr;</a>
         <a class="btn primary" href="https://rapidapi.com/quantledger/api/quantledger-73-engine-financial-and-statutory-api">Run on RapidAPI (5 Free/Mo)</a>
-        <a class="btn" href="https://apify.com/quantledger/quantledger-cpa-gaap-tax-sec-mcp">Run on Apify Store / MCP</a>
+        <a class="btn" href="https://apify.com/quantledger/quantledger-cpa-gaap-tax-sec-mcp">Run on Apify Store (.xlsx + MCP)</a>
         <a class="btn" href="https://github.com/QuantLedgerAPI/quantledger-mcp">Open-Source MCP SDK Repo</a>
       </div>
     </section>
+
+    
+    <section id="ql-calculator" class="calc-panel" data-engine-code="BI-42">
+      <script id="ql-default-inputs" type="application/json">{"gross_planted_or_stocked_units": 6500000, "historical_cohort_mortality_pct": 0.065, "harvest_handling_shrinkage_pct": 0.025, "usda_ams_grade_a_yield_pct": 0.94, "usda_spot_price_per_unit": 6.45, "forward_contract_price_per_unit": 6.7, "forward_hedged_volume_share": 0.6, "harvest_selling_cost_per_unit": 0.42}</script>
+      <div style="display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap;">
+        <div>
+          <span class="badge" style="margin-bottom:6px;">Live Zero-Code Statutory Calculator &amp; .xlsx Builder</span>
+          <h2 style="margin:0;border:none;padding:0;">Interactive GAAP Agricultural Inventory (ASC 905), Crop Mortality Yield &amp; Crush-Margin Schedule Calculator (BI-42)</h2>
+        </div>
+        <div style="display:flex;gap:10px;flex-wrap:wrap;">
+          <button id="ql-run-btn" type="button" class="btn green">Recalculate Statutory Preview (Free)</button>
+          <button id="ql-reset-btn" type="button" class="btn" style="cursor:pointer;">Reset Baseline</button>
+        </div>
+      </div>
+      <p style="font-size:0.9rem;color:#9fb0d9;margin:8px 0 12px;">Enter your trial-balance, schedule, or contract numbers below to verify headline statutory outputs in real time across 57 US jurisdictions (zero data stored).</p>
+
+      <div class="calc-grid">
+        <div class="calc-field">
+          <label for="ql-jurisdiction">US State / Territory Jurisdiction (57)</label>
+          <select id="ql-jurisdiction" class="calc-input"><option value="DC" selected>DC</option><option value="NY">NY</option><option value="CA">CA</option><option value="TX">TX</option><option value="FL">FL</option><option value="DE">DE</option><option value="VA">VA</option><option value="IL">IL</option><option value="MA">MA</option><option value="WA">WA</option><option value="PA">PA</option><option value="GA">GA</option><option value="NJ">NJ</option><option value="NC">NC</option><option value="OH">OH</option><option value="AK">AK</option><option value="AL">AL</option><option value="AR">AR</option><option value="AS">AS</option><option value="AZ">AZ</option><option value="CO">CO</option><option value="CT">CT</option><option value="GU">GU</option><option value="HI">HI</option><option value="IA">IA</option><option value="ID">ID</option><option value="IN">IN</option><option value="KS">KS</option><option value="KY">KY</option><option value="LA">LA</option><option value="MD">MD</option><option value="ME">ME</option><option value="MI">MI</option><option value="MN">MN</option><option value="MO">MO</option><option value="MP">MP</option><option value="MS">MS</option><option value="MT">MT</option><option value="ND">ND</option><option value="NE">NE</option><option value="NH">NH</option><option value="NM">NM</option><option value="NV">NV</option><option value="OK">OK</option><option value="OR">OR</option><option value="PR">PR</option><option value="RI">RI</option><option value="SC">SC</option><option value="SD">SD</option><option value="TN">TN</option><option value="US">US</option><option value="UT">UT</option><option value="VI">VI</option><option value="VT">VT</option><option value="WI">WI</option><option value="WV">WV</option><option value="WY">WY</option></select>
+        </div>
+        <div class="calc-field">
+          <label for="ql-naics">6-Digit NAICS or 4-Digit SIC</label>
+          <input id="ql-naics" class="calc-input" type="text" value="541211" />
+        </div>
+        <div class="calc-field"><label>Gross Planted Or Stocked Units</label><input class="calc-input" type="number" step="any" data-param-key="gross_planted_or_stocked_units" value="6500000" /></div><div class="calc-field"><label>Historical Cohort Mortality (%)</label><input class="calc-input" type="number" step="any" data-param-key="historical_cohort_mortality_pct" value="0.065" /></div><div class="calc-field"><label>Harvest Handling Shrinkage (%)</label><input class="calc-input" type="number" step="any" data-param-key="harvest_handling_shrinkage_pct" value="0.025" /></div><div class="calc-field"><label>Usda Ams Grade A Yield (%)</label><input class="calc-input" type="number" step="any" data-param-key="usda_ams_grade_a_yield_pct" value="0.94" /></div><div class="calc-field"><label>Usda Spot Price Per Unit</label><input class="calc-input" type="number" step="any" data-param-key="usda_spot_price_per_unit" value="6.45" /></div><div class="calc-field"><label>Forward Contract Price Per Unit</label><input class="calc-input" type="number" step="any" data-param-key="forward_contract_price_per_unit" value="6.7" /></div><div class="calc-field"><label>Forward Hedged Volume Share</label><input class="calc-input" type="number" step="any" data-param-key="forward_hedged_volume_share" value="0.6" /></div><div class="calc-field"><label>Harvest Selling Cost Per Unit</label><input class="calc-input" type="number" step="any" data-param-key="harvest_selling_cost_per_unit" value="0.42" /></div>
+      </div>
+
+      <details style="margin:8px 0 14px;font-size:0.86rem;color:#9fb0d9;">
+        <summary style="cursor:pointer;color:#7cb0ff;">Optional: Paste Advanced Custom Schedule / Array Overrides (JSON)</summary>
+        <textarea id="ql-custom-json" class="calc-input" rows="3" style="margin-top:8px;font-family:monospace;" placeholder='{"custom_parameter": 100000}'></textarea>
+      </details>
+
+      <div id="ql-calc-status" style="font-size:0.85rem;color:#93bcff;margin:6px 0 8px;">Showing verified Washington, D.C. baseline — edit any input and click Recalculate.</div>
+      <h3 style="margin:12px 0 8px;">Computed Headline Statutory &amp; Financial KPIs</h3>
+      <div id="ql-kpi-grid" class="kpi-grid"><div class="kpi-box"><div class="k-lbl">Engine Code</div><div class="k-val">BI-42</div></div><div class="kpi-box"><div class="k-lbl">Asc905 Lcnrv Inventory (USD)</div><div class="k-val">$27,700,000.00</div></div><div class="kpi-box"><div class="k-lbl">Net Grade A Harvestable Units</div><div class="k-val">5,570,029.00</div></div><div class="kpi-box"><div class="k-lbl">Net Crush Margin (USD)</div><div class="k-val">$7,834,709.48</div></div><div class="kpi-box"><div class="k-lbl">Seasonal Borrowing Base (USD)</div><div class="k-val">$21,363,727.34</div></div><div class="kpi-box"><div class="k-lbl">Post Harvest Ag DSCR</div><div class="k-val">3.05x</div></div></div>
+
+      <div class="xlsx-box">
+        <div style="display:flex;justify-content:space-between;align-items:flex-start;gap:16px;flex-wrap:wrap;">
+          <div style="flex:1;min-width:260px;">
+            <h3 style="margin:0 0 6px;color:#fff;">Download 5-Tab Formula-Linked Excel Workpaper (<code>.xlsx</code>) — <span id="ql-xlsx-price">$19.00</span></h3>
+            <p id="ql-lock-meta" style="margin:0 0 8px;font-size:0.88rem;color:#d1fae5;">Includes 5 formatted CPA/analyst tabs compiled from your exact inputs: <code>01_Executive_Summary</code>, <code>02_Statutory_Rules</code> (4 rules), <code>03_Workpaper_Schedule</code> (4 rows + <code>=SUM</code>/<code>=AVERAGE</code> formulas), <code>04_Scenario_Sensitivity</code> (<code>=C-B</code> variance formulas), and <code>05_Compliance_Audit_Flags</code> (2 threshold gates).</p>
+            <div style="display:flex;gap:10px;flex-wrap:wrap;margin-top:10px;">
+              <a class="btn primary" href="https://apify.com/quantledger/quantledger-cpa-gaap-tax-sec-mcp">Export .xlsx Workpaper on Apify ($0.35)</a>
+              <a class="btn" href="https://rapidapi.com/quantledger/api/quantledger-73-engine-financial-and-statutory-api">Export .xlsx via RapidAPI (5 Free/Mo)</a>
+            </div>
+          </div>
+          <div id="ql-paypal-buttons" style="display:none;min-width:270px;max-width:340px;width:100%;"></div>
+        </div>
+      </div>
+    </section>
+    
 
     <h2>1. Deterministic Statutory &amp; Regulatory Laws Executed</h2>
     <p>Unlike prompt-only LLM skills that approximate multi-period schedules in token space, <code>BI-42</code> executes exact pure-Python and NumPy statutory rules in volatile container RAM:</p>

@@ -133,13 +133,65 @@ footer {
   color: var(--muted);
   font-size: 0.85rem;
 }
+.calc-panel {
+  background: linear-gradient(180deg, #131b33 0%, #0e1529 100%);
+  border: 1px solid #35508c;
+  border-radius: 12px;
+  padding: 22px;
+  margin: 26px 0 30px;
+}
+.calc-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(235px, 1fr));
+  gap: 12px;
+  margin: 14px 0;
+}
+.calc-field label {
+  display: block;
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: #bcd0f7;
+  margin-bottom: 4px;
+}
+.calc-input {
+  width: 100%;
+  padding: 9px 11px;
+  border-radius: 7px;
+  border: 1px solid var(--border);
+  background: var(--code-bg);
+  color: #fff;
+  font-size: 0.92rem;
+}
+.kpi-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(210px, 1fr));
+  gap: 11px;
+  margin: 14px 0;
+}
+.kpi-box {
+  background: var(--code-bg);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 11px 13px;
+}
+.kpi-box .k-lbl { font-size: 0.77rem; color: var(--muted); margin-bottom: 4px; }
+.kpi-box .k-val { font-size: 1.08rem; font-weight: 700; color: var(--green); word-break: break-word; }
+.xlsx-box {
+  background: rgba(52, 211, 153, 0.07);
+  border: 1px solid rgba(52, 211, 153, 0.35);
+  border-radius: 10px;
+  padding: 16px 18px;
+  margin-top: 16px;
+}
+.btn.green { background: #10b981; border-color: #10b981; color: #04130d; font-weight: 700; cursor: pointer; }
 </style>
   <script type="application/ld+json">{"@context": "https://schema.org", "@type": "TechArticle", "headline": "Nonprofit Form 990 Public-Support Test (33.33%) & Lobbying Proxy-Tax Schedule — IRS Form 990 Schedule A 5-Year Public-Support Ratio & IRC Sec. 162(e)/6033(e) Lobbying Tax Workpaper API & MCP Reference (BI-31)", "alternateName": ["Nonprofit Form 990 Public-Support Test (33.33%) & Lobbying Proxy-Tax Schedule", "IRS Form 990 Schedule A 5-Year Public-Support Ratio & IRC Sec. 162(e)/6033(e) Lobbying Tax Workpaper", "Form 990 Public Support Test Calculator", "2% Excess Donor Haircut", "IRC 6033(e) Lobbying Proxy Tax", "Trade Association Dues Non-Deductible %", "ASC 958 vs ASC 606 Membership Dues"], "keywords": "BI-31, Nonprofit Form 990 Public-Support Test (33.33%) & Lobbying Proxy-Tax Schedule, IRS Form 990 Schedule A & Schedule C (IRC Sec. 509(a)(1) & Sec. 6033(e)), Form 990 Public Support Test Calculator, 2% Excess Donor Haircut, IRC 6033(e) Lobbying Proxy Tax, Trade Association Dues Non-Deductible %, ASC 958 vs ASC 606 Membership Dues, QuantLedger, MCP Server, REST API, Calculator API, ASC 958-605, ASC 606, IRC § 162(e)", "description": "Nonprofit Form 990 Public-Support Test (33.33%) & Lobbying Proxy-Tax Schedule (BI-31 — IRS Form 990 Schedule A & Schedule C (IRC Sec. 509(a)(1) & Sec. 6033(e)))", "url": "https://quantledgerapi.github.io/engines/bi-31-nonprofit-form-990-public-support-test-33-33/", "author": {"@type": "Organization", "name": "QuantLedger"}, "about": "FASB ASC 958-605 & ASC 606 (Not-for-Profit Exchange vs. Contribution Revenue Bifurcation); IRC § 162(e) & § 6033(e) (Nondeductible Lobbying Proxy Tax Allocation); ASAE Operating Ratio Benchmarks"}</script>
+  <script src="https://quantledgerapi.github.io/assets/calculator.js" defer></script>
 </head>
 <body>
   <header class="top">
     <div class="wrap nav">
-      <a class="brand" href="https://quantledgerapi.github.io/">QuantLedger API &amp; MCP Docs <span style="color:#9fb0d9;font-weight:400;font-size:0.84rem;">v2.3.1</span></a>
+      <a class="brand" href="https://quantledgerapi.github.io/">QuantLedger API &amp; MCP Docs <span style="color:#9fb0d9;font-weight:400;font-size:0.84rem;">v2.4.1</span></a>
       <nav class="nav-links">
         <a href="https://quantledgerapi.github.io/#engines">All Engines</a>
         <a href="https://quantledgerapi.github.io/sec-edgar-10k-xbrl-covenants/">SEC EDGAR 10-K API</a>
@@ -153,18 +205,71 @@ footer {
     
     <section class="hero">
       <span class="badge">BI-31 &middot; Nonprofit Form 990 UBIT, Association Churn &amp; Endowment Suite</span>
-      <h1>Nonprofit Form 990 Public-Support Test (33.33%) &amp; Lobbying Proxy-Tax Schedule — API &amp; MCP Calculator (BI-31)</h1>
+      <h1>Nonprofit Form 990 Public-Support Test (33.33%) &amp; Lobbying Proxy-Tax Schedule — Calculator, Excel Workpaper &amp; API (BI-31)</h1>
       <p class="lead">Pub_Support_% = (Gifts_5yr - sum(max(0, Donor_i - 0.02 * Total_Support_5yr))) / Total_Support_5yr. Applies IRS Form 990 Schedule A 5-Year 33.33% Public-Support Ratio &amp; 2% Donor Excess Haircut [26 U.S.C. Sec. 509(a)(1), Sec. 170(b)(1)(A)(vi) &amp; Treas. Reg. Sec. 1.170A-9(f)]; Member-Dues Tier HHI Concentration &amp; Top-10 Renewal Retention Revenue-at-Risk [Form 990 Part VIII Membership Dues Governance &amp; Concentration Disclosure]; IRC Sec. 162(e) Non-Deductible Lobbying &amp; Sec. 6033(e) 21% Proxy-Tax Liability [26 U.S.C. Sec. 162(e), Sec. 6033(e)(2)(A) &amp; IRS Form 990 Schedule C Part III]; FASB ASC 958-605 Contribution vs. ASC 606 Exchange-Benefit Deferred Revenue Split [FASB ASU 2018-08 (ASC 958-605) &amp; ASC 606-10-32 Bifurcated Membership Dues Standard]. Outputs: 00 Exec Assoc Dashboard, 01 Dues Elasticity Survival, 02 NonDues Portfolio Engine, 03 ASC958 ASC606 Bifurcation. Calibrated across all 57 US States, Washington, D.C., US Territories, and Federal IRC &sect; 11 baselines in sub-millisecond deterministic Python &amp; NumPy CPU execution.</p>
       <p><strong>Official Statutory &amp; Regulatory Workpaper Title:</strong> IRS Form 990 Schedule A 5-Year Public-Support Ratio &amp; IRC Sec. 162(e)/6033(e) Lobbying Tax Workpaper</p>
       <p><strong>Official Agency Form / Workpaper Standard:</strong> <code>IRS Form 990 Schedule A &amp; Schedule C (IRC Sec. 509(a)(1) &amp; Sec. 6033(e))</code></p>
       <p><strong>Governing Accounting, Tax &amp; Statutory Authorities:</strong> FASB ASC 958-605 &amp; ASC 606 (Not-for-Profit Exchange vs. Contribution Revenue Bifurcation); IRC § 162(e) &amp; § 6033(e) (Nondeductible Lobbying Proxy Tax Allocation); ASAE Operating Ratio Benchmarks</p>
       <p style="font-size:0.9rem;color:#9fb0d9;"><strong>Common Practitioner &amp; Search Aliases:</strong> Form 990 Public Support Test Calculator, 2% Excess Donor Haircut, IRC 6033(e) Lobbying Proxy Tax, Trade Association Dues Non-Deductible %, ASC 958 vs ASC 606 Membership Dues</p>
       <div class="cta-row">
+        <a class="btn green" href="#ql-calculator">Open Free Live Calculator &darr;</a>
         <a class="btn primary" href="https://rapidapi.com/quantledger/api/quantledger-73-engine-financial-and-statutory-api">Run on RapidAPI (5 Free/Mo)</a>
-        <a class="btn" href="https://apify.com/quantledger/quantledger-cpa-gaap-tax-sec-mcp">Run on Apify Store / MCP</a>
+        <a class="btn" href="https://apify.com/quantledger/quantledger-cpa-gaap-tax-sec-mcp">Run on Apify Store (.xlsx + MCP)</a>
         <a class="btn" href="https://github.com/QuantLedgerAPI/quantledger-mcp">Open-Source MCP SDK Repo</a>
       </div>
     </section>
+
+    
+    <section id="ql-calculator" class="calc-panel" data-engine-code="BI-31">
+      <script id="ql-default-inputs" type="application/json">{"current_dues_revenue": 12800000, "top10_member_dues_share": 0.28, "annual_non_renewal_rate": 0.135, "noticed_nondeduct_dues_pct": 0.12, "asc606_exchange_share_pct": 0.24, "unearned_term_remaining_ratio": 0.42}</script>
+      <div style="display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap;">
+        <div>
+          <span class="badge" style="margin-bottom:6px;">Live Zero-Code Statutory Calculator &amp; .xlsx Builder</span>
+          <h2 style="margin:0;border:none;padding:0;">Interactive Nonprofit Form 990 Public-Support Test (33.33%) &amp; Lobbying Proxy-Tax Schedule Calculator (BI-31)</h2>
+        </div>
+        <div style="display:flex;gap:10px;flex-wrap:wrap;">
+          <button id="ql-run-btn" type="button" class="btn green">Recalculate Statutory Preview (Free)</button>
+          <button id="ql-reset-btn" type="button" class="btn" style="cursor:pointer;">Reset Baseline</button>
+        </div>
+      </div>
+      <p style="font-size:0.9rem;color:#9fb0d9;margin:8px 0 12px;">Enter your trial-balance, schedule, or contract numbers below to verify headline statutory outputs in real time across 57 US jurisdictions (zero data stored).</p>
+
+      <div class="calc-grid">
+        <div class="calc-field">
+          <label for="ql-jurisdiction">US State / Territory Jurisdiction (57)</label>
+          <select id="ql-jurisdiction" class="calc-input"><option value="DC" selected>DC</option><option value="NY">NY</option><option value="CA">CA</option><option value="TX">TX</option><option value="FL">FL</option><option value="DE">DE</option><option value="VA">VA</option><option value="IL">IL</option><option value="MA">MA</option><option value="WA">WA</option><option value="PA">PA</option><option value="GA">GA</option><option value="NJ">NJ</option><option value="NC">NC</option><option value="OH">OH</option><option value="AK">AK</option><option value="AL">AL</option><option value="AR">AR</option><option value="AS">AS</option><option value="AZ">AZ</option><option value="CO">CO</option><option value="CT">CT</option><option value="GU">GU</option><option value="HI">HI</option><option value="IA">IA</option><option value="ID">ID</option><option value="IN">IN</option><option value="KS">KS</option><option value="KY">KY</option><option value="LA">LA</option><option value="MD">MD</option><option value="ME">ME</option><option value="MI">MI</option><option value="MN">MN</option><option value="MO">MO</option><option value="MP">MP</option><option value="MS">MS</option><option value="MT">MT</option><option value="ND">ND</option><option value="NE">NE</option><option value="NH">NH</option><option value="NM">NM</option><option value="NV">NV</option><option value="OK">OK</option><option value="OR">OR</option><option value="PR">PR</option><option value="RI">RI</option><option value="SC">SC</option><option value="SD">SD</option><option value="TN">TN</option><option value="US">US</option><option value="UT">UT</option><option value="VI">VI</option><option value="VT">VT</option><option value="WI">WI</option><option value="WV">WV</option><option value="WY">WY</option></select>
+        </div>
+        <div class="calc-field">
+          <label for="ql-naics">6-Digit NAICS or 4-Digit SIC</label>
+          <input id="ql-naics" class="calc-input" type="text" value="541211" />
+        </div>
+        <div class="calc-field"><label>Current Dues Revenue</label><input class="calc-input" type="number" step="any" data-param-key="current_dues_revenue" value="12800000" /></div><div class="calc-field"><label>Top10 Member Dues Share</label><input class="calc-input" type="number" step="any" data-param-key="top10_member_dues_share" value="0.28" /></div><div class="calc-field"><label>Annual Non Renewal Rate</label><input class="calc-input" type="number" step="any" data-param-key="annual_non_renewal_rate" value="0.135" /></div><div class="calc-field"><label>Noticed Nondeduct Dues (%)</label><input class="calc-input" type="number" step="any" data-param-key="noticed_nondeduct_dues_pct" value="0.12" /></div><div class="calc-field"><label>Asc606 Exchange Share (%)</label><input class="calc-input" type="number" step="any" data-param-key="asc606_exchange_share_pct" value="0.24" /></div><div class="calc-field"><label>Unearned Term Remaining Ratio</label><input class="calc-input" type="number" step="any" data-param-key="unearned_term_remaining_ratio" value="0.42" /></div>
+      </div>
+
+      <details style="margin:8px 0 14px;font-size:0.86rem;color:#9fb0d9;">
+        <summary style="cursor:pointer;color:#7cb0ff;">Optional: Paste Advanced Custom Schedule / Array Overrides (JSON)</summary>
+        <textarea id="ql-custom-json" class="calc-input" rows="3" style="margin-top:8px;font-family:monospace;" placeholder='{"custom_parameter": 100000}'></textarea>
+      </details>
+
+      <div id="ql-calc-status" style="font-size:0.85rem;color:#93bcff;margin:6px 0 8px;">Showing verified Washington, D.C. baseline — edit any input and click Recalculate.</div>
+      <h3 style="margin:12px 0 8px;">Computed Headline Statutory &amp; Financial KPIs</h3>
+      <div id="ql-kpi-grid" class="kpi-grid"><div class="kpi-box"><div class="k-lbl">Engine Code</div><div class="k-val">BI-31</div></div><div class="kpi-box"><div class="k-lbl">Form990 Public Support Ratio</div><div class="k-val">0.40</div></div><div class="kpi-box"><div class="k-lbl">Donor 2pct Excess Haircut (USD)</div><div class="k-val">$4,220,000.00</div></div><div class="kpi-box"><div class="k-lbl">Dues Tier HHI</div><div class="k-val">2,990.55</div></div><div class="kpi-box"><div class="k-lbl">Sec6033e Proxy Tax (USD)</div><div class="k-val">$80,640.00</div></div><div class="kpi-box"><div class="k-lbl">Deferred Asc606 Dues (USD)</div><div class="k-val">$1,290,240.00</div></div></div>
+
+      <div class="xlsx-box">
+        <div style="display:flex;justify-content:space-between;align-items:flex-start;gap:16px;flex-wrap:wrap;">
+          <div style="flex:1;min-width:260px;">
+            <h3 style="margin:0 0 6px;color:#fff;">Download 5-Tab Formula-Linked Excel Workpaper (<code>.xlsx</code>) — <span id="ql-xlsx-price">$19.00</span></h3>
+            <p id="ql-lock-meta" style="margin:0 0 8px;font-size:0.88rem;color:#d1fae5;">Includes 5 formatted CPA/analyst tabs compiled from your exact inputs: <code>01_Executive_Summary</code>, <code>02_Statutory_Rules</code> (4 rules), <code>03_Workpaper_Schedule</code> (4 rows + <code>=SUM</code>/<code>=AVERAGE</code> formulas), <code>04_Scenario_Sensitivity</code> (<code>=C-B</code> variance formulas), and <code>05_Compliance_Audit_Flags</code> (3 threshold gates).</p>
+            <div style="display:flex;gap:10px;flex-wrap:wrap;margin-top:10px;">
+              <a class="btn primary" href="https://apify.com/quantledger/quantledger-cpa-gaap-tax-sec-mcp">Export .xlsx Workpaper on Apify ($0.35)</a>
+              <a class="btn" href="https://rapidapi.com/quantledger/api/quantledger-73-engine-financial-and-statutory-api">Export .xlsx via RapidAPI (5 Free/Mo)</a>
+            </div>
+          </div>
+          <div id="ql-paypal-buttons" style="display:none;min-width:270px;max-width:340px;width:100%;"></div>
+        </div>
+      </div>
+    </section>
+    
 
     <h2>1. Deterministic Statutory &amp; Regulatory Laws Executed</h2>
     <p>Unlike prompt-only LLM skills that approximate multi-period schedules in token space, <code>BI-31</code> executes exact pure-Python and NumPy statutory rules in volatile container RAM:</p>

@@ -133,13 +133,65 @@ footer {
   color: var(--muted);
   font-size: 0.85rem;
 }
+.calc-panel {
+  background: linear-gradient(180deg, #131b33 0%, #0e1529 100%);
+  border: 1px solid #35508c;
+  border-radius: 12px;
+  padding: 22px;
+  margin: 26px 0 30px;
+}
+.calc-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(235px, 1fr));
+  gap: 12px;
+  margin: 14px 0;
+}
+.calc-field label {
+  display: block;
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: #bcd0f7;
+  margin-bottom: 4px;
+}
+.calc-input {
+  width: 100%;
+  padding: 9px 11px;
+  border-radius: 7px;
+  border: 1px solid var(--border);
+  background: var(--code-bg);
+  color: #fff;
+  font-size: 0.92rem;
+}
+.kpi-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(210px, 1fr));
+  gap: 11px;
+  margin: 14px 0;
+}
+.kpi-box {
+  background: var(--code-bg);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 11px 13px;
+}
+.kpi-box .k-lbl { font-size: 0.77rem; color: var(--muted); margin-bottom: 4px; }
+.kpi-box .k-val { font-size: 1.08rem; font-weight: 700; color: var(--green); word-break: break-word; }
+.xlsx-box {
+  background: rgba(52, 211, 153, 0.07);
+  border: 1px solid rgba(52, 211, 153, 0.35);
+  border-radius: 10px;
+  padding: 16px 18px;
+  margin-top: 16px;
+}
+.btn.green { background: #10b981; border-color: #10b981; color: #04130d; font-weight: 700; cursor: pointer; }
 </style>
   <script type="application/ld+json">{"@context": "https://schema.org", "@type": "TechArticle", "headline": "ERISA 408(b)(2) 401(k) Recordkeeping Fee Benchmark & CAA 2021 Health-Plan RxDC Audit — 29 U.S.C. Sec. 1108(b)(2) Form 5500 Per-Participant Fee Benchmark, 12b-1 Share-Class & PBM Spread Schedule API & MCP Reference (BI-68)", "alternateName": ["ERISA 408(b)(2) 401(k) Recordkeeping Fee Benchmark & CAA 2021 Health-Plan RxDC Audit", "29 U.S.C. Sec. 1108(b)(2) Form 5500 Per-Participant Fee Benchmark, 12b-1 Share-Class & PBM Spread Schedule", "ERISA 408(b)(2) 401k Fee Benchmark", "Form 5500 Per-Participant Recordkeeping", "12b-1 Revenue Sharing Share Class Drag", "CAA 2021 PBM Rebate Pass-Through Audit", "Health Broker Compensation Disclosure"], "keywords": "BI-68, ERISA 408(b)(2) 401(k) Recordkeeping Fee Benchmark & CAA 2021 Health-Plan RxDC Audit, DOL Form 5500 Schedule C / ERISA Sec. 408(b)(2) / CAA 2021 Sec. 202 RxDC, ERISA 408(b)(2) 401k Fee Benchmark, Form 5500 Per-Participant Recordkeeping, 12b-1 Revenue Sharing Share Class Drag, CAA 2021 PBM Rebate Pass-Through Audit, Health Broker Compensation Disclosure, QuantLedger, MCP Server, REST API, Calculator API", "description": "ERISA 408(b)(2) 401(k) Recordkeeping Fee Benchmark & CAA 2021 Health-Plan RxDC Audit (BI-68 — DOL Form 5500 Schedule C / ERISA Sec. 408(b)(2) / CAA 2021 Sec. 20", "url": "https://quantledgerapi.github.io/engines/bi-68-erisa-408-b-2-401-k-recordkeeping-fee/", "author": {"@type": "Organization", "name": "QuantLedger"}, "about": "ERISA §§ 404(a)(1)(A) & 408(b)(2) (29 U.S.C. §§ 1104, 1108(b)(2)); 29 CFR § 2550.408b-2; Consolidated Appropriations Act, 2021 (CAA 2021) § 202"}</script>
+  <script src="https://quantledgerapi.github.io/assets/calculator.js" defer></script>
 </head>
 <body>
   <header class="top">
     <div class="wrap nav">
-      <a class="brand" href="https://quantledgerapi.github.io/">QuantLedger API &amp; MCP Docs <span style="color:#9fb0d9;font-weight:400;font-size:0.84rem;">v2.3.1</span></a>
+      <a class="brand" href="https://quantledgerapi.github.io/">QuantLedger API &amp; MCP Docs <span style="color:#9fb0d9;font-weight:400;font-size:0.84rem;">v2.4.1</span></a>
       <nav class="nav-links">
         <a href="https://quantledgerapi.github.io/#engines">All Engines</a>
         <a href="https://quantledgerapi.github.io/sec-edgar-10k-xbrl-covenants/">SEC EDGAR 10-K API</a>
@@ -153,18 +205,71 @@ footer {
     
     <section class="hero">
       <span class="badge">BI-68 &middot; Technical FASB GAAP, ERISA, U.S. Customs &amp; Cyber Loss Suite</span>
-      <h1>ERISA 408(b)(2) 401(k) Recordkeeping Fee Benchmark &amp; CAA 2021 Health-Plan RxDC Audit — API &amp; MCP Calculator (BI-68)</h1>
+      <h1>ERISA 408(b)(2) 401(k) Recordkeeping Fee Benchmark &amp; CAA 2021 Health-Plan RxDC Audit — Calculator, Excel Workpaper &amp; API (BI-68)</h1>
       <p class="lead">Fee_PerCapita = (Direct_RK_USD + sum_f Assets_f * RevShare_12b1_SubTA,f - RevCredit_Plan) / Active_Participants &lt;= P_50_Form5500. Applies 29 CFR Sec. 2550.408b-2 &amp; Form 5500 Schedule C All-In Recordkeeping Fee Test [29 U.S.C. Secs. 1104(a)(1)(A), 1108(b)(2) &amp; 29 CFR Sec. 2550.408b-2]; 29 U.S.C. Sec. 1104(a)(1)(A) Continuing Duty-to-Monitor Institutional Share-Class Test [29 U.S.C. Sec. 1104(a)(1)(A) ERISA Prudent Monitoring Duty]; 42 U.S.C. Sec. 300gg-115 (CAA 2021 RxDC) CMS NADAC Spread &amp; Retained Rebate Audit [42 U.S.C. Sec. 300gg-115 (CAA 2021 Sec. 204 RxDC) &amp; CMS NADAC Schedule]; 29 U.S.C. Sec. 1108(b)(2)(B) (CAA 2021 Sec. 202) Broker Direct &amp; Indirect Fee Reasonableness [29 U.S.C. Sec. 1108(b)(2)(B) &amp; DOL Field Assistance Bulletin 2021-03]. Outputs: 00 Summary Budget Bridge, 01 Form5500 Recordkeeping Bench, 02 ShareClass 12b1 Drag Model, 03 PBM NADAC Spread Rebate. Calibrated across all 57 US States, Washington, D.C., US Territories, and Federal IRC &sect; 11 baselines in sub-millisecond deterministic Python &amp; NumPy CPU execution.</p>
       <p><strong>Official Statutory &amp; Regulatory Workpaper Title:</strong> 29 U.S.C. Sec. 1108(b)(2) Form 5500 Per-Participant Fee Benchmark, 12b-1 Share-Class &amp; PBM Spread Schedule</p>
       <p><strong>Official Agency Form / Workpaper Standard:</strong> <code>DOL Form 5500 Schedule C / ERISA Sec. 408(b)(2) / CAA 2021 Sec. 202 RxDC</code></p>
       <p><strong>Governing Accounting, Tax &amp; Statutory Authorities:</strong> ERISA §§ 404(a)(1)(A) &amp; 408(b)(2) (29 U.S.C. §§ 1104, 1108(b)(2)); 29 CFR § 2550.408b-2; Consolidated Appropriations Act, 2021 (CAA 2021) § 202</p>
       <p style="font-size:0.9rem;color:#9fb0d9;"><strong>Common Practitioner &amp; Search Aliases:</strong> ERISA 408(b)(2) 401k Fee Benchmark, Form 5500 Per-Participant Recordkeeping, 12b-1 Revenue Sharing Share Class Drag, CAA 2021 PBM Rebate Pass-Through Audit, Health Broker Compensation Disclosure</p>
       <div class="cta-row">
+        <a class="btn green" href="#ql-calculator">Open Free Live Calculator &darr;</a>
         <a class="btn primary" href="https://rapidapi.com/quantledger/api/quantledger-73-engine-financial-and-statutory-api">Run on RapidAPI (5 Free/Mo)</a>
-        <a class="btn" href="https://apify.com/quantledger/quantledger-cpa-gaap-tax-sec-mcp">Run on Apify Store / MCP</a>
+        <a class="btn" href="https://apify.com/quantledger/quantledger-cpa-gaap-tax-sec-mcp">Run on Apify Store (.xlsx + MCP)</a>
         <a class="btn" href="https://github.com/QuantLedgerAPI/quantledger-mcp">Open-Source MCP SDK Repo</a>
       </div>
     </section>
+
+    
+    <section id="ql-calculator" class="calc-panel" data-engine-code="BI-68">
+      <script id="ql-default-inputs" type="application/json">{"plan_401k_assets_usd": 285000000, "weighted_12b1_subta_revshare_rate": 0.00095, "form5500_peer_p50_per_capita_usd": 54, "current_weighted_expense_ratio": 0.0056, "institutional_r6_cit_expense_ratio": 0.0029, "broker_direct_pepm_usd": 24.5}</script>
+      <div style="display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap;">
+        <div>
+          <span class="badge" style="margin-bottom:6px;">Live Zero-Code Statutory Calculator &amp; .xlsx Builder</span>
+          <h2 style="margin:0;border:none;padding:0;">Interactive ERISA 408(b)(2) 401(k) Recordkeeping Fee Benchmark &amp; CAA 2021 Health-Plan RxDC Audit Calculator (BI-68)</h2>
+        </div>
+        <div style="display:flex;gap:10px;flex-wrap:wrap;">
+          <button id="ql-run-btn" type="button" class="btn green">Recalculate Statutory Preview (Free)</button>
+          <button id="ql-reset-btn" type="button" class="btn" style="cursor:pointer;">Reset Baseline</button>
+        </div>
+      </div>
+      <p style="font-size:0.9rem;color:#9fb0d9;margin:8px 0 12px;">Enter your trial-balance, schedule, or contract numbers below to verify headline statutory outputs in real time across 57 US jurisdictions (zero data stored).</p>
+
+      <div class="calc-grid">
+        <div class="calc-field">
+          <label for="ql-jurisdiction">US State / Territory Jurisdiction (57)</label>
+          <select id="ql-jurisdiction" class="calc-input"><option value="DC" selected>DC</option><option value="NY">NY</option><option value="CA">CA</option><option value="TX">TX</option><option value="FL">FL</option><option value="DE">DE</option><option value="VA">VA</option><option value="IL">IL</option><option value="MA">MA</option><option value="WA">WA</option><option value="PA">PA</option><option value="GA">GA</option><option value="NJ">NJ</option><option value="NC">NC</option><option value="OH">OH</option><option value="AK">AK</option><option value="AL">AL</option><option value="AR">AR</option><option value="AS">AS</option><option value="AZ">AZ</option><option value="CO">CO</option><option value="CT">CT</option><option value="GU">GU</option><option value="HI">HI</option><option value="IA">IA</option><option value="ID">ID</option><option value="IN">IN</option><option value="KS">KS</option><option value="KY">KY</option><option value="LA">LA</option><option value="MD">MD</option><option value="ME">ME</option><option value="MI">MI</option><option value="MN">MN</option><option value="MO">MO</option><option value="MP">MP</option><option value="MS">MS</option><option value="MT">MT</option><option value="ND">ND</option><option value="NE">NE</option><option value="NH">NH</option><option value="NM">NM</option><option value="NV">NV</option><option value="OK">OK</option><option value="OR">OR</option><option value="PR">PR</option><option value="RI">RI</option><option value="SC">SC</option><option value="SD">SD</option><option value="TN">TN</option><option value="US">US</option><option value="UT">UT</option><option value="VI">VI</option><option value="VT">VT</option><option value="WI">WI</option><option value="WV">WV</option><option value="WY">WY</option></select>
+        </div>
+        <div class="calc-field">
+          <label for="ql-naics">6-Digit NAICS or 4-Digit SIC</label>
+          <input id="ql-naics" class="calc-input" type="text" value="541211" />
+        </div>
+        <div class="calc-field"><label>Plan 401k Assets (USD)</label><input class="calc-input" type="number" step="any" data-param-key="plan_401k_assets_usd" value="285000000" /></div><div class="calc-field"><label>Weighted 12b1 Subta Revshare Rate</label><input class="calc-input" type="number" step="any" data-param-key="weighted_12b1_subta_revshare_rate" value="0.00095" /></div><div class="calc-field"><label>Form5500 Peer P50 Per Capita (USD)</label><input class="calc-input" type="number" step="any" data-param-key="form5500_peer_p50_per_capita_usd" value="54" /></div><div class="calc-field"><label>Current Weighted Expense Ratio</label><input class="calc-input" type="number" step="any" data-param-key="current_weighted_expense_ratio" value="0.0056" /></div><div class="calc-field"><label>Institutional R6 Cit Expense Ratio</label><input class="calc-input" type="number" step="any" data-param-key="institutional_r6_cit_expense_ratio" value="0.0029" /></div><div class="calc-field"><label>Broker Direct Pepm (USD)</label><input class="calc-input" type="number" step="any" data-param-key="broker_direct_pepm_usd" value="24.5" /></div>
+      </div>
+
+      <details style="margin:8px 0 14px;font-size:0.86rem;color:#9fb0d9;">
+        <summary style="cursor:pointer;color:#7cb0ff;">Optional: Paste Advanced Custom Schedule / Array Overrides (JSON)</summary>
+        <textarea id="ql-custom-json" class="calc-input" rows="3" style="margin-top:8px;font-family:monospace;" placeholder='{"custom_parameter": 100000}'></textarea>
+      </details>
+
+      <div id="ql-calc-status" style="font-size:0.85rem;color:#93bcff;margin:6px 0 8px;">Showing verified Washington, D.C. baseline — edit any input and click Recalculate.</div>
+      <h3 style="margin:12px 0 8px;">Computed Headline Statutory &amp; Financial KPIs</h3>
+      <div id="ql-kpi-grid" class="kpi-grid"><div class="kpi-box"><div class="k-lbl">Study Id</div><div class="k-val">BI-68</div></div><div class="kpi-box"><div class="k-lbl">All In Rk Fee Per Participant (USD)</div><div class="k-val">$85.86</div></div><div class="kpi-box"><div class="k-lbl">Ten Year Share Class Wealth Drag (USD)</div><div class="k-val">$15,122,160.83</div></div><div class="kpi-box"><div class="k-lbl">Annual Pbm Spread And Rebate Leakage (USD)</div><div class="k-val">$6,170,880.00</div></div><div class="kpi-box"><div class="k-lbl">All In Broker Compensation (USD)</div><div class="k-val">$1,626,280.00</div></div><div class="kpi-box"><div class="k-lbl">Total Annual Fiduciary Savings (USD)</div><div class="k-val">$5,218,122.00</div></div></div>
+
+      <div class="xlsx-box">
+        <div style="display:flex;justify-content:space-between;align-items:flex-start;gap:16px;flex-wrap:wrap;">
+          <div style="flex:1;min-width:260px;">
+            <h3 style="margin:0 0 6px;color:#fff;">Download 5-Tab Formula-Linked Excel Workpaper (<code>.xlsx</code>) — <span id="ql-xlsx-price">$19.00</span></h3>
+            <p id="ql-lock-meta" style="margin:0 0 8px;font-size:0.88rem;color:#d1fae5;">Includes 5 formatted CPA/analyst tabs compiled from your exact inputs: <code>01_Executive_Summary</code>, <code>02_Statutory_Rules</code> (4 rules), <code>03_Workpaper_Schedule</code> (5 rows + <code>=SUM</code>/<code>=AVERAGE</code> formulas), <code>04_Scenario_Sensitivity</code> (<code>=C-B</code> variance formulas), and <code>05_Compliance_Audit_Flags</code> (3 threshold gates).</p>
+            <div style="display:flex;gap:10px;flex-wrap:wrap;margin-top:10px;">
+              <a class="btn primary" href="https://apify.com/quantledger/quantledger-cpa-gaap-tax-sec-mcp">Export .xlsx Workpaper on Apify ($0.35)</a>
+              <a class="btn" href="https://rapidapi.com/quantledger/api/quantledger-73-engine-financial-and-statutory-api">Export .xlsx via RapidAPI (5 Free/Mo)</a>
+            </div>
+          </div>
+          <div id="ql-paypal-buttons" style="display:none;min-width:270px;max-width:340px;width:100%;"></div>
+        </div>
+      </div>
+    </section>
+    
 
     <h2>1. Deterministic Statutory &amp; Regulatory Laws Executed</h2>
     <p>Unlike prompt-only LLM skills that approximate multi-period schedules in token space, <code>BI-68</code> executes exact pure-Python and NumPy statutory rules in volatile container RAM:</p>

@@ -133,13 +133,65 @@ footer {
   color: var(--muted);
   font-size: 0.85rem;
 }
+.calc-panel {
+  background: linear-gradient(180deg, #131b33 0%, #0e1529 100%);
+  border: 1px solid #35508c;
+  border-radius: 12px;
+  padding: 22px;
+  margin: 26px 0 30px;
+}
+.calc-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(235px, 1fr));
+  gap: 12px;
+  margin: 14px 0;
+}
+.calc-field label {
+  display: block;
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: #bcd0f7;
+  margin-bottom: 4px;
+}
+.calc-input {
+  width: 100%;
+  padding: 9px 11px;
+  border-radius: 7px;
+  border: 1px solid var(--border);
+  background: var(--code-bg);
+  color: #fff;
+  font-size: 0.92rem;
+}
+.kpi-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(210px, 1fr));
+  gap: 11px;
+  margin: 14px 0;
+}
+.kpi-box {
+  background: var(--code-bg);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 11px 13px;
+}
+.kpi-box .k-lbl { font-size: 0.77rem; color: var(--muted); margin-bottom: 4px; }
+.kpi-box .k-val { font-size: 1.08rem; font-weight: 700; color: var(--green); word-break: break-word; }
+.xlsx-box {
+  background: rgba(52, 211, 153, 0.07);
+  border: 1px solid rgba(52, 211, 153, 0.35);
+  border-radius: 10px;
+  padding: 16px 18px;
+  margin-top: 16px;
+}
+.btn.green { background: #10b981; border-color: #10b981; color: #04130d; font-weight: 700; cursor: pointer; }
 </style>
   <script type="application/ld+json">{"@context": "https://schema.org", "@type": "TechArticle", "headline": "Goodwill & Long-Lived Asset Impairment Test (FASB ASC 350 & ASC 360 Step-Sequence) — FASB ASC 360-10 Undiscounted Cash-Flow Screen & ASU 2017-04 (ASC 350-20) Reporting-Unit Impairment Workpaper API & MCP Reference (BI-59)", "alternateName": ["Goodwill & Long-Lived Asset Impairment Test (FASB ASC 350 & ASC 360 Step-Sequence)", "FASB ASC 360-10 Undiscounted Cash-Flow Screen & ASU 2017-04 (ASC 350-20) Reporting-Unit Impairment Workpaper", "ASC 350 Goodwill Impairment Calculator", "ASC 360 Undiscounted Cash Flow Test", "ASU 2017-04 Quantitative Goodwill Charge", "Reporting Unit DCF to Market Cap Tie-Out", "Tax Deductible Goodwill Factor"], "keywords": "BI-59, Goodwill & Long-Lived Asset Impairment Test (FASB ASC 350 & ASC 360 Step-Sequence), FASB ASC 350-20 / ASC 360-10 / PCAOB AS 2501 Impairment Valuation Schedule, ASC 350 Goodwill Impairment Calculator, ASC 360 Undiscounted Cash Flow Test, ASU 2017-04 Quantitative Goodwill Charge, Reporting Unit DCF to Market Cap Tie-Out, Tax Deductible Goodwill Factor, QuantLedger, MCP Server, REST API, Calculator API, ASC 350, ASC 360, ASC 350-20, ASC 360-10", "description": "Goodwill & Long-Lived Asset Impairment Test (FASB ASC 350 & ASC 360 Step-Sequence) (BI-59 — FASB ASC 350-20 / ASC 360-10 / PCAOB AS 2501 Impairment Valuation Sc", "url": "https://quantledgerapi.github.io/engines/bi-59-goodwill-long-lived-asset-impairment-test-fasb-asc/", "author": {"@type": "Organization", "name": "QuantLedger"}, "about": "FASB ASC 350-20 (ASU 2017-04 Goodwill Impairment); FASB ASC 360-10 (Long-Lived Assets); PCAOB AS 2501 & AICPA Goodwill Valuation Guide"}</script>
+  <script src="https://quantledgerapi.github.io/assets/calculator.js" defer></script>
 </head>
 <body>
   <header class="top">
     <div class="wrap nav">
-      <a class="brand" href="https://quantledgerapi.github.io/">QuantLedger API &amp; MCP Docs <span style="color:#9fb0d9;font-weight:400;font-size:0.84rem;">v2.3.1</span></a>
+      <a class="brand" href="https://quantledgerapi.github.io/">QuantLedger API &amp; MCP Docs <span style="color:#9fb0d9;font-weight:400;font-size:0.84rem;">v2.4.1</span></a>
       <nav class="nav-links">
         <a href="https://quantledgerapi.github.io/#engines">All Engines</a>
         <a href="https://quantledgerapi.github.io/sec-edgar-10k-xbrl-covenants/">SEC EDGAR 10-K API</a>
@@ -153,18 +205,71 @@ footer {
     
     <section class="hero">
       <span class="badge">BI-59 &middot; Technical FASB GAAP, ERISA, U.S. Customs &amp; Cyber Loss Suite</span>
-      <h1>Goodwill &amp; Long-Lived Asset Impairment Test (FASB ASC 350 &amp; ASC 360 Step-Sequence) — API &amp; MCP Calculator (BI-59)</h1>
+      <h1>Goodwill &amp; Long-Lived Asset Impairment Test (FASB ASC 350 &amp; ASC 360 Step-Sequence) — Calculator, Excel Workpaper &amp; API (BI-59)</h1>
       <p class="lead">Recoverable_360 = I(sum_{t=1}^{L_rem} CF_Undisc_AssetGroup,t &gt;= Carrying_Val_AssetGroup); Loss_360 = max(0, CV - FV_AssetGroup. Applies FASB ASC 360-10-35-17 Precedent Asset-Group Recoverability Test [FASB ASC 360-10-35-17 Precedent Impairment Sequence]; FASB ASC 350-20 &amp; PCAOB AS 2501 Reporting-Unit Present-Value Test [FASB ASC 350-20-35 &amp; PCAOB AS 2501 Fair-Value Audit Standard]; FASB ASC 820 Level-3 Income &amp; Market Fair-Value Reconciliation [FASB ASC 820-10-35 &amp; AICPA Accounting &amp; Valuation Guide: Goodwill]; FASB ASU 2017-04 Single-Step Goodwill Write-Down &amp; IRC Sec. 197 Tax Shield [FASB ASU 2017-04 (ASC 350-20-35-3C to 35-13) &amp; 26 U.S.C. Sec. 197]. Outputs: 01 Summary Budget Bridge, 02 ASC360 Asset Group Screen, 03 Reporting Unit DCF WACC, 04 GPC Transaction Multiples. Calibrated across all 57 US States, Washington, D.C., US Territories, and Federal IRC &sect; 11 baselines in sub-millisecond deterministic Python &amp; NumPy CPU execution.</p>
       <p><strong>Official Statutory &amp; Regulatory Workpaper Title:</strong> FASB ASC 360-10 Undiscounted Cash-Flow Screen &amp; ASU 2017-04 (ASC 350-20) Reporting-Unit Impairment Workpaper</p>
       <p><strong>Official Agency Form / Workpaper Standard:</strong> <code>FASB ASC 350-20 / ASC 360-10 / PCAOB AS 2501 Impairment Valuation Schedule</code></p>
       <p><strong>Governing Accounting, Tax &amp; Statutory Authorities:</strong> FASB ASC 350-20 (ASU 2017-04 Goodwill Impairment); FASB ASC 360-10 (Long-Lived Assets); PCAOB AS 2501 &amp; AICPA Goodwill Valuation Guide</p>
       <p style="font-size:0.9rem;color:#9fb0d9;"><strong>Common Practitioner &amp; Search Aliases:</strong> ASC 350 Goodwill Impairment Calculator, ASC 360 Undiscounted Cash Flow Test, ASU 2017-04 Quantitative Goodwill Charge, Reporting Unit DCF to Market Cap Tie-Out, Tax Deductible Goodwill Factor</p>
       <div class="cta-row">
+        <a class="btn green" href="#ql-calculator">Open Free Live Calculator &darr;</a>
         <a class="btn primary" href="https://rapidapi.com/quantledger/api/quantledger-73-engine-financial-and-statutory-api">Run on RapidAPI (5 Free/Mo)</a>
-        <a class="btn" href="https://apify.com/quantledger/quantledger-cpa-gaap-tax-sec-mcp">Run on Apify Store / MCP</a>
+        <a class="btn" href="https://apify.com/quantledger/quantledger-cpa-gaap-tax-sec-mcp">Run on Apify Store (.xlsx + MCP)</a>
         <a class="btn" href="https://github.com/QuantLedgerAPI/quantledger-mcp">Open-Source MCP SDK Repo</a>
       </div>
     </section>
+
+    
+    <section id="ql-calculator" class="calc-panel" data-engine-code="BI-59">
+      <script id="ql-default-inputs" type="application/json">{"consolidated_carrying_value": 310000000, "terminal_growth_rate": 0.025, "precedent_ma_multiple": 9.8, "weight_dcf": 0.5, "weight_gpc": 0.3, "tax_amortizable_gw_ratio": 0.65}</script>
+      <div style="display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap;">
+        <div>
+          <span class="badge" style="margin-bottom:6px;">Live Zero-Code Statutory Calculator &amp; .xlsx Builder</span>
+          <h2 style="margin:0;border:none;padding:0;">Interactive Goodwill &amp; Long-Lived Asset Impairment Test (FASB ASC 350 &amp; ASC 360 Step-Sequence) Calculator (BI-59)</h2>
+        </div>
+        <div style="display:flex;gap:10px;flex-wrap:wrap;">
+          <button id="ql-run-btn" type="button" class="btn green">Recalculate Statutory Preview (Free)</button>
+          <button id="ql-reset-btn" type="button" class="btn" style="cursor:pointer;">Reset Baseline</button>
+        </div>
+      </div>
+      <p style="font-size:0.9rem;color:#9fb0d9;margin:8px 0 12px;">Enter your trial-balance, schedule, or contract numbers below to verify headline statutory outputs in real time across 57 US jurisdictions (zero data stored).</p>
+
+      <div class="calc-grid">
+        <div class="calc-field">
+          <label for="ql-jurisdiction">US State / Territory Jurisdiction (57)</label>
+          <select id="ql-jurisdiction" class="calc-input"><option value="DC" selected>DC</option><option value="NY">NY</option><option value="CA">CA</option><option value="TX">TX</option><option value="FL">FL</option><option value="DE">DE</option><option value="VA">VA</option><option value="IL">IL</option><option value="MA">MA</option><option value="WA">WA</option><option value="PA">PA</option><option value="GA">GA</option><option value="NJ">NJ</option><option value="NC">NC</option><option value="OH">OH</option><option value="AK">AK</option><option value="AL">AL</option><option value="AR">AR</option><option value="AS">AS</option><option value="AZ">AZ</option><option value="CO">CO</option><option value="CT">CT</option><option value="GU">GU</option><option value="HI">HI</option><option value="IA">IA</option><option value="ID">ID</option><option value="IN">IN</option><option value="KS">KS</option><option value="KY">KY</option><option value="LA">LA</option><option value="MD">MD</option><option value="ME">ME</option><option value="MI">MI</option><option value="MN">MN</option><option value="MO">MO</option><option value="MP">MP</option><option value="MS">MS</option><option value="MT">MT</option><option value="ND">ND</option><option value="NE">NE</option><option value="NH">NH</option><option value="NM">NM</option><option value="NV">NV</option><option value="OK">OK</option><option value="OR">OR</option><option value="PR">PR</option><option value="RI">RI</option><option value="SC">SC</option><option value="SD">SD</option><option value="TN">TN</option><option value="US">US</option><option value="UT">UT</option><option value="VI">VI</option><option value="VT">VT</option><option value="WI">WI</option><option value="WV">WV</option><option value="WY">WY</option></select>
+        </div>
+        <div class="calc-field">
+          <label for="ql-naics">6-Digit NAICS or 4-Digit SIC</label>
+          <input id="ql-naics" class="calc-input" type="text" value="541211" />
+        </div>
+        <div class="calc-field"><label>Consolidated Carrying Value</label><input class="calc-input" type="number" step="any" data-param-key="consolidated_carrying_value" value="310000000" /></div><div class="calc-field"><label>Terminal Growth Rate</label><input class="calc-input" type="number" step="any" data-param-key="terminal_growth_rate" value="0.025" /></div><div class="calc-field"><label>Precedent Ma Multiple</label><input class="calc-input" type="number" step="any" data-param-key="precedent_ma_multiple" value="9.8" /></div><div class="calc-field"><label>Weight Dcf</label><input class="calc-input" type="number" step="any" data-param-key="weight_dcf" value="0.5" /></div><div class="calc-field"><label>Weight Gpc</label><input class="calc-input" type="number" step="any" data-param-key="weight_gpc" value="0.3" /></div><div class="calc-field"><label>Tax Amortizable Gw Ratio</label><input class="calc-input" type="number" step="any" data-param-key="tax_amortizable_gw_ratio" value="0.65" /></div>
+      </div>
+
+      <details style="margin:8px 0 14px;font-size:0.86rem;color:#9fb0d9;">
+        <summary style="cursor:pointer;color:#7cb0ff;">Optional: Paste Advanced Custom Schedule / Array Overrides (JSON)</summary>
+        <textarea id="ql-custom-json" class="calc-input" rows="3" style="margin-top:8px;font-family:monospace;" placeholder='{"custom_parameter": 100000}'></textarea>
+      </details>
+
+      <div id="ql-calc-status" style="font-size:0.85rem;color:#93bcff;margin:6px 0 8px;">Showing verified Washington, D.C. baseline — edit any input and click Recalculate.</div>
+      <h3 style="margin:12px 0 8px;">Computed Headline Statutory &amp; Financial KPIs</h3>
+      <div id="ql-kpi-grid" class="kpi-grid"><div class="kpi-box"><div class="k-lbl">Study Id</div><div class="k-val">BI-59</div></div><div class="kpi-box"><div class="k-lbl">Tested Ru Carrying Value (USD)</div><div class="k-val">$118,000,000.00</div></div><div class="kpi-box"><div class="k-lbl">Tested Ru Blended Fair Value (USD)</div><div class="k-val">$115,749,473.36</div></div><div class="kpi-box"><div class="k-lbl">Asu2017 04 Goodwill Impairment (USD)</div><div class="k-val">$2,479,294.29</div></div><div class="kpi-box"><div class="k-lbl">Precedent Asc360 Loss (USD)</div><div class="k-val">$0.00</div></div><div class="kpi-box"><div class="k-lbl">Implied Control Premium (%)</div><div class="k-val">11.25%</div></div></div>
+
+      <div class="xlsx-box">
+        <div style="display:flex;justify-content:space-between;align-items:flex-start;gap:16px;flex-wrap:wrap;">
+          <div style="flex:1;min-width:260px;">
+            <h3 style="margin:0 0 6px;color:#fff;">Download 5-Tab Formula-Linked Excel Workpaper (<code>.xlsx</code>) — <span id="ql-xlsx-price">$19.00</span></h3>
+            <p id="ql-lock-meta" style="margin:0 0 8px;font-size:0.88rem;color:#d1fae5;">Includes 5 formatted CPA/analyst tabs compiled from your exact inputs: <code>01_Executive_Summary</code>, <code>02_Statutory_Rules</code> (4 rules), <code>03_Workpaper_Schedule</code> (5 rows + <code>=SUM</code>/<code>=AVERAGE</code> formulas), <code>04_Scenario_Sensitivity</code> (<code>=C-B</code> variance formulas), and <code>05_Compliance_Audit_Flags</code> (3 threshold gates).</p>
+            <div style="display:flex;gap:10px;flex-wrap:wrap;margin-top:10px;">
+              <a class="btn primary" href="https://apify.com/quantledger/quantledger-cpa-gaap-tax-sec-mcp">Export .xlsx Workpaper on Apify ($0.35)</a>
+              <a class="btn" href="https://rapidapi.com/quantledger/api/quantledger-73-engine-financial-and-statutory-api">Export .xlsx via RapidAPI (5 Free/Mo)</a>
+            </div>
+          </div>
+          <div id="ql-paypal-buttons" style="display:none;min-width:270px;max-width:340px;width:100%;"></div>
+        </div>
+      </div>
+    </section>
+    
 
     <h2>1. Deterministic Statutory &amp; Regulatory Laws Executed</h2>
     <p>Unlike prompt-only LLM skills that approximate multi-period schedules in token space, <code>BI-59</code> executes exact pure-Python and NumPy statutory rules in volatile container RAM:</p>

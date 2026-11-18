@@ -133,13 +133,65 @@ footer {
   color: var(--muted);
   font-size: 0.85rem;
 }
+.calc-panel {
+  background: linear-gradient(180deg, #131b33 0%, #0e1529 100%);
+  border: 1px solid #35508c;
+  border-radius: 12px;
+  padding: 22px;
+  margin: 26px 0 30px;
+}
+.calc-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(235px, 1fr));
+  gap: 12px;
+  margin: 14px 0;
+}
+.calc-field label {
+  display: block;
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: #bcd0f7;
+  margin-bottom: 4px;
+}
+.calc-input {
+  width: 100%;
+  padding: 9px 11px;
+  border-radius: 7px;
+  border: 1px solid var(--border);
+  background: var(--code-bg);
+  color: #fff;
+  font-size: 0.92rem;
+}
+.kpi-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(210px, 1fr));
+  gap: 11px;
+  margin: 14px 0;
+}
+.kpi-box {
+  background: var(--code-bg);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 11px 13px;
+}
+.kpi-box .k-lbl { font-size: 0.77rem; color: var(--muted); margin-bottom: 4px; }
+.kpi-box .k-val { font-size: 1.08rem; font-weight: 700; color: var(--green); word-break: break-word; }
+.xlsx-box {
+  background: rgba(52, 211, 153, 0.07);
+  border: 1px solid rgba(52, 211, 153, 0.35);
+  border-radius: 10px;
+  padding: 16px 18px;
+  margin-top: 16px;
+}
+.btn.green { background: #10b981; border-color: #10b981; color: #04130d; font-weight: 700; cursor: pointer; }
 </style>
   <script type="application/ld+json">{"@context": "https://schema.org", "@type": "TechArticle", "headline": "Borrowing Base Certificate (BBC), 13-Week Cash Flow & FCCR Covenant Packet — OCC Asset-Based Lending Borrowing-Base Certificate & FASB ASC 205-40 12-Month Going-Concern Filing API & MCP Reference (BI-01)", "alternateName": ["Borrowing Base Certificate (BBC), 13-Week Cash Flow & FCCR Covenant Packet", "OCC Asset-Based Lending Borrowing-Base Certificate & FASB ASC 205-40 12-Month Going-Concern Filing", "Borrowing Base Certificate", "BBC Calculator", "13-Week Cash Flow Forecast", "25% Cross-Aging Taint", "FCCR Covenant Certificate", "ASC 205-40 Going Concern"], "keywords": "BI-01, Borrowing Base Certificate (BBC), 13-Week Cash Flow & FCCR Covenant Packet, OCC ABL Handbook / FASB ASC 205-40 / UCC Art. 9 BBC, Borrowing Base Certificate, BBC Calculator, 13-Week Cash Flow Forecast, 25% Cross-Aging Taint, FCCR Covenant Certificate, ASC 205-40 Going Concern, QuantLedger, MCP Server, REST API, Calculator API, ASC 205-40", "description": "Borrowing Base Certificate (BBC), 13-Week Cash Flow & FCCR Covenant Packet (BI-01 — OCC ABL Handbook / FASB ASC 205-40 / UCC Art. 9 BBC) deterministic REST API ", "url": "https://quantledgerapi.github.io/engines/bi-01-borrowing-base-certificate-bbc-13-week-cash-flow/", "author": {"@type": "Organization", "name": "QuantLedger"}, "about": "FASB ASC 205-40 (Going Concern Evaluation); OCC Commercial Lending Comptroller's Handbook; ABI 13-Week Cash-Flow Protocol"}</script>
+  <script src="https://quantledgerapi.github.io/assets/calculator.js" defer></script>
 </head>
 <body>
   <header class="top">
     <div class="wrap nav">
-      <a class="brand" href="https://quantledgerapi.github.io/">QuantLedger API &amp; MCP Docs <span style="color:#9fb0d9;font-weight:400;font-size:0.84rem;">v2.3.1</span></a>
+      <a class="brand" href="https://quantledgerapi.github.io/">QuantLedger API &amp; MCP Docs <span style="color:#9fb0d9;font-weight:400;font-size:0.84rem;">v2.4.1</span></a>
       <nav class="nav-links">
         <a href="https://quantledgerapi.github.io/#engines">All Engines</a>
         <a href="https://quantledgerapi.github.io/sec-edgar-10k-xbrl-covenants/">SEC EDGAR 10-K API</a>
@@ -153,18 +205,71 @@ footer {
     
     <section class="hero">
       <span class="badge">BI-01 &middot; Commercial Credit, Working Capital &amp; Unit-Economics Suite</span>
-      <h1>Borrowing Base Certificate (BBC), 13-Week Cash Flow &amp; FCCR Covenant Packet — API &amp; MCP Calculator (BI-01)</h1>
+      <h1>Borrowing Base Certificate (BBC), 13-Week Cash Flow &amp; FCCR Covenant Packet — Calculator, Excel Workpaper &amp; API (BI-01)</h1>
       <p class="lead">Cash_w = Cash_0 + sum_{t=1..w}(Receipts_t - OpOutflows_t - DebtService_t); Liq_Trough = min_w(Cash_w) + Undrawn_BB. Applies 13-Week Reconciled Direct Cash-Flow Bridge &amp; Minimum Liquidity Floor Test [OCC Comptroller&#x27;s Handbook: Rating Credit Risk &amp; Cash Dominion DACA Standards]; OCC Borrowing-Base AR Eligibility (&gt;90d Past-Due &amp; 25% Cross-Age Taint + Capped WIP) [OCC Comptroller&#x27;s Handbook: Asset-Based Lending &amp; UCC Article 9 Perfection Rules]; Credit-Agreement Fixed-Charge Coverage Ratio (Strict 5% EBITDA Add-Back Cap) [OCC Leveraged &amp; Commercial Credit Examination Guidelines (Contractual FCCR &gt;= 1.15x)]; FASB ASC 205-40-50 12-Month Unadjusted Going-Concern Cash-Sufficiency Test [FASB ASC 205-40-50-1 through 50-11 (Presentation of Financial Statements. Outputs: 01 Exec Liquidity Bridge, 02 13Wk Direct Cash Model, 03 Vendor Sequencing Queue, 04 Actual vs Forecast Var. Calibrated across all 57 US States, Washington, D.C., US Territories, and Federal IRC &sect; 11 baselines in sub-millisecond deterministic Python &amp; NumPy CPU execution.</p>
       <p><strong>Official Statutory &amp; Regulatory Workpaper Title:</strong> OCC Asset-Based Lending Borrowing-Base Certificate &amp; FASB ASC 205-40 12-Month Going-Concern Filing</p>
       <p><strong>Official Agency Form / Workpaper Standard:</strong> <code>OCC ABL Handbook / FASB ASC 205-40 / UCC Art. 9 BBC</code></p>
       <p><strong>Governing Accounting, Tax &amp; Statutory Authorities:</strong> FASB ASC 205-40 (Going Concern Evaluation); OCC Commercial Lending Comptroller&#x27;s Handbook; ABI 13-Week Cash-Flow Protocol</p>
       <p style="font-size:0.9rem;color:#9fb0d9;"><strong>Common Practitioner &amp; Search Aliases:</strong> Borrowing Base Certificate, BBC Calculator, 13-Week Cash Flow Forecast, 25% Cross-Aging Taint, FCCR Covenant Certificate, ASC 205-40 Going Concern</p>
       <div class="cta-row">
+        <a class="btn green" href="#ql-calculator">Open Free Live Calculator &darr;</a>
         <a class="btn primary" href="https://rapidapi.com/quantledger/api/quantledger-73-engine-financial-and-statutory-api">Run on RapidAPI (5 Free/Mo)</a>
-        <a class="btn" href="https://apify.com/quantledger/quantledger-cpa-gaap-tax-sec-mcp">Run on Apify Store / MCP</a>
+        <a class="btn" href="https://apify.com/quantledger/quantledger-cpa-gaap-tax-sec-mcp">Run on Apify Store (.xlsx + MCP)</a>
         <a class="btn" href="https://github.com/QuantLedgerAPI/quantledger-mcp">Open-Source MCP SDK Repo</a>
       </div>
     </section>
+
+    
+    <section id="ql-calculator" class="calc-panel" data-engine-code="BI-01">
+      <script id="ql-default-inputs" type="application/json">{"opening_cash": 4180000, "minimum_liquidity_floor": 1250000, "revolver_commitment": 8500000, "drawn_revolver": 3470000, "cross_aging_taint_threshold": 0.25, "ar_advance_rate": 0.85, "unbilled_wip": 680000, "wip_advance_rate": 0.5}</script>
+      <div style="display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap;">
+        <div>
+          <span class="badge" style="margin-bottom:6px;">Live Zero-Code Statutory Calculator &amp; .xlsx Builder</span>
+          <h2 style="margin:0;border:none;padding:0;">Interactive Borrowing Base Certificate (BBC), 13-Week Cash Flow &amp; FCCR Covenant Packet Calculator (BI-01)</h2>
+        </div>
+        <div style="display:flex;gap:10px;flex-wrap:wrap;">
+          <button id="ql-run-btn" type="button" class="btn green">Recalculate Statutory Preview (Free)</button>
+          <button id="ql-reset-btn" type="button" class="btn" style="cursor:pointer;">Reset Baseline</button>
+        </div>
+      </div>
+      <p style="font-size:0.9rem;color:#9fb0d9;margin:8px 0 12px;">Enter your trial-balance, schedule, or contract numbers below to verify headline statutory outputs in real time across 57 US jurisdictions (zero data stored).</p>
+
+      <div class="calc-grid">
+        <div class="calc-field">
+          <label for="ql-jurisdiction">US State / Territory Jurisdiction (57)</label>
+          <select id="ql-jurisdiction" class="calc-input"><option value="DC" selected>DC</option><option value="NY">NY</option><option value="CA">CA</option><option value="TX">TX</option><option value="FL">FL</option><option value="DE">DE</option><option value="VA">VA</option><option value="IL">IL</option><option value="MA">MA</option><option value="WA">WA</option><option value="PA">PA</option><option value="GA">GA</option><option value="NJ">NJ</option><option value="NC">NC</option><option value="OH">OH</option><option value="AK">AK</option><option value="AL">AL</option><option value="AR">AR</option><option value="AS">AS</option><option value="AZ">AZ</option><option value="CO">CO</option><option value="CT">CT</option><option value="GU">GU</option><option value="HI">HI</option><option value="IA">IA</option><option value="ID">ID</option><option value="IN">IN</option><option value="KS">KS</option><option value="KY">KY</option><option value="LA">LA</option><option value="MD">MD</option><option value="ME">ME</option><option value="MI">MI</option><option value="MN">MN</option><option value="MO">MO</option><option value="MP">MP</option><option value="MS">MS</option><option value="MT">MT</option><option value="ND">ND</option><option value="NE">NE</option><option value="NH">NH</option><option value="NM">NM</option><option value="NV">NV</option><option value="OK">OK</option><option value="OR">OR</option><option value="PR">PR</option><option value="RI">RI</option><option value="SC">SC</option><option value="SD">SD</option><option value="TN">TN</option><option value="US">US</option><option value="UT">UT</option><option value="VI">VI</option><option value="VT">VT</option><option value="WI">WI</option><option value="WV">WV</option><option value="WY">WY</option></select>
+        </div>
+        <div class="calc-field">
+          <label for="ql-naics">6-Digit NAICS or 4-Digit SIC</label>
+          <input id="ql-naics" class="calc-input" type="text" value="541211" />
+        </div>
+        <div class="calc-field"><label>Opening Cash</label><input class="calc-input" type="number" step="any" data-param-key="opening_cash" value="4180000" /></div><div class="calc-field"><label>Minimum Liquidity Floor</label><input class="calc-input" type="number" step="any" data-param-key="minimum_liquidity_floor" value="1250000" /></div><div class="calc-field"><label>Revolver Commitment</label><input class="calc-input" type="number" step="any" data-param-key="revolver_commitment" value="8500000" /></div><div class="calc-field"><label>Drawn Revolver</label><input class="calc-input" type="number" step="any" data-param-key="drawn_revolver" value="3470000" /></div><div class="calc-field"><label>Cross Aging Taint Threshold</label><input class="calc-input" type="number" step="any" data-param-key="cross_aging_taint_threshold" value="0.25" /></div><div class="calc-field"><label>AR Advance Rate</label><input class="calc-input" type="number" step="any" data-param-key="ar_advance_rate" value="0.85" /></div><div class="calc-field"><label>Unbilled Wip</label><input class="calc-input" type="number" step="any" data-param-key="unbilled_wip" value="680000" /></div><div class="calc-field"><label>Wip Advance Rate</label><input class="calc-input" type="number" step="any" data-param-key="wip_advance_rate" value="0.5" /></div>
+      </div>
+
+      <details style="margin:8px 0 14px;font-size:0.86rem;color:#9fb0d9;">
+        <summary style="cursor:pointer;color:#7cb0ff;">Optional: Paste Advanced Custom Schedule / Array Overrides (JSON)</summary>
+        <textarea id="ql-custom-json" class="calc-input" rows="3" style="margin-top:8px;font-family:monospace;" placeholder='{"custom_parameter": 100000}'></textarea>
+      </details>
+
+      <div id="ql-calc-status" style="font-size:0.85rem;color:#93bcff;margin:6px 0 8px;">Showing verified Washington, D.C. baseline — edit any input and click Recalculate.</div>
+      <h3 style="margin:12px 0 8px;">Computed Headline Statutory &amp; Financial KPIs</h3>
+      <div id="ql-kpi-grid" class="kpi-grid"><div class="kpi-box"><div class="k-lbl">Net Borrowing Base (USD)</div><div class="k-val">$6,557,000.00</div></div><div class="kpi-box"><div class="k-lbl">Undrawn Revolver Availability (USD)</div><div class="k-val">$3,087,000.00</div></div><div class="kpi-box"><div class="k-lbl">Trough 13w Total Liquidity (USD)</div><div class="k-val">$4,957,000.00</div></div><div class="kpi-box"><div class="k-lbl">Statutory FCCR X</div><div class="k-val">1.31x</div></div><div class="kpi-box"><div class="k-lbl">Ending 12m Unrestricted Cash (USD)</div><div class="k-val">$5,290,000.00</div></div></div>
+
+      <div class="xlsx-box">
+        <div style="display:flex;justify-content:space-between;align-items:flex-start;gap:16px;flex-wrap:wrap;">
+          <div style="flex:1;min-width:260px;">
+            <h3 style="margin:0 0 6px;color:#fff;">Download 5-Tab Formula-Linked Excel Workpaper (<code>.xlsx</code>) — <span id="ql-xlsx-price">$19.00</span></h3>
+            <p id="ql-lock-meta" style="margin:0 0 8px;font-size:0.88rem;color:#d1fae5;">Includes 5 formatted CPA/analyst tabs compiled from your exact inputs: <code>01_Executive_Summary</code>, <code>02_Statutory_Rules</code> (4 rules), <code>03_Workpaper_Schedule</code> (6 rows + <code>=SUM</code>/<code>=AVERAGE</code> formulas), <code>04_Scenario_Sensitivity</code> (<code>=C-B</code> variance formulas), and <code>05_Compliance_Audit_Flags</code> (3 threshold gates).</p>
+            <div style="display:flex;gap:10px;flex-wrap:wrap;margin-top:10px;">
+              <a class="btn primary" href="https://apify.com/quantledger/quantledger-cpa-gaap-tax-sec-mcp">Export .xlsx Workpaper on Apify ($0.35)</a>
+              <a class="btn" href="https://rapidapi.com/quantledger/api/quantledger-73-engine-financial-and-statutory-api">Export .xlsx via RapidAPI (5 Free/Mo)</a>
+            </div>
+          </div>
+          <div id="ql-paypal-buttons" style="display:none;min-width:270px;max-width:340px;width:100%;"></div>
+        </div>
+      </div>
+    </section>
+    
 
     <h2>1. Deterministic Statutory &amp; Regulatory Laws Executed</h2>
     <p>Unlike prompt-only LLM skills that approximate multi-period schedules in token space, <code>BI-01</code> executes exact pure-Python and NumPy statutory rules in volatile container RAM:</p>

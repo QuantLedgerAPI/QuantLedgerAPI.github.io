@@ -133,13 +133,65 @@ footer {
   color: var(--muted);
   font-size: 0.85rem;
 }
+.calc-panel {
+  background: linear-gradient(180deg, #131b33 0%, #0e1529 100%);
+  border: 1px solid #35508c;
+  border-radius: 12px;
+  padding: 22px;
+  margin: 26px 0 30px;
+}
+.calc-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(235px, 1fr));
+  gap: 12px;
+  margin: 14px 0;
+}
+.calc-field label {
+  display: block;
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: #bcd0f7;
+  margin-bottom: 4px;
+}
+.calc-input {
+  width: 100%;
+  padding: 9px 11px;
+  border-radius: 7px;
+  border: 1px solid var(--border);
+  background: var(--code-bg);
+  color: #fff;
+  font-size: 0.92rem;
+}
+.kpi-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(210px, 1fr));
+  gap: 11px;
+  margin: 14px 0;
+}
+.kpi-box {
+  background: var(--code-bg);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 11px 13px;
+}
+.kpi-box .k-lbl { font-size: 0.77rem; color: var(--muted); margin-bottom: 4px; }
+.kpi-box .k-val { font-size: 1.08rem; font-weight: 700; color: var(--green); word-break: break-word; }
+.xlsx-box {
+  background: rgba(52, 211, 153, 0.07);
+  border: 1px solid rgba(52, 211, 153, 0.35);
+  border-radius: 10px;
+  padding: 16px 18px;
+  margin-top: 16px;
+}
+.btn.green { background: #10b981; border-color: #10b981; color: #04130d; font-weight: 700; cursor: pointer; }
 </style>
   <script type="application/ld+json">{"@context": "https://schema.org", "@type": "TechArticle", "headline": "Building Energy Performance (BEPS) Penalty Mitigation, C-PACE Loan Sizing & 179D Tax Shield — Building Energy EUI Penalty Schedule, C-PACE Savings-to-Investment Ratio (SIR >= 1.0) & IRC Sec. 179D Filing API & MCP Reference (BI-44)", "alternateName": ["Building Energy Performance (BEPS) Penalty Mitigation, C-PACE Loan Sizing & 179D Tax Shield", "Building Energy EUI Penalty Schedule, C-PACE Savings-to-Investment Ratio (SIR >= 1.0) & IRC Sec. 179D Filing", "BEPS Energy Penalty Calculator", "C-PACE SIR Ratio Loan Sizing", "IRC Section 179D Commercial Building Deduction", "IRS Form 7205 Prevailing Wage 179D", "Green Retrofit Senior Lender DSCR"], "keywords": "BI-44, Building Energy Performance (BEPS) Penalty Mitigation, C-PACE Loan Sizing & 179D Tax Shield, BEPS Alternative Compliance Schedule / C-PACE SIR Underwriting / IRS Form 7205 (179D), BEPS Energy Penalty Calculator, C-PACE SIR Ratio Loan Sizing, IRC Section 179D Commercial Building Deduction, IRS Form 7205 Prevailing Wage 179D, Green Retrofit Senior Lender DSCR, QuantLedger, MCP Server, REST API, Calculator API, IRC § 179D", "description": "Building Energy Performance (BEPS) Penalty Mitigation, C-PACE Loan Sizing & 179D Tax Shield (BI-44 — BEPS Alternative Compliance Schedule / C-PACE SIR Underwrit", "url": "https://quantledgerapi.github.io/engines/bi-44-building-energy-performance-beps-penalty-mitigation-c-pace/", "author": {"@type": "Organization", "name": "QuantLedger"}, "about": "D.C. Official Code § 8-1772.21 & 20 DCMR § 3513 (BEPS Compliance & Alternative Compliance Penalty); D.C. Official Code § 8-173.01 (C-PACE Financing); IRC § 179D"}</script>
+  <script src="https://quantledgerapi.github.io/assets/calculator.js" defer></script>
 </head>
 <body>
   <header class="top">
     <div class="wrap nav">
-      <a class="brand" href="https://quantledgerapi.github.io/">QuantLedger API &amp; MCP Docs <span style="color:#9fb0d9;font-weight:400;font-size:0.84rem;">v2.3.1</span></a>
+      <a class="brand" href="https://quantledgerapi.github.io/">QuantLedger API &amp; MCP Docs <span style="color:#9fb0d9;font-weight:400;font-size:0.84rem;">v2.4.1</span></a>
       <nav class="nav-links">
         <a href="https://quantledgerapi.github.io/#engines">All Engines</a>
         <a href="https://quantledgerapi.github.io/sec-edgar-10k-xbrl-covenants/">SEC EDGAR 10-K API</a>
@@ -153,18 +205,71 @@ footer {
     
     <section class="hero">
       <span class="badge">BI-44 &middot; National IRC Tax Code, Valuation &amp; Municipal Finance Suite</span>
-      <h1>Building Energy Performance (BEPS) Penalty Mitigation, C-PACE Loan Sizing &amp; 179D Tax Shield — API &amp; MCP Calculator (BI-44)</h1>
+      <h1>Building Energy Performance (BEPS) Penalty Mitigation, C-PACE Loan Sizing &amp; 179D Tax Shield — Calculator, Excel Workpaper &amp; API (BI-44)</h1>
       <p class="lead">ACP_adj = ($10.00 * GSF) * [1 - min(1.0, Delta_EUI_actual / 0.20)]. Applies DOEE BEPS 20% EUI Pathway &amp; Alternative Compliance Payment (ACP) Adjustment [D.C. Official Code Sec. 8-1772.21 &amp; 20 DCMR Sec. 3513.2]; D.C. C-PACE Savings-to-Investment Ratio (SIR &gt;= 1.00) &amp; Combined DSCR Underwriting Rule [D.C. Official Code Sec. 8-173.01 &amp; D.C. Green Bank C-PACE Guidelines]; 10 CFR Part 436 Lifecycle Net Present Value &amp; Yield-on-Net-CapEx Rule [10 CFR Part 436 Subpart A &amp; DOEE BEPS Cost-Effectiveness Standard]; IRC Sec. 179D Prevailing-Wage Energy-Efficient Commercial Building Deduction [26 U.S.C. Sec. 179D(b)(3), IRS Form 7205 &amp; D.C. Sustainable Energy Utility Rules]. Outputs: 01 Summary Budget Bridge, 02 DOEE BEPS ACP Schedule, 03 CPACE SIR Debt Sizing, 04 MIRR Discounted Payback. Calibrated across all 57 US States, Washington, D.C., US Territories, and Federal IRC &sect; 11 baselines in sub-millisecond deterministic Python &amp; NumPy CPU execution.</p>
       <p><strong>Official Statutory &amp; Regulatory Workpaper Title:</strong> Building Energy EUI Penalty Schedule, C-PACE Savings-to-Investment Ratio (SIR &gt;= 1.0) &amp; IRC Sec. 179D Filing</p>
       <p><strong>Official Agency Form / Workpaper Standard:</strong> <code>BEPS Alternative Compliance Schedule / C-PACE SIR Underwriting / IRS Form 7205 (179D)</code></p>
       <p><strong>Governing Accounting, Tax &amp; Statutory Authorities:</strong> D.C. Official Code § 8-1772.21 &amp; 20 DCMR § 3513 (BEPS Compliance &amp; Alternative Compliance Penalty); D.C. Official Code § 8-173.01 (C-PACE Financing); IRC § 179D</p>
       <p style="font-size:0.9rem;color:#9fb0d9;"><strong>Common Practitioner &amp; Search Aliases:</strong> BEPS Energy Penalty Calculator, C-PACE SIR Ratio Loan Sizing, IRC Section 179D Commercial Building Deduction, IRS Form 7205 Prevailing Wage 179D, Green Retrofit Senior Lender DSCR</p>
       <div class="cta-row">
+        <a class="btn green" href="#ql-calculator">Open Free Live Calculator &darr;</a>
         <a class="btn primary" href="https://rapidapi.com/quantledger/api/quantledger-73-engine-financial-and-statutory-api">Run on RapidAPI (5 Free/Mo)</a>
-        <a class="btn" href="https://apify.com/quantledger/quantledger-cpa-gaap-tax-sec-mcp">Run on Apify Store / MCP</a>
+        <a class="btn" href="https://apify.com/quantledger/quantledger-cpa-gaap-tax-sec-mcp">Run on Apify Store (.xlsx + MCP)</a>
         <a class="btn" href="https://github.com/QuantLedgerAPI/quantledger-mcp">Open-Source MCP SDK Repo</a>
       </div>
     </section>
+
+    
+    <section id="ql-calculator" class="calc-panel" data-engine-code="BI-44">
+      <script id="ql-default-inputs" type="application/json">{"gsf": 385000, "delta_eui_actual": 0.215, "capex_gross": 7450000, "dcseu_rebate": 620000, "d_179d_rate": 5.65, "fed_tax_rate": 0.21, "annual_utility_savings": 645000, "annual_om_savings": 115000}</script>
+      <div style="display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap;">
+        <div>
+          <span class="badge" style="margin-bottom:6px;">Live Zero-Code Statutory Calculator &amp; .xlsx Builder</span>
+          <h2 style="margin:0;border:none;padding:0;">Interactive Building Energy Performance (BEPS) Penalty Mitigation, C-PACE Loan Sizing &amp; 179D Tax Shield Calculator (BI-44)</h2>
+        </div>
+        <div style="display:flex;gap:10px;flex-wrap:wrap;">
+          <button id="ql-run-btn" type="button" class="btn green">Recalculate Statutory Preview (Free)</button>
+          <button id="ql-reset-btn" type="button" class="btn" style="cursor:pointer;">Reset Baseline</button>
+        </div>
+      </div>
+      <p style="font-size:0.9rem;color:#9fb0d9;margin:8px 0 12px;">Enter your trial-balance, schedule, or contract numbers below to verify headline statutory outputs in real time across 57 US jurisdictions (zero data stored).</p>
+
+      <div class="calc-grid">
+        <div class="calc-field">
+          <label for="ql-jurisdiction">US State / Territory Jurisdiction (57)</label>
+          <select id="ql-jurisdiction" class="calc-input"><option value="DC" selected>DC</option><option value="NY">NY</option><option value="CA">CA</option><option value="TX">TX</option><option value="FL">FL</option><option value="DE">DE</option><option value="VA">VA</option><option value="IL">IL</option><option value="MA">MA</option><option value="WA">WA</option><option value="PA">PA</option><option value="GA">GA</option><option value="NJ">NJ</option><option value="NC">NC</option><option value="OH">OH</option><option value="AK">AK</option><option value="AL">AL</option><option value="AR">AR</option><option value="AS">AS</option><option value="AZ">AZ</option><option value="CO">CO</option><option value="CT">CT</option><option value="GU">GU</option><option value="HI">HI</option><option value="IA">IA</option><option value="ID">ID</option><option value="IN">IN</option><option value="KS">KS</option><option value="KY">KY</option><option value="LA">LA</option><option value="MD">MD</option><option value="ME">ME</option><option value="MI">MI</option><option value="MN">MN</option><option value="MO">MO</option><option value="MP">MP</option><option value="MS">MS</option><option value="MT">MT</option><option value="ND">ND</option><option value="NE">NE</option><option value="NH">NH</option><option value="NM">NM</option><option value="NV">NV</option><option value="OK">OK</option><option value="OR">OR</option><option value="PR">PR</option><option value="RI">RI</option><option value="SC">SC</option><option value="SD">SD</option><option value="TN">TN</option><option value="US">US</option><option value="UT">UT</option><option value="VI">VI</option><option value="VT">VT</option><option value="WI">WI</option><option value="WV">WV</option><option value="WY">WY</option></select>
+        </div>
+        <div class="calc-field">
+          <label for="ql-naics">6-Digit NAICS or 4-Digit SIC</label>
+          <input id="ql-naics" class="calc-input" type="text" value="541211" />
+        </div>
+        <div class="calc-field"><label>Gsf</label><input class="calc-input" type="number" step="any" data-param-key="gsf" value="385000" /></div><div class="calc-field"><label>Delta Eui Actual</label><input class="calc-input" type="number" step="any" data-param-key="delta_eui_actual" value="0.215" /></div><div class="calc-field"><label>Capex Gross</label><input class="calc-input" type="number" step="any" data-param-key="capex_gross" value="7450000" /></div><div class="calc-field"><label>Dcseu Rebate</label><input class="calc-input" type="number" step="any" data-param-key="dcseu_rebate" value="620000" /></div><div class="calc-field"><label>D 179d Rate</label><input class="calc-input" type="number" step="any" data-param-key="d_179d_rate" value="5.65" /></div><div class="calc-field"><label>Fed Tax Rate</label><input class="calc-input" type="number" step="any" data-param-key="fed_tax_rate" value="0.21" /></div><div class="calc-field"><label>Annual Utility Savings</label><input class="calc-input" type="number" step="any" data-param-key="annual_utility_savings" value="645000" /></div><div class="calc-field"><label>Annual Om Savings</label><input class="calc-input" type="number" step="any" data-param-key="annual_om_savings" value="115000" /></div>
+      </div>
+
+      <details style="margin:8px 0 14px;font-size:0.86rem;color:#9fb0d9;">
+        <summary style="cursor:pointer;color:#7cb0ff;">Optional: Paste Advanced Custom Schedule / Array Overrides (JSON)</summary>
+        <textarea id="ql-custom-json" class="calc-input" rows="3" style="margin-top:8px;font-family:monospace;" placeholder='{"custom_parameter": 100000}'></textarea>
+      </details>
+
+      <div id="ql-calc-status" style="font-size:0.85rem;color:#93bcff;margin:6px 0 8px;">Showing verified Washington, D.C. baseline — edit any input and click Recalculate.</div>
+      <h3 style="margin:12px 0 8px;">Computed Headline Statutory &amp; Financial KPIs</h3>
+      <div id="ql-kpi-grid" class="kpi-grid"><div class="kpi-box"><div class="k-lbl">Engine Code</div><div class="k-val">BI-44</div></div><div class="kpi-box"><div class="k-lbl">Acp Penalty Avoided (USD)</div><div class="k-val">$3,850,000.00</div></div><div class="kpi-box"><div class="k-lbl">Acp Residual Exposure (USD)</div><div class="k-val">$0.00</div></div><div class="kpi-box"><div class="k-lbl">Net Retrofit Capex (USD)</div><div class="k-val">$6,193,739.38</div></div><div class="kpi-box"><div class="k-lbl">Cpace Sir Ratio</div><div class="k-val">1.50</div></div><div class="kpi-box"><div class="k-lbl">Combined DSCR</div><div class="k-val">1.61x</div></div><div class="kpi-box"><div class="k-lbl">Lifecycle NPV (USD)</div><div class="k-val">$2,914,219.63</div></div><div class="kpi-box"><div class="k-lbl">Yield On Net Capex</div><div class="k-val">0.12</div></div></div>
+
+      <div class="xlsx-box">
+        <div style="display:flex;justify-content:space-between;align-items:flex-start;gap:16px;flex-wrap:wrap;">
+          <div style="flex:1;min-width:260px;">
+            <h3 style="margin:0 0 6px;color:#fff;">Download 5-Tab Formula-Linked Excel Workpaper (<code>.xlsx</code>) — <span id="ql-xlsx-price">$19.00</span></h3>
+            <p id="ql-lock-meta" style="margin:0 0 8px;font-size:0.88rem;color:#d1fae5;">Includes 5 formatted CPA/analyst tabs compiled from your exact inputs: <code>01_Executive_Summary</code>, <code>02_Statutory_Rules</code> (4 rules), <code>03_Workpaper_Schedule</code> (5 rows + <code>=SUM</code>/<code>=AVERAGE</code> formulas), <code>04_Scenario_Sensitivity</code> (<code>=C-B</code> variance formulas), and <code>05_Compliance_Audit_Flags</code> (3 threshold gates).</p>
+            <div style="display:flex;gap:10px;flex-wrap:wrap;margin-top:10px;">
+              <a class="btn primary" href="https://apify.com/quantledger/quantledger-cpa-gaap-tax-sec-mcp">Export .xlsx Workpaper on Apify ($0.35)</a>
+              <a class="btn" href="https://rapidapi.com/quantledger/api/quantledger-73-engine-financial-and-statutory-api">Export .xlsx via RapidAPI (5 Free/Mo)</a>
+            </div>
+          </div>
+          <div id="ql-paypal-buttons" style="display:none;min-width:270px;max-width:340px;width:100%;"></div>
+        </div>
+      </div>
+    </section>
+    
 
     <h2>1. Deterministic Statutory &amp; Regulatory Laws Executed</h2>
     <p>Unlike prompt-only LLM skills that approximate multi-period schedules in token space, <code>BI-44</code> executes exact pure-Python and NumPy statutory rules in volatile container RAM:</p>

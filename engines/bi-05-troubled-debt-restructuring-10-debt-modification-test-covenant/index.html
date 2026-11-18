@@ -133,13 +133,65 @@ footer {
   color: var(--muted);
   font-size: 0.85rem;
 }
+.calc-panel {
+  background: linear-gradient(180deg, #131b33 0%, #0e1529 100%);
+  border: 1px solid #35508c;
+  border-radius: 12px;
+  padding: 22px;
+  margin: 26px 0 30px;
+}
+.calc-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(235px, 1fr));
+  gap: 12px;
+  margin: 14px 0;
+}
+.calc-field label {
+  display: block;
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: #bcd0f7;
+  margin-bottom: 4px;
+}
+.calc-input {
+  width: 100%;
+  padding: 9px 11px;
+  border-radius: 7px;
+  border: 1px solid var(--border);
+  background: var(--code-bg);
+  color: #fff;
+  font-size: 0.92rem;
+}
+.kpi-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(210px, 1fr));
+  gap: 11px;
+  margin: 14px 0;
+}
+.kpi-box {
+  background: var(--code-bg);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 11px 13px;
+}
+.kpi-box .k-lbl { font-size: 0.77rem; color: var(--muted); margin-bottom: 4px; }
+.kpi-box .k-val { font-size: 1.08rem; font-weight: 700; color: var(--green); word-break: break-word; }
+.xlsx-box {
+  background: rgba(52, 211, 153, 0.07);
+  border: 1px solid rgba(52, 211, 153, 0.35);
+  border-radius: 10px;
+  padding: 16px 18px;
+  margin-top: 16px;
+}
+.btn.green { background: #10b981; border-color: #10b981; color: #04130d; font-weight: 700; cursor: pointer; }
 </style>
   <script type="application/ld+json">{"@context": "https://schema.org", "@type": "TechArticle", "headline": "Troubled Debt Restructuring, 10% Debt Modification Test & Covenant Cure Schedule — FASB ASC 470-50 10% Cash-Flow Modification Test, ASU 2022-02 Loan Workout & 11 U.S.C. 1129 Feasibility Filing API & MCP Reference (BI-05)", "alternateName": ["Troubled Debt Restructuring, 10% Debt Modification Test & Covenant Cure Schedule", "FASB ASC 470-50 10% Cash-Flow Modification Test, ASU 2022-02 Loan Workout & 11 U.S.C. 1129 Feasibility Filing", "Debt Modification 10% Test", "Loan Workout DSCR Resizing", "EBITDA Equity Cure Calculator", "Chapter 11 Best Interests Liquidation Test", "TDR Loan Modification"], "keywords": "BI-05, Troubled Debt Restructuring, 10% Debt Modification Test & Covenant Cure Schedule, FASB ASC 470-50 / ASU 2022-02 / 11 U.S.C. Sec. 1129 Workout Schedule, Debt Modification 10% Test, Loan Workout DSCR Resizing, EBITDA Equity Cure Calculator, Chapter 11 Best Interests Liquidation Test, TDR Loan Modification, QuantLedger, MCP Server, REST API, Calculator API, ASC 470-50", "description": "Troubled Debt Restructuring, 10% Debt Modification Test & Covenant Cure Schedule (BI-05 — FASB ASC 470-50 / ASU 2022-02 / 11 U.S.C. Sec. 1129 Workout Schedule) ", "url": "https://quantledgerapi.github.io/engines/bi-05-troubled-debt-restructuring-10-debt-modification-test-covenant/", "author": {"@type": "Organization", "name": "QuantLedger"}, "about": "OCC Troubled Debt Restructuring / Loan Modification Guidance (ASU 2022-02); 11 U.S.C. § 1129(a)(11) Feasibility Standard"}</script>
+  <script src="https://quantledgerapi.github.io/assets/calculator.js" defer></script>
 </head>
 <body>
   <header class="top">
     <div class="wrap nav">
-      <a class="brand" href="https://quantledgerapi.github.io/">QuantLedger API &amp; MCP Docs <span style="color:#9fb0d9;font-weight:400;font-size:0.84rem;">v2.3.1</span></a>
+      <a class="brand" href="https://quantledgerapi.github.io/">QuantLedger API &amp; MCP Docs <span style="color:#9fb0d9;font-weight:400;font-size:0.84rem;">v2.4.1</span></a>
       <nav class="nav-links">
         <a href="https://quantledgerapi.github.io/#engines">All Engines</a>
         <a href="https://quantledgerapi.github.io/sec-edgar-10k-xbrl-covenants/">SEC EDGAR 10-K API</a>
@@ -153,18 +205,71 @@ footer {
     
     <section class="hero">
       <span class="badge">BI-05 &middot; Commercial Credit, Working Capital &amp; Unit-Economics Suite</span>
-      <h1>Troubled Debt Restructuring, 10% Debt Modification Test &amp; Covenant Cure Schedule — API &amp; MCP Calculator (BI-05)</h1>
+      <h1>Troubled Debt Restructuring, 10% Debt Modification Test &amp; Covenant Cure Schedule — Calculator, Excel Workpaper &amp; API (BI-05)</h1>
       <p class="lead">Modifications and Extinguishments)] — PV_Diff_Pct = |NPV(CF_Mod, EIR_Orig) - Fees_Paid - Carrying_PostCure| / Carrying_PostCure &lt; 10.0%. Applies FASB ASC 470-50-40 Lender-by-Lender 10% Present-Value Cash-Flow Modification Test [FASB ASC 470-50-40-10 &amp; ASC 470-50-40-12 (Debt; Contractual Debt-Service Coverage Ratio (DSCR) &amp; Equity-Cure Resizing Bridge [OCC Comptroller&#x27;s Handbook: Rating Credit Risk (Pass Commercial DSCR &gt;= 1.25x)]; FASB ASU 2022-02 (ASC 326) Modified Loan Effective-Interest Yield &amp; Concession Test [FASB ASU 2022-02 (ASC 310-10-50-38 Financial-Difficulty Modifications &amp; ASC 326-20-35-4)]; 11 U.S.C. Sec. 1129(a)(7) Best-Interests Waterfall vs. Sec. 1129(a)(11) Feasibility [11 U.S.C. Sec. 1129(a)(7) (Best Interests of Creditors), Sec. 1129(a)(11) &amp; Sec. 326]. Outputs: 01 Workout Exec Summary, 02 Capital Stack Debt Grid, 03 ASC470 50 10Pct Test, 04 Covenant Cure Bridge. Calibrated across all 57 US States, Washington, D.C., US Territories, and Federal IRC &sect; 11 baselines in sub-millisecond deterministic Python &amp; NumPy CPU execution.</p>
       <p><strong>Official Statutory &amp; Regulatory Workpaper Title:</strong> FASB ASC 470-50 10% Cash-Flow Modification Test, ASU 2022-02 Loan Workout &amp; 11 U.S.C. 1129 Feasibility Filing</p>
       <p><strong>Official Agency Form / Workpaper Standard:</strong> <code>FASB ASC 470-50 / ASU 2022-02 / 11 U.S.C. Sec. 1129 Workout Schedule</code></p>
       <p><strong>Governing Accounting, Tax &amp; Statutory Authorities:</strong> OCC Troubled Debt Restructuring / Loan Modification Guidance (ASU 2022-02); 11 U.S.C. § 1129(a)(11) Feasibility Standard</p>
       <p style="font-size:0.9rem;color:#9fb0d9;"><strong>Common Practitioner &amp; Search Aliases:</strong> Debt Modification 10% Test, Loan Workout DSCR Resizing, EBITDA Equity Cure Calculator, Chapter 11 Best Interests Liquidation Test, TDR Loan Modification</p>
       <div class="cta-row">
+        <a class="btn green" href="#ql-calculator">Open Free Live Calculator &darr;</a>
         <a class="btn primary" href="https://rapidapi.com/quantledger/api/quantledger-73-engine-financial-and-statutory-api">Run on RapidAPI (5 Free/Mo)</a>
-        <a class="btn" href="https://apify.com/quantledger/quantledger-cpa-gaap-tax-sec-mcp">Run on Apify Store / MCP</a>
+        <a class="btn" href="https://apify.com/quantledger/quantledger-cpa-gaap-tax-sec-mcp">Run on Apify Store (.xlsx + MCP)</a>
         <a class="btn" href="https://github.com/QuantLedgerAPI/quantledger-mcp">Open-Source MCP SDK Repo</a>
       </div>
     </section>
+
+    
+    <section id="ql-calculator" class="calc-panel" data-engine-code="BI-05">
+      <script id="ql-default-inputs" type="application/json">{"pre_mod_carrying_debt_usd": 18500000, "equity_cure_paydown_usd": 1000000, "original_eir": 0.07792, "modified_coupon_rate": 0.0825, "modified_term_years": 5, "modified_annual_amort_pct": 0.06, "lender_amendment_fees_usd": 142500, "trough_ltm_ebitda_usd": 4470000}</script>
+      <div style="display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap;">
+        <div>
+          <span class="badge" style="margin-bottom:6px;">Live Zero-Code Statutory Calculator &amp; .xlsx Builder</span>
+          <h2 style="margin:0;border:none;padding:0;">Interactive Troubled Debt Restructuring, 10% Debt Modification Test &amp; Covenant Cure Schedule Calculator (BI-05)</h2>
+        </div>
+        <div style="display:flex;gap:10px;flex-wrap:wrap;">
+          <button id="ql-run-btn" type="button" class="btn green">Recalculate Statutory Preview (Free)</button>
+          <button id="ql-reset-btn" type="button" class="btn" style="cursor:pointer;">Reset Baseline</button>
+        </div>
+      </div>
+      <p style="font-size:0.9rem;color:#9fb0d9;margin:8px 0 12px;">Enter your trial-balance, schedule, or contract numbers below to verify headline statutory outputs in real time across 57 US jurisdictions (zero data stored).</p>
+
+      <div class="calc-grid">
+        <div class="calc-field">
+          <label for="ql-jurisdiction">US State / Territory Jurisdiction (57)</label>
+          <select id="ql-jurisdiction" class="calc-input"><option value="DC" selected>DC</option><option value="NY">NY</option><option value="CA">CA</option><option value="TX">TX</option><option value="FL">FL</option><option value="DE">DE</option><option value="VA">VA</option><option value="IL">IL</option><option value="MA">MA</option><option value="WA">WA</option><option value="PA">PA</option><option value="GA">GA</option><option value="NJ">NJ</option><option value="NC">NC</option><option value="OH">OH</option><option value="AK">AK</option><option value="AL">AL</option><option value="AR">AR</option><option value="AS">AS</option><option value="AZ">AZ</option><option value="CO">CO</option><option value="CT">CT</option><option value="GU">GU</option><option value="HI">HI</option><option value="IA">IA</option><option value="ID">ID</option><option value="IN">IN</option><option value="KS">KS</option><option value="KY">KY</option><option value="LA">LA</option><option value="MD">MD</option><option value="ME">ME</option><option value="MI">MI</option><option value="MN">MN</option><option value="MO">MO</option><option value="MP">MP</option><option value="MS">MS</option><option value="MT">MT</option><option value="ND">ND</option><option value="NE">NE</option><option value="NH">NH</option><option value="NM">NM</option><option value="NV">NV</option><option value="OK">OK</option><option value="OR">OR</option><option value="PR">PR</option><option value="RI">RI</option><option value="SC">SC</option><option value="SD">SD</option><option value="TN">TN</option><option value="US">US</option><option value="UT">UT</option><option value="VI">VI</option><option value="VT">VT</option><option value="WI">WI</option><option value="WV">WV</option><option value="WY">WY</option></select>
+        </div>
+        <div class="calc-field">
+          <label for="ql-naics">6-Digit NAICS or 4-Digit SIC</label>
+          <input id="ql-naics" class="calc-input" type="text" value="541211" />
+        </div>
+        <div class="calc-field"><label>Pre Mod Carrying Debt (USD)</label><input class="calc-input" type="number" step="any" data-param-key="pre_mod_carrying_debt_usd" value="18500000" /></div><div class="calc-field"><label>Equity Cure Paydown (USD)</label><input class="calc-input" type="number" step="any" data-param-key="equity_cure_paydown_usd" value="1000000" /></div><div class="calc-field"><label>Original Eir</label><input class="calc-input" type="number" step="any" data-param-key="original_eir" value="0.07792" /></div><div class="calc-field"><label>Modified Coupon Rate</label><input class="calc-input" type="number" step="any" data-param-key="modified_coupon_rate" value="0.0825" /></div><div class="calc-field"><label>Modified Term Years</label><input class="calc-input" type="number" step="any" data-param-key="modified_term_years" value="5" /></div><div class="calc-field"><label>Modified Annual Amort (%)</label><input class="calc-input" type="number" step="any" data-param-key="modified_annual_amort_pct" value="0.06" /></div><div class="calc-field"><label>Lender Amendment Fees (USD)</label><input class="calc-input" type="number" step="any" data-param-key="lender_amendment_fees_usd" value="142500" /></div><div class="calc-field"><label>Trough Ltm EBITDA (USD)</label><input class="calc-input" type="number" step="any" data-param-key="trough_ltm_ebitda_usd" value="4470000" /></div>
+      </div>
+
+      <details style="margin:8px 0 14px;font-size:0.86rem;color:#9fb0d9;">
+        <summary style="cursor:pointer;color:#7cb0ff;">Optional: Paste Advanced Custom Schedule / Array Overrides (JSON)</summary>
+        <textarea id="ql-custom-json" class="calc-input" rows="3" style="margin-top:8px;font-family:monospace;" placeholder='{"custom_parameter": 100000}'></textarea>
+      </details>
+
+      <div id="ql-calc-status" style="font-size:0.85rem;color:#93bcff;margin:6px 0 8px;">Showing verified Washington, D.C. baseline — edit any input and click Recalculate.</div>
+      <h3 style="margin:12px 0 8px;">Computed Headline Statutory &amp; Financial KPIs</h3>
+      <div id="ql-kpi-grid" class="kpi-grid"><div class="kpi-box"><div class="k-lbl">Max Lender Asc470 Pv Variance (%)</div><div class="k-val">0.82%</div></div><div class="kpi-box"><div class="k-lbl">Post Modification DSCR X</div><div class="k-val">1.67x</div></div><div class="kpi-box"><div class="k-lbl">Prospective Post Mod Eir (%)</div><div class="k-val">8.44%</div></div><div class="kpi-box"><div class="k-lbl">Asu 2022 02 CECL Impairment (USD)</div><div class="k-val">$0.00</div></div><div class="kpi-box"><div class="k-lbl">Best Interests Creditor Surplus (USD)</div><div class="k-val">$7,892,454.68</div></div></div>
+
+      <div class="xlsx-box">
+        <div style="display:flex;justify-content:space-between;align-items:flex-start;gap:16px;flex-wrap:wrap;">
+          <div style="flex:1;min-width:260px;">
+            <h3 style="margin:0 0 6px;color:#fff;">Download 5-Tab Formula-Linked Excel Workpaper (<code>.xlsx</code>) — <span id="ql-xlsx-price">$19.00</span></h3>
+            <p id="ql-lock-meta" style="margin:0 0 8px;font-size:0.88rem;color:#d1fae5;">Includes 5 formatted CPA/analyst tabs compiled from your exact inputs: <code>01_Executive_Summary</code>, <code>02_Statutory_Rules</code> (4 rules), <code>03_Workpaper_Schedule</code> (5 rows + <code>=SUM</code>/<code>=AVERAGE</code> formulas), <code>04_Scenario_Sensitivity</code> (<code>=C-B</code> variance formulas), and <code>05_Compliance_Audit_Flags</code> (3 threshold gates).</p>
+            <div style="display:flex;gap:10px;flex-wrap:wrap;margin-top:10px;">
+              <a class="btn primary" href="https://apify.com/quantledger/quantledger-cpa-gaap-tax-sec-mcp">Export .xlsx Workpaper on Apify ($0.35)</a>
+              <a class="btn" href="https://rapidapi.com/quantledger/api/quantledger-73-engine-financial-and-statutory-api">Export .xlsx via RapidAPI (5 Free/Mo)</a>
+            </div>
+          </div>
+          <div id="ql-paypal-buttons" style="display:none;min-width:270px;max-width:340px;width:100%;"></div>
+        </div>
+      </div>
+    </section>
+    
 
     <h2>1. Deterministic Statutory &amp; Regulatory Laws Executed</h2>
     <p>Unlike prompt-only LLM skills that approximate multi-period schedules in token space, <code>BI-05</code> executes exact pure-Python and NumPy statutory rules in volatile container RAM:</p>

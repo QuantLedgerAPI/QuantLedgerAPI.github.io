@@ -133,13 +133,65 @@ footer {
   color: var(--muted);
   font-size: 0.85rem;
 }
+.calc-panel {
+  background: linear-gradient(180deg, #131b33 0%, #0e1529 100%);
+  border: 1px solid #35508c;
+  border-radius: 12px;
+  padding: 22px;
+  margin: 26px 0 30px;
+}
+.calc-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(235px, 1fr));
+  gap: 12px;
+  margin: 14px 0;
+}
+.calc-field label {
+  display: block;
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: #bcd0f7;
+  margin-bottom: 4px;
+}
+.calc-input {
+  width: 100%;
+  padding: 9px 11px;
+  border-radius: 7px;
+  border: 1px solid var(--border);
+  background: var(--code-bg);
+  color: #fff;
+  font-size: 0.92rem;
+}
+.kpi-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(210px, 1fr));
+  gap: 11px;
+  margin: 14px 0;
+}
+.kpi-box {
+  background: var(--code-bg);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 11px 13px;
+}
+.kpi-box .k-lbl { font-size: 0.77rem; color: var(--muted); margin-bottom: 4px; }
+.kpi-box .k-val { font-size: 1.08rem; font-weight: 700; color: var(--green); word-break: break-word; }
+.xlsx-box {
+  background: rgba(52, 211, 153, 0.07);
+  border: 1px solid rgba(52, 211, 153, 0.35);
+  border-radius: 10px;
+  padding: 16px 18px;
+  margin-top: 16px;
+}
+.btn.green { background: #10b981; border-color: #10b981; color: #04130d; font-weight: 700; cursor: pointer; }
 </style>
   <script type="application/ld+json">{"@context": "https://schema.org", "@type": "TechArticle", "headline": "DCAA Incurred Cost Submission (ICE Model) & FPRP Indirect Wrap-Rate Schedule — DCAA Forward Pricing Rate Proposal (FPRP), ICE Schedules A-H, CAS 405/410/414/418 & DD Form 1861 Filing API & MCP Reference (BI-07)", "alternateName": ["DCAA Incurred Cost Submission (ICE Model) & FPRP Indirect Wrap-Rate Schedule", "DCAA Forward Pricing Rate Proposal (FPRP), ICE Schedules A-H, CAS 405/410/414/418 & DD Form 1861 Filing", "DCAA ICE Model Calculator", "GovCon Wrap Rate Calculator", "Fringe Overhead G&A Pool Allocation", "CAS 410 TCI vs Value-Added G&A", "FPRP Indirect Rate Schedule"], "keywords": "BI-07, DCAA Incurred Cost Submission (ICE Model) & FPRP Indirect Wrap-Rate Schedule, DCAA ICE Model v2026 (Schedules A-H) / DD Form 1861 / CASB DS-1, DCAA ICE Model Calculator, GovCon Wrap Rate Calculator, Fringe Overhead G&A Pool Allocation, CAS 410 TCI vs Value-Added G&A, FPRP Indirect Rate Schedule, QuantLedger, MCP Server, REST API, Calculator API, DCAA, CAS 403", "description": "DCAA Incurred Cost Submission (ICE Model) & FPRP Indirect Wrap-Rate Schedule (BI-07 — DCAA ICE Model v2026 (Schedules A-H) / DD Form 1861 / CASB DS-1) determini", "url": "https://quantledgerapi.github.io/engines/bi-07-dcaa-incurred-cost-submission-ice-model-fprp-indirect/", "author": {"@type": "Organization", "name": "QuantLedger"}, "about": "FAR Subpart 31.2 (Cost Principles for Commercial Organizations); 48 CFR Part 9904 (CAS 403, 410, 418); DCAA CAM Chapter 9 (ICE Model / FPRP)"}</script>
+  <script src="https://quantledgerapi.github.io/assets/calculator.js" defer></script>
 </head>
 <body>
   <header class="top">
     <div class="wrap nav">
-      <a class="brand" href="https://quantledgerapi.github.io/">QuantLedger API &amp; MCP Docs <span style="color:#9fb0d9;font-weight:400;font-size:0.84rem;">v2.3.1</span></a>
+      <a class="brand" href="https://quantledgerapi.github.io/">QuantLedger API &amp; MCP Docs <span style="color:#9fb0d9;font-weight:400;font-size:0.84rem;">v2.4.1</span></a>
       <nav class="nav-links">
         <a href="https://quantledgerapi.github.io/#engines">All Engines</a>
         <a href="https://quantledgerapi.github.io/sec-edgar-10k-xbrl-covenants/">SEC EDGAR 10-K API</a>
@@ -153,18 +205,71 @@ footer {
     
     <section class="hero">
       <span class="badge">BI-07 &middot; Federal GovCon, DCAA Wrap-Rate &amp; FAR/CAS Pricing Suite</span>
-      <h1>DCAA Incurred Cost Submission (ICE Model) &amp; FPRP Indirect Wrap-Rate Schedule — API &amp; MCP Calculator (BI-07)</h1>
+      <h1>DCAA Incurred Cost Submission (ICE Model) &amp; FPRP Indirect Wrap-Rate Schedule — Calculator, Excel Workpaper &amp; API (BI-07)</h1>
       <p class="lead">Scrub_CAS405 = sum_e max(0, Comp_e - $646,000) + Unallowable_FAR31_205_OH + Unallowable_FAR31_205_GA. Applies CAS 405 / FAR 31.205 Expressly Unallowable GL Scrub &amp; FAR 31.205-6(p) Executive Cap [48 CFR 9904.405 (CAS 405), FAR 31.205-6(p)(4), FAR 31.201-6 &amp; FAR 42.709-1]; CAS 418-50(e) Intermediate Service-Center Clearance (Facilities SqFt &amp; IT Headcount) [48 CFR 9904.418-50(e) &amp; DCAA ICE Model Schedule F Intermediate Pool Allocation]; CAS 418 Homogeneous On-Site SCIF vs. Client-Site Overhead &amp; Subcontract Handling Rates [48 CFR 9904.418-50(b) Homogeneous Indirect Cost Pools &amp; DCAA ICE Schedules B &amp; C]; CAS 410-50 Total Cost Input (TCI) vs. Value-Added G&amp;A &amp; DD Form 1861 CAS 414 FCCOM [48 CFR 9904.410-50(d)(1)-(2) (CAS 410 G&amp;A Base) &amp; 48 CFR 9904.414 (DD Form 1861 FCCOM)]. Outputs: Schedule A, Schedule B, Schedule C, Schedule D. Calibrated across all 57 US States, Washington, D.C., US Territories, and Federal IRC &sect; 11 baselines in sub-millisecond deterministic Python &amp; NumPy CPU execution.</p>
       <p><strong>Official Statutory &amp; Regulatory Workpaper Title:</strong> DCAA Forward Pricing Rate Proposal (FPRP), ICE Schedules A-H, CAS 405/410/414/418 &amp; DD Form 1861 Filing</p>
       <p><strong>Official Agency Form / Workpaper Standard:</strong> <code>DCAA ICE Model v2026 (Schedules A-H) / DD Form 1861 / CASB DS-1</code></p>
       <p><strong>Governing Accounting, Tax &amp; Statutory Authorities:</strong> FAR Subpart 31.2 (Cost Principles for Commercial Organizations); 48 CFR Part 9904 (CAS 403, 410, 418); DCAA CAM Chapter 9 (ICE Model / FPRP)</p>
       <p style="font-size:0.9rem;color:#9fb0d9;"><strong>Common Practitioner &amp; Search Aliases:</strong> DCAA ICE Model Calculator, GovCon Wrap Rate Calculator, Fringe Overhead G&amp;A Pool Allocation, CAS 410 TCI vs Value-Added G&amp;A, FPRP Indirect Rate Schedule</p>
       <div class="cta-row">
+        <a class="btn green" href="#ql-calculator">Open Free Live Calculator &darr;</a>
         <a class="btn primary" href="https://rapidapi.com/quantledger/api/quantledger-73-engine-financial-and-statutory-api">Run on RapidAPI (5 Free/Mo)</a>
-        <a class="btn" href="https://apify.com/quantledger/quantledger-cpa-gaap-tax-sec-mcp">Run on Apify Store / MCP</a>
+        <a class="btn" href="https://apify.com/quantledger/quantledger-cpa-gaap-tax-sec-mcp">Run on Apify Store (.xlsx + MCP)</a>
         <a class="btn" href="https://github.com/QuantLedgerAPI/quantledger-mcp">Open-Source MCP SDK Repo</a>
       </div>
     </section>
+
+    
+    <section id="ql-calculator" class="calc-panel" data-engine-code="BI-07">
+      <script id="ql-default-inputs" type="application/json">{"omb_statutory_exec_cap_usd": 646000, "claimed_executive_comp_single_usd": 740000, "unallowable_oh_entertainment_usd": 112000, "unallowable_ga_other_usd": 780500, "facilities_service_center_usd": 3840000, "it_cmmc_service_center_usd": 2580000, "total_labor_base_usd": 58400000, "allowable_fringe_pool_usd": 19739200}</script>
+      <div style="display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap;">
+        <div>
+          <span class="badge" style="margin-bottom:6px;">Live Zero-Code Statutory Calculator &amp; .xlsx Builder</span>
+          <h2 style="margin:0;border:none;padding:0;">Interactive DCAA Incurred Cost Submission (ICE Model) &amp; FPRP Indirect Wrap-Rate Schedule Calculator (BI-07)</h2>
+        </div>
+        <div style="display:flex;gap:10px;flex-wrap:wrap;">
+          <button id="ql-run-btn" type="button" class="btn green">Recalculate Statutory Preview (Free)</button>
+          <button id="ql-reset-btn" type="button" class="btn" style="cursor:pointer;">Reset Baseline</button>
+        </div>
+      </div>
+      <p style="font-size:0.9rem;color:#9fb0d9;margin:8px 0 12px;">Enter your trial-balance, schedule, or contract numbers below to verify headline statutory outputs in real time across 57 US jurisdictions (zero data stored).</p>
+
+      <div class="calc-grid">
+        <div class="calc-field">
+          <label for="ql-jurisdiction">US State / Territory Jurisdiction (57)</label>
+          <select id="ql-jurisdiction" class="calc-input"><option value="DC" selected>DC</option><option value="NY">NY</option><option value="CA">CA</option><option value="TX">TX</option><option value="FL">FL</option><option value="DE">DE</option><option value="VA">VA</option><option value="IL">IL</option><option value="MA">MA</option><option value="WA">WA</option><option value="PA">PA</option><option value="GA">GA</option><option value="NJ">NJ</option><option value="NC">NC</option><option value="OH">OH</option><option value="AK">AK</option><option value="AL">AL</option><option value="AR">AR</option><option value="AS">AS</option><option value="AZ">AZ</option><option value="CO">CO</option><option value="CT">CT</option><option value="GU">GU</option><option value="HI">HI</option><option value="IA">IA</option><option value="ID">ID</option><option value="IN">IN</option><option value="KS">KS</option><option value="KY">KY</option><option value="LA">LA</option><option value="MD">MD</option><option value="ME">ME</option><option value="MI">MI</option><option value="MN">MN</option><option value="MO">MO</option><option value="MP">MP</option><option value="MS">MS</option><option value="MT">MT</option><option value="ND">ND</option><option value="NE">NE</option><option value="NH">NH</option><option value="NM">NM</option><option value="NV">NV</option><option value="OK">OK</option><option value="OR">OR</option><option value="PR">PR</option><option value="RI">RI</option><option value="SC">SC</option><option value="SD">SD</option><option value="TN">TN</option><option value="US">US</option><option value="UT">UT</option><option value="VI">VI</option><option value="VT">VT</option><option value="WI">WI</option><option value="WV">WV</option><option value="WY">WY</option></select>
+        </div>
+        <div class="calc-field">
+          <label for="ql-naics">6-Digit NAICS or 4-Digit SIC</label>
+          <input id="ql-naics" class="calc-input" type="text" value="541211" />
+        </div>
+        <div class="calc-field"><label>Omb Statutory Exec Cap (USD)</label><input class="calc-input" type="number" step="any" data-param-key="omb_statutory_exec_cap_usd" value="646000" /></div><div class="calc-field"><label>Claimed Executive Comp Single (USD)</label><input class="calc-input" type="number" step="any" data-param-key="claimed_executive_comp_single_usd" value="740000" /></div><div class="calc-field"><label>Unallowable Oh Entertainment (USD)</label><input class="calc-input" type="number" step="any" data-param-key="unallowable_oh_entertainment_usd" value="112000" /></div><div class="calc-field"><label>Unallowable Ga Other (USD)</label><input class="calc-input" type="number" step="any" data-param-key="unallowable_ga_other_usd" value="780500" /></div><div class="calc-field"><label>Facilities Service Center (USD)</label><input class="calc-input" type="number" step="any" data-param-key="facilities_service_center_usd" value="3840000" /></div><div class="calc-field"><label>It Cmmc Service Center (USD)</label><input class="calc-input" type="number" step="any" data-param-key="it_cmmc_service_center_usd" value="2580000" /></div><div class="calc-field"><label>Total Labor Base (USD)</label><input class="calc-input" type="number" step="any" data-param-key="total_labor_base_usd" value="58400000" /></div><div class="calc-field"><label>Allowable Fringe Pool (USD)</label><input class="calc-input" type="number" step="any" data-param-key="allowable_fringe_pool_usd" value="19739200" /></div>
+      </div>
+
+      <details style="margin:8px 0 14px;font-size:0.86rem;color:#9fb0d9;">
+        <summary style="cursor:pointer;color:#7cb0ff;">Optional: Paste Advanced Custom Schedule / Array Overrides (JSON)</summary>
+        <textarea id="ql-custom-json" class="calc-input" rows="3" style="margin-top:8px;font-family:monospace;" placeholder='{"custom_parameter": 100000}'></textarea>
+      </details>
+
+      <div id="ql-calc-status" style="font-size:0.85rem;color:#93bcff;margin:6px 0 8px;">Showing verified Washington, D.C. baseline — edit any input and click Recalculate.</div>
+      <h3 style="margin:12px 0 8px;">Computed Headline Statutory &amp; Financial KPIs</h3>
+      <div id="ql-kpi-grid" class="kpi-grid"><div class="kpi-box"><div class="k-lbl">Fringe Pool Rate (%)</div><div class="k-val">33.80%</div></div><div class="kpi-box"><div class="k-lbl">Onsite Scif Overhead Rate (%)</div><div class="k-val">26.40%</div></div><div class="kpi-box"><div class="k-lbl">Clientsite Overhead Rate (%)</div><div class="k-val">14.20%</div></div><div class="kpi-box"><div class="k-lbl">Ga Rate Value Added (%)</div><div class="k-val">10.90%</div></div><div class="kpi-box"><div class="k-lbl">Onsite Fully Burdened Wrap Va X</div><div class="k-val">1.88x</div></div><div class="kpi-box"><div class="k-lbl">Cas405 Scrubbed Unallowables (USD)</div><div class="k-val">$986,500.00</div></div></div>
+
+      <div class="xlsx-box">
+        <div style="display:flex;justify-content:space-between;align-items:flex-start;gap:16px;flex-wrap:wrap;">
+          <div style="flex:1;min-width:260px;">
+            <h3 style="margin:0 0 6px;color:#fff;">Download 5-Tab Formula-Linked Excel Workpaper (<code>.xlsx</code>) — <span id="ql-xlsx-price">$19.00</span></h3>
+            <p id="ql-lock-meta" style="margin:0 0 8px;font-size:0.88rem;color:#d1fae5;">Includes 5 formatted CPA/analyst tabs compiled from your exact inputs: <code>01_Executive_Summary</code>, <code>02_Statutory_Rules</code> (4 rules), <code>03_Workpaper_Schedule</code> (6 rows + <code>=SUM</code>/<code>=AVERAGE</code> formulas), <code>04_Scenario_Sensitivity</code> (<code>=C-B</code> variance formulas), and <code>05_Compliance_Audit_Flags</code> (3 threshold gates).</p>
+            <div style="display:flex;gap:10px;flex-wrap:wrap;margin-top:10px;">
+              <a class="btn primary" href="https://apify.com/quantledger/quantledger-cpa-gaap-tax-sec-mcp">Export .xlsx Workpaper on Apify ($0.35)</a>
+              <a class="btn" href="https://rapidapi.com/quantledger/api/quantledger-73-engine-financial-and-statutory-api">Export .xlsx via RapidAPI (5 Free/Mo)</a>
+            </div>
+          </div>
+          <div id="ql-paypal-buttons" style="display:none;min-width:270px;max-width:340px;width:100%;"></div>
+        </div>
+      </div>
+    </section>
+    
 
     <h2>1. Deterministic Statutory &amp; Regulatory Laws Executed</h2>
     <p>Unlike prompt-only LLM skills that approximate multi-period schedules in token space, <code>BI-07</code> executes exact pure-Python and NumPy statutory rules in volatile container RAM:</p>

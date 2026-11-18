@@ -133,13 +133,65 @@ footer {
   color: var(--muted);
   font-size: 0.85rem;
 }
+.calc-panel {
+  background: linear-gradient(180deg, #131b33 0%, #0e1529 100%);
+  border: 1px solid #35508c;
+  border-radius: 12px;
+  padding: 22px;
+  margin: 26px 0 30px;
+}
+.calc-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(235px, 1fr));
+  gap: 12px;
+  margin: 14px 0;
+}
+.calc-field label {
+  display: block;
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: #bcd0f7;
+  margin-bottom: 4px;
+}
+.calc-input {
+  width: 100%;
+  padding: 9px 11px;
+  border-radius: 7px;
+  border: 1px solid var(--border);
+  background: var(--code-bg);
+  color: #fff;
+  font-size: 0.92rem;
+}
+.kpi-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(210px, 1fr));
+  gap: 11px;
+  margin: 14px 0;
+}
+.kpi-box {
+  background: var(--code-bg);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 11px 13px;
+}
+.kpi-box .k-lbl { font-size: 0.77rem; color: var(--muted); margin-bottom: 4px; }
+.kpi-box .k-val { font-size: 1.08rem; font-weight: 700; color: var(--green); word-break: break-word; }
+.xlsx-box {
+  background: rgba(52, 211, 153, 0.07);
+  border: 1px solid rgba(52, 211, 153, 0.35);
+  border-radius: 10px;
+  padding: 16px 18px;
+  margin-top: 16px;
+}
+.btn.green { background: #10b981; border-color: #10b981; color: #04130d; font-weight: 700; cursor: pointer; }
 </style>
   <script type="application/ld+json">{"@context": "https://schema.org", "@type": "TechArticle", "headline": "AP Three-Way Match Audit, Duplicate Invoice & Early-Pay Discount Workpaper — FASB ASC 405-20 Accounts Payable Extinguishment, 3-Way Match Variance & Trade-Credit APR Schedule API & MCP Reference (BI-03)", "alternateName": ["AP Three-Way Match Audit, Duplicate Invoice & Early-Pay Discount Workpaper", "FASB ASC 405-20 Accounts Payable Extinguishment, 3-Way Match Variance & Trade-Credit APR Schedule", "AP 3-Way Match Audit", "Duplicate Invoice Recovery", "2/10 Net 30 Discount Calculator", "Maverick Spend Audit", "DPO Working Capital Schedule"], "keywords": "BI-03, AP Three-Way Match Audit, Duplicate Invoice & Early-Pay Discount Workpaper, FASB ASC 405-20 / IIA IPPF 2130 Three-Way Match Workpaper, AP 3-Way Match Audit, Duplicate Invoice Recovery, 2/10 Net 30 Discount Calculator, Maverick Spend Audit, DPO Working Capital Schedule, QuantLedger, MCP Server, REST API, Calculator API, ASC 405, ASC 405-20", "description": "AP Three-Way Match Audit, Duplicate Invoice & Early-Pay Discount Workpaper (BI-03 — FASB ASC 405-20 / IIA IPPF 2130 Three-Way Match Workpaper) deterministic RES", "url": "https://quantledgerapi.github.io/engines/bi-03-ap-three-way-match-audit-duplicate-invoice-early/", "author": {"@type": "Organization", "name": "QuantLedger"}, "about": "IIA IPPF Standard 2130; ISM Principles of Sustainability & Supply Management; FASB ASC 405 (Liabilities / AP Cutoff)"}</script>
+  <script src="https://quantledgerapi.github.io/assets/calculator.js" defer></script>
 </head>
 <body>
   <header class="top">
     <div class="wrap nav">
-      <a class="brand" href="https://quantledgerapi.github.io/">QuantLedger API &amp; MCP Docs <span style="color:#9fb0d9;font-weight:400;font-size:0.84rem;">v2.3.1</span></a>
+      <a class="brand" href="https://quantledgerapi.github.io/">QuantLedger API &amp; MCP Docs <span style="color:#9fb0d9;font-weight:400;font-size:0.84rem;">v2.4.1</span></a>
       <nav class="nav-links">
         <a href="https://quantledgerapi.github.io/#engines">All Engines</a>
         <a href="https://quantledgerapi.github.io/sec-edgar-10k-xbrl-covenants/">SEC EDGAR 10-K API</a>
@@ -153,18 +205,71 @@ footer {
     
     <section class="hero">
       <span class="badge">BI-03 &middot; Commercial Credit, Working Capital &amp; Unit-Economics Suite</span>
-      <h1>AP Three-Way Match Audit, Duplicate Invoice &amp; Early-Pay Discount Workpaper — API &amp; MCP Calculator (BI-03)</h1>
+      <h1>AP Three-Way Match Audit, Duplicate Invoice &amp; Early-Pay Discount Workpaper — Calculator, Excel Workpaper &amp; API (BI-03)</h1>
       <p class="lead">Integrated Framework Principle 10] — Recovery_3Way = sum_i max(0, (P_inv,i - P_PO,i) * Q_rec,i) + sum_i max(0, (Q_inv,i - Q_GRN,i) * P_PO,i. Applies PO-Receipt-Invoice 3-Way Match Price &amp; Quantity Overbilling Variance Recovery [IIA IPPF Standard 2130.A1 &amp; COSO Internal Control; Duplicate Invoice &amp; Off-Contract Maverick Spend Segregation [IIA IPPF Standard 2130 &amp; AICPA AU-C 240 Disbursement Control Segregation]; Trade Credit Early-Pay Discount Annualized APR vs. Revolver Carry [Corporate Treasury Trade-Credit Yield Formula &amp; ABL Working-Capital Cost of Carry]; Working Capital DPO &amp; FASB ASC 405-20 Liability Extinguishment Cut-Off Reconciliation [FASB ASC 405-20-40-1 (Extinguishments of Liabilities), ASC 340-10 &amp; UCC Sec. 2-319]. Outputs: 00 Exec Spend Dashboard, 01 UNSPSC Spend Cube, 02 Duplicate Maverick Scan, 03 DPO Working Capital. Calibrated across all 57 US States, Washington, D.C., US Territories, and Federal IRC &sect; 11 baselines in sub-millisecond deterministic Python &amp; NumPy CPU execution.</p>
       <p><strong>Official Statutory &amp; Regulatory Workpaper Title:</strong> FASB ASC 405-20 Accounts Payable Extinguishment, 3-Way Match Variance &amp; Trade-Credit APR Schedule</p>
       <p><strong>Official Agency Form / Workpaper Standard:</strong> <code>FASB ASC 405-20 / IIA IPPF 2130 Three-Way Match Workpaper</code></p>
       <p><strong>Governing Accounting, Tax &amp; Statutory Authorities:</strong> IIA IPPF Standard 2130; ISM Principles of Sustainability &amp; Supply Management; FASB ASC 405 (Liabilities / AP Cutoff)</p>
       <p style="font-size:0.9rem;color:#9fb0d9;"><strong>Common Practitioner &amp; Search Aliases:</strong> AP 3-Way Match Audit, Duplicate Invoice Recovery, 2/10 Net 30 Discount Calculator, Maverick Spend Audit, DPO Working Capital Schedule</p>
       <div class="cta-row">
+        <a class="btn green" href="#ql-calculator">Open Free Live Calculator &darr;</a>
         <a class="btn primary" href="https://rapidapi.com/quantledger/api/quantledger-73-engine-financial-and-statutory-api">Run on RapidAPI (5 Free/Mo)</a>
-        <a class="btn" href="https://apify.com/quantledger/quantledger-cpa-gaap-tax-sec-mcp">Run on Apify Store / MCP</a>
+        <a class="btn" href="https://apify.com/quantledger/quantledger-cpa-gaap-tax-sec-mcp">Run on Apify Store (.xlsx + MCP)</a>
         <a class="btn" href="https://github.com/QuantLedgerAPI/quantledger-mcp">Open-Source MCP SDK Repo</a>
       </div>
     </section>
+
+    
+    <section id="ql-calculator" class="calc-panel" data-engine-code="BI-03">
+      <script id="ql-default-inputs" type="application/json">{"annual_ap_spend": 38160000, "po_matched_spend_usd": 28400000, "unit_price_overbilling_rate": 0.011211, "quantity_overbilling_usd": 134800, "three_way_tolerance_cap_pct": 0.02, "pcard_ach_duplicate_usd": 99400, "fuzzy_invoice_duplicate_usd": 31800, "dual_vendor_master_duplicate_usd": 15000}</script>
+      <div style="display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap;">
+        <div>
+          <span class="badge" style="margin-bottom:6px;">Live Zero-Code Statutory Calculator &amp; .xlsx Builder</span>
+          <h2 style="margin:0;border:none;padding:0;">Interactive AP Three-Way Match Audit, Duplicate Invoice &amp; Early-Pay Discount Workpaper Calculator (BI-03)</h2>
+        </div>
+        <div style="display:flex;gap:10px;flex-wrap:wrap;">
+          <button id="ql-run-btn" type="button" class="btn green">Recalculate Statutory Preview (Free)</button>
+          <button id="ql-reset-btn" type="button" class="btn" style="cursor:pointer;">Reset Baseline</button>
+        </div>
+      </div>
+      <p style="font-size:0.9rem;color:#9fb0d9;margin:8px 0 12px;">Enter your trial-balance, schedule, or contract numbers below to verify headline statutory outputs in real time across 57 US jurisdictions (zero data stored).</p>
+
+      <div class="calc-grid">
+        <div class="calc-field">
+          <label for="ql-jurisdiction">US State / Territory Jurisdiction (57)</label>
+          <select id="ql-jurisdiction" class="calc-input"><option value="DC" selected>DC</option><option value="NY">NY</option><option value="CA">CA</option><option value="TX">TX</option><option value="FL">FL</option><option value="DE">DE</option><option value="VA">VA</option><option value="IL">IL</option><option value="MA">MA</option><option value="WA">WA</option><option value="PA">PA</option><option value="GA">GA</option><option value="NJ">NJ</option><option value="NC">NC</option><option value="OH">OH</option><option value="AK">AK</option><option value="AL">AL</option><option value="AR">AR</option><option value="AS">AS</option><option value="AZ">AZ</option><option value="CO">CO</option><option value="CT">CT</option><option value="GU">GU</option><option value="HI">HI</option><option value="IA">IA</option><option value="ID">ID</option><option value="IN">IN</option><option value="KS">KS</option><option value="KY">KY</option><option value="LA">LA</option><option value="MD">MD</option><option value="ME">ME</option><option value="MI">MI</option><option value="MN">MN</option><option value="MO">MO</option><option value="MP">MP</option><option value="MS">MS</option><option value="MT">MT</option><option value="ND">ND</option><option value="NE">NE</option><option value="NH">NH</option><option value="NM">NM</option><option value="NV">NV</option><option value="OK">OK</option><option value="OR">OR</option><option value="PR">PR</option><option value="RI">RI</option><option value="SC">SC</option><option value="SD">SD</option><option value="TN">TN</option><option value="US">US</option><option value="UT">UT</option><option value="VI">VI</option><option value="VT">VT</option><option value="WI">WI</option><option value="WV">WV</option><option value="WY">WY</option></select>
+        </div>
+        <div class="calc-field">
+          <label for="ql-naics">6-Digit NAICS or 4-Digit SIC</label>
+          <input id="ql-naics" class="calc-input" type="text" value="541211" />
+        </div>
+        <div class="calc-field"><label>Annual AP Spend</label><input class="calc-input" type="number" step="any" data-param-key="annual_ap_spend" value="38160000" /></div><div class="calc-field"><label>Po Matched Spend (USD)</label><input class="calc-input" type="number" step="any" data-param-key="po_matched_spend_usd" value="28400000" /></div><div class="calc-field"><label>Unit Price Overbilling Rate</label><input class="calc-input" type="number" step="any" data-param-key="unit_price_overbilling_rate" value="0.011211" /></div><div class="calc-field"><label>Quantity Overbilling (USD)</label><input class="calc-input" type="number" step="any" data-param-key="quantity_overbilling_usd" value="134800" /></div><div class="calc-field"><label>Three Way Tolerance Cap (%)</label><input class="calc-input" type="number" step="any" data-param-key="three_way_tolerance_cap_pct" value="0.02" /></div><div class="calc-field"><label>Pcard Ach Duplicate (USD)</label><input class="calc-input" type="number" step="any" data-param-key="pcard_ach_duplicate_usd" value="99400" /></div><div class="calc-field"><label>Fuzzy Invoice Duplicate (USD)</label><input class="calc-input" type="number" step="any" data-param-key="fuzzy_invoice_duplicate_usd" value="31800" /></div><div class="calc-field"><label>Dual Vendor Master Duplicate (USD)</label><input class="calc-input" type="number" step="any" data-param-key="dual_vendor_master_duplicate_usd" value="15000" /></div>
+      </div>
+
+      <details style="margin:8px 0 14px;font-size:0.86rem;color:#9fb0d9;">
+        <summary style="cursor:pointer;color:#7cb0ff;">Optional: Paste Advanced Custom Schedule / Array Overrides (JSON)</summary>
+        <textarea id="ql-custom-json" class="calc-input" rows="3" style="margin-top:8px;font-family:monospace;" placeholder='{"custom_parameter": 100000}'></textarea>
+      </details>
+
+      <div id="ql-calc-status" style="font-size:0.85rem;color:#93bcff;margin:6px 0 8px;">Showing verified Washington, D.C. baseline — edit any input and click Recalculate.</div>
+      <h3 style="margin:12px 0 8px;">Computed Headline Statutory &amp; Financial KPIs</h3>
+      <div id="ql-kpi-grid" class="kpi-grid"><div class="kpi-box"><div class="k-lbl">Total Audit Debit Memo Recovery (USD)</div><div class="k-val">$599,392.40</div></div><div class="kpi-box"><div class="k-lbl">Verified Duplicate Payments (USD)</div><div class="k-val">$146,200.00</div></div><div class="kpi-box"><div class="k-lbl">Implied Early Pay Discount Apr (%)</div><div class="k-val">37.24%</div></div><div class="kpi-box"><div class="k-lbl">Net Early Pay Arbitrage (USD)</div><div class="k-val">$101,357.41</div></div><div class="kpi-box"><div class="k-lbl">Adjusted Statutory AP (USD)</div><div class="k-val">$3,291,100.00</div></div><div class="kpi-box"><div class="k-lbl">Statutory Adjusted Dpo Days</div><div class="k-val">31.48</div></div></div>
+
+      <div class="xlsx-box">
+        <div style="display:flex;justify-content:space-between;align-items:flex-start;gap:16px;flex-wrap:wrap;">
+          <div style="flex:1;min-width:260px;">
+            <h3 style="margin:0 0 6px;color:#fff;">Download 5-Tab Formula-Linked Excel Workpaper (<code>.xlsx</code>) — <span id="ql-xlsx-price">$19.00</span></h3>
+            <p id="ql-lock-meta" style="margin:0 0 8px;font-size:0.88rem;color:#d1fae5;">Includes 5 formatted CPA/analyst tabs compiled from your exact inputs: <code>01_Executive_Summary</code>, <code>02_Statutory_Rules</code> (4 rules), <code>03_Workpaper_Schedule</code> (5 rows + <code>=SUM</code>/<code>=AVERAGE</code> formulas), <code>04_Scenario_Sensitivity</code> (<code>=C-B</code> variance formulas), and <code>05_Compliance_Audit_Flags</code> (3 threshold gates).</p>
+            <div style="display:flex;gap:10px;flex-wrap:wrap;margin-top:10px;">
+              <a class="btn primary" href="https://apify.com/quantledger/quantledger-cpa-gaap-tax-sec-mcp">Export .xlsx Workpaper on Apify ($0.35)</a>
+              <a class="btn" href="https://rapidapi.com/quantledger/api/quantledger-73-engine-financial-and-statutory-api">Export .xlsx via RapidAPI (5 Free/Mo)</a>
+            </div>
+          </div>
+          <div id="ql-paypal-buttons" style="display:none;min-width:270px;max-width:340px;width:100%;"></div>
+        </div>
+      </div>
+    </section>
+    
 
     <h2>1. Deterministic Statutory &amp; Regulatory Laws Executed</h2>
     <p>Unlike prompt-only LLM skills that approximate multi-period schedules in token space, <code>BI-03</code> executes exact pure-Python and NumPy statutory rules in volatile container RAM:</p>

@@ -133,13 +133,65 @@ footer {
   color: var(--muted);
   font-size: 0.85rem;
 }
+.calc-panel {
+  background: linear-gradient(180deg, #131b33 0%, #0e1529 100%);
+  border: 1px solid #35508c;
+  border-radius: 12px;
+  padding: 22px;
+  margin: 26px 0 30px;
+}
+.calc-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(235px, 1fr));
+  gap: 12px;
+  margin: 14px 0;
+}
+.calc-field label {
+  display: block;
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: #bcd0f7;
+  margin-bottom: 4px;
+}
+.calc-input {
+  width: 100%;
+  padding: 9px 11px;
+  border-radius: 7px;
+  border: 1px solid var(--border);
+  background: var(--code-bg);
+  color: #fff;
+  font-size: 0.92rem;
+}
+.kpi-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(210px, 1fr));
+  gap: 11px;
+  margin: 14px 0;
+}
+.kpi-box {
+  background: var(--code-bg);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 11px 13px;
+}
+.kpi-box .k-lbl { font-size: 0.77rem; color: var(--muted); margin-bottom: 4px; }
+.kpi-box .k-val { font-size: 1.08rem; font-weight: 700; color: var(--green); word-break: break-word; }
+.xlsx-box {
+  background: rgba(52, 211, 153, 0.07);
+  border: 1px solid rgba(52, 211, 153, 0.35);
+  border-radius: 10px;
+  padding: 16px 18px;
+  margin-top: 16px;
+}
+.btn.green { background: #10b981; border-color: #10b981; color: #04130d; font-weight: 700; cursor: pointer; }
 </style>
   <script type="application/ld+json">{"@context": "https://schema.org", "@type": "TechArticle", "headline": "M&A Purchase Price Allocation (ASC 805 PPA) & IRS Form 8594 Seven-Class Asset Waterfall — FASB ASC 805-20 Intangible Valuation (MPEEM / Relief-from-Royalty) & IRC Sec. 1060 Form 8594 Filing API & MCP Reference (BI-53)", "alternateName": ["M&A Purchase Price Allocation (ASC 805 PPA) & IRS Form 8594 Seven-Class Asset Waterfall", "FASB ASC 805-20 Intangible Valuation (MPEEM / Relief-from-Royalty) & IRC Sec. 1060 Form 8594 Filing", "Purchase Price Allocation PPA Calculator", "IRS Form 8594 Asset Acquisition Waterfall", "MPEEM Customer Relationship Valuation", "Section 197 15-Year Tax Amortization Benefit", "ASC 805 Goodwill Residual Schedule"], "keywords": "BI-53, M&A Purchase Price Allocation (ASC 805 PPA) & IRS Form 8594 Seven-Class Asset Waterfall, IRS Form 8594 (IRC Sec. 1060 & Sec. 197) / FASB ASC 805 PPA Schedule, Purchase Price Allocation PPA Calculator, IRS Form 8594 Asset Acquisition Waterfall, MPEEM Customer Relationship Valuation, Section 197 15-Year Tax Amortization Benefit, ASC 805 Goodwill Residual Schedule, QuantLedger, MCP Server, REST API, Calculator API, ASC 805, ASC 820", "description": "M&A Purchase Price Allocation (ASC 805 PPA) & IRS Form 8594 Seven-Class Asset Waterfall (BI-53 — IRS Form 8594 (IRC Sec. 1060 & Sec. 197) / FASB ASC 805 PPA Sch", "url": "https://quantledgerapi.github.io/engines/bi-53-m-a-purchase-price-allocation-asc-805-ppa/", "author": {"@type": "Organization", "name": "QuantLedger"}, "about": "26 U.S.C. §§ 1060 & 197 (IRS Form 8594 7-Class Allocation & 15-Yr Amortization); FASB ASC 805 & ASC 820; AICPA Valuation Services VS Section 100"}</script>
+  <script src="https://quantledgerapi.github.io/assets/calculator.js" defer></script>
 </head>
 <body>
   <header class="top">
     <div class="wrap nav">
-      <a class="brand" href="https://quantledgerapi.github.io/">QuantLedger API &amp; MCP Docs <span style="color:#9fb0d9;font-weight:400;font-size:0.84rem;">v2.3.1</span></a>
+      <a class="brand" href="https://quantledgerapi.github.io/">QuantLedger API &amp; MCP Docs <span style="color:#9fb0d9;font-weight:400;font-size:0.84rem;">v2.4.1</span></a>
       <nav class="nav-links">
         <a href="https://quantledgerapi.github.io/#engines">All Engines</a>
         <a href="https://quantledgerapi.github.io/sec-edgar-10k-xbrl-covenants/">SEC EDGAR 10-K API</a>
@@ -153,18 +205,71 @@ footer {
     
     <section class="hero">
       <span class="badge">BI-53 &middot; National IRC Tax Code, Valuation &amp; Municipal Finance Suite</span>
-      <h1>M&amp;A Purchase Price Allocation (ASC 805 PPA) &amp; IRS Form 8594 Seven-Class Asset Waterfall — API &amp; MCP Calculator (BI-53)</h1>
+      <h1>M&amp;A Purchase Price Allocation (ASC 805 PPA) &amp; IRS Form 8594 Seven-Class Asset Waterfall — Calculator, Excel Workpaper &amp; API (BI-53)</h1>
       <p class="lead">FV_Cust_MPEEM = TAB_197 * sum_{t=1}^T [(Rev_surv,t * m_EBITA * (1 - tau) - CAC_t) / (1 + r_cust)^t]. Applies FASB ASC 805-20 Multi-Period Excess Earnings Method (MPEEM) Customer Intangible [FASB ASC 805-20, ASC 820 &amp; AICPA Business Combinations Valuation Guide]; IRC Sec. 197 15-Year Tax Amortization Benefit (TAB) &amp; Relief-from-Royalty IP [26 U.S.C. Secs. 197(a) &amp; 1060]; FASB ASC 805-20-55 With-and-Without Non-Compete &amp; Assembled Workforce CAC [FASB ASC 805-20-55-6 &amp; AICPA Intangible Asset Practice Aid]; IRS Form 8594 Seven-Class Residual Purchase Price Waterfall [26 U.S.C. Sec. 1060, Treas. Reg. Sec. 1.1060-1 &amp; FASB ASC 805-30]. Outputs: 01 Summary Budget Bridge, 02 Form8594 Seven Class Grid, 03 MPEEM Customer Rel Model, 04 ReliefFromRoyalty IP Tech. Calibrated across all 57 US States, Washington, D.C., US Territories, and Federal IRC &sect; 11 baselines in sub-millisecond deterministic Python &amp; NumPy CPU execution.</p>
       <p><strong>Official Statutory &amp; Regulatory Workpaper Title:</strong> FASB ASC 805-20 Intangible Valuation (MPEEM / Relief-from-Royalty) &amp; IRC Sec. 1060 Form 8594 Filing</p>
       <p><strong>Official Agency Form / Workpaper Standard:</strong> <code>IRS Form 8594 (IRC Sec. 1060 &amp; Sec. 197) / FASB ASC 805 PPA Schedule</code></p>
       <p><strong>Governing Accounting, Tax &amp; Statutory Authorities:</strong> 26 U.S.C. §§ 1060 &amp; 197 (IRS Form 8594 7-Class Allocation &amp; 15-Yr Amortization); FASB ASC 805 &amp; ASC 820; AICPA Valuation Services VS Section 100</p>
       <p style="font-size:0.9rem;color:#9fb0d9;"><strong>Common Practitioner &amp; Search Aliases:</strong> Purchase Price Allocation PPA Calculator, IRS Form 8594 Asset Acquisition Waterfall, MPEEM Customer Relationship Valuation, Section 197 15-Year Tax Amortization Benefit, ASC 805 Goodwill Residual Schedule</p>
       <div class="cta-row">
+        <a class="btn green" href="#ql-calculator">Open Free Live Calculator &darr;</a>
         <a class="btn primary" href="https://rapidapi.com/quantledger/api/quantledger-73-engine-financial-and-statutory-api">Run on RapidAPI (5 Free/Mo)</a>
-        <a class="btn" href="https://apify.com/quantledger/quantledger-cpa-gaap-tax-sec-mcp">Run on Apify Store / MCP</a>
+        <a class="btn" href="https://apify.com/quantledger/quantledger-cpa-gaap-tax-sec-mcp">Run on Apify Store (.xlsx + MCP)</a>
         <a class="btn" href="https://github.com/QuantLedgerAPI/quantledger-mcp">Open-Source MCP SDK Repo</a>
       </div>
     </section>
+
+    
+    <section id="ql-calculator" class="calc-panel" data-engine-code="BI-53">
+      <script id="ql-default-inputs" type="application/json">{"purchase_price": 164000000, "nwc_fv": 14200000, "ppe_fv": 18600000, "base_customer_revenue": 68000000, "annual_attrition": 0.095, "ebita_margin": 0.285, "ip_royalty_rate": 0.065, "workforce_replacement_cost": 6400000}</script>
+      <div style="display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap;">
+        <div>
+          <span class="badge" style="margin-bottom:6px;">Live Zero-Code Statutory Calculator &amp; .xlsx Builder</span>
+          <h2 style="margin:0;border:none;padding:0;">Interactive M&amp;A Purchase Price Allocation (ASC 805 PPA) &amp; IRS Form 8594 Seven-Class Asset Waterfall Calculator (BI-53)</h2>
+        </div>
+        <div style="display:flex;gap:10px;flex-wrap:wrap;">
+          <button id="ql-run-btn" type="button" class="btn green">Recalculate Statutory Preview (Free)</button>
+          <button id="ql-reset-btn" type="button" class="btn" style="cursor:pointer;">Reset Baseline</button>
+        </div>
+      </div>
+      <p style="font-size:0.9rem;color:#9fb0d9;margin:8px 0 12px;">Enter your trial-balance, schedule, or contract numbers below to verify headline statutory outputs in real time across 57 US jurisdictions (zero data stored).</p>
+
+      <div class="calc-grid">
+        <div class="calc-field">
+          <label for="ql-jurisdiction">US State / Territory Jurisdiction (57)</label>
+          <select id="ql-jurisdiction" class="calc-input"><option value="DC" selected>DC</option><option value="NY">NY</option><option value="CA">CA</option><option value="TX">TX</option><option value="FL">FL</option><option value="DE">DE</option><option value="VA">VA</option><option value="IL">IL</option><option value="MA">MA</option><option value="WA">WA</option><option value="PA">PA</option><option value="GA">GA</option><option value="NJ">NJ</option><option value="NC">NC</option><option value="OH">OH</option><option value="AK">AK</option><option value="AL">AL</option><option value="AR">AR</option><option value="AS">AS</option><option value="AZ">AZ</option><option value="CO">CO</option><option value="CT">CT</option><option value="GU">GU</option><option value="HI">HI</option><option value="IA">IA</option><option value="ID">ID</option><option value="IN">IN</option><option value="KS">KS</option><option value="KY">KY</option><option value="LA">LA</option><option value="MD">MD</option><option value="ME">ME</option><option value="MI">MI</option><option value="MN">MN</option><option value="MO">MO</option><option value="MP">MP</option><option value="MS">MS</option><option value="MT">MT</option><option value="ND">ND</option><option value="NE">NE</option><option value="NH">NH</option><option value="NM">NM</option><option value="NV">NV</option><option value="OK">OK</option><option value="OR">OR</option><option value="PR">PR</option><option value="RI">RI</option><option value="SC">SC</option><option value="SD">SD</option><option value="TN">TN</option><option value="US">US</option><option value="UT">UT</option><option value="VI">VI</option><option value="VT">VT</option><option value="WI">WI</option><option value="WV">WV</option><option value="WY">WY</option></select>
+        </div>
+        <div class="calc-field">
+          <label for="ql-naics">6-Digit NAICS or 4-Digit SIC</label>
+          <input id="ql-naics" class="calc-input" type="text" value="541211" />
+        </div>
+        <div class="calc-field"><label>Purchase Price</label><input class="calc-input" type="number" step="any" data-param-key="purchase_price" value="164000000" /></div><div class="calc-field"><label>NWC Fv</label><input class="calc-input" type="number" step="any" data-param-key="nwc_fv" value="14200000" /></div><div class="calc-field"><label>Ppe Fv</label><input class="calc-input" type="number" step="any" data-param-key="ppe_fv" value="18600000" /></div><div class="calc-field"><label>Base Customer Revenue</label><input class="calc-input" type="number" step="any" data-param-key="base_customer_revenue" value="68000000" /></div><div class="calc-field"><label>Annual Attrition</label><input class="calc-input" type="number" step="any" data-param-key="annual_attrition" value="0.095" /></div><div class="calc-field"><label>Ebita Margin</label><input class="calc-input" type="number" step="any" data-param-key="ebita_margin" value="0.285" /></div><div class="calc-field"><label>Ip Royalty Rate</label><input class="calc-input" type="number" step="any" data-param-key="ip_royalty_rate" value="0.065" /></div><div class="calc-field"><label>Workforce Replacement Cost</label><input class="calc-input" type="number" step="any" data-param-key="workforce_replacement_cost" value="6400000" /></div>
+      </div>
+
+      <details style="margin:8px 0 14px;font-size:0.86rem;color:#9fb0d9;">
+        <summary style="cursor:pointer;color:#7cb0ff;">Optional: Paste Advanced Custom Schedule / Array Overrides (JSON)</summary>
+        <textarea id="ql-custom-json" class="calc-input" rows="3" style="margin-top:8px;font-family:monospace;" placeholder='{"custom_parameter": 100000}'></textarea>
+      </details>
+
+      <div id="ql-calc-status" style="font-size:0.85rem;color:#93bcff;margin:6px 0 8px;">Showing verified Washington, D.C. baseline — edit any input and click Recalculate.</div>
+      <h3 style="margin:12px 0 8px;">Computed Headline Statutory &amp; Financial KPIs</h3>
+      <div id="ql-kpi-grid" class="kpi-grid"><div class="kpi-box"><div class="k-lbl">Engine Code</div><div class="k-val">BI-53</div></div><div class="kpi-box"><div class="k-lbl">Sec197 Tab Multiplier</div><div class="k-val">1.16</div></div><div class="kpi-box"><div class="k-lbl">Mpeem Customer Fv (USD)</div><div class="k-val">$41,410,639.26</div></div><div class="kpi-box"><div class="k-lbl">Developed Ip Fv (USD)</div><div class="k-val">$14,434,022.77</div></div><div class="kpi-box"><div class="k-lbl">Residual Goodwill Fv (USD)</div><div class="k-val">$72,202,268.31</div></div><div class="kpi-box"><div class="k-lbl">Annual Sec197 Cash Tax Shield (USD)</div><div class="k-val">$2,558,400.00</div></div></div>
+
+      <div class="xlsx-box">
+        <div style="display:flex;justify-content:space-between;align-items:flex-start;gap:16px;flex-wrap:wrap;">
+          <div style="flex:1;min-width:260px;">
+            <h3 style="margin:0 0 6px;color:#fff;">Download 5-Tab Formula-Linked Excel Workpaper (<code>.xlsx</code>) — <span id="ql-xlsx-price">$19.00</span></h3>
+            <p id="ql-lock-meta" style="margin:0 0 8px;font-size:0.88rem;color:#d1fae5;">Includes 5 formatted CPA/analyst tabs compiled from your exact inputs: <code>01_Executive_Summary</code>, <code>02_Statutory_Rules</code> (4 rules), <code>03_Workpaper_Schedule</code> (5 rows + <code>=SUM</code>/<code>=AVERAGE</code> formulas), <code>04_Scenario_Sensitivity</code> (<code>=C-B</code> variance formulas), and <code>05_Compliance_Audit_Flags</code> (3 threshold gates).</p>
+            <div style="display:flex;gap:10px;flex-wrap:wrap;margin-top:10px;">
+              <a class="btn primary" href="https://apify.com/quantledger/quantledger-cpa-gaap-tax-sec-mcp">Export .xlsx Workpaper on Apify ($0.35)</a>
+              <a class="btn" href="https://rapidapi.com/quantledger/api/quantledger-73-engine-financial-and-statutory-api">Export .xlsx via RapidAPI (5 Free/Mo)</a>
+            </div>
+          </div>
+          <div id="ql-paypal-buttons" style="display:none;min-width:270px;max-width:340px;width:100%;"></div>
+        </div>
+      </div>
+    </section>
+    
 
     <h2>1. Deterministic Statutory &amp; Regulatory Laws Executed</h2>
     <p>Unlike prompt-only LLM skills that approximate multi-period schedules in token space, <code>BI-53</code> executes exact pure-Python and NumPy statutory rules in volatile container RAM:</p>

@@ -133,13 +133,65 @@ footer {
   color: var(--muted);
   font-size: 0.85rem;
 }
+.calc-panel {
+  background: linear-gradient(180deg, #131b33 0%, #0e1529 100%);
+  border: 1px solid #35508c;
+  border-radius: 12px;
+  padding: 22px;
+  margin: 26px 0 30px;
+}
+.calc-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(235px, 1fr));
+  gap: 12px;
+  margin: 14px 0;
+}
+.calc-field label {
+  display: block;
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: #bcd0f7;
+  margin-bottom: 4px;
+}
+.calc-input {
+  width: 100%;
+  padding: 9px 11px;
+  border-radius: 7px;
+  border: 1px solid var(--border);
+  background: var(--code-bg);
+  color: #fff;
+  font-size: 0.92rem;
+}
+.kpi-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(210px, 1fr));
+  gap: 11px;
+  margin: 14px 0;
+}
+.kpi-box {
+  background: var(--code-bg);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 11px 13px;
+}
+.kpi-box .k-lbl { font-size: 0.77rem; color: var(--muted); margin-bottom: 4px; }
+.kpi-box .k-val { font-size: 1.08rem; font-weight: 700; color: var(--green); word-break: break-word; }
+.xlsx-box {
+  background: rgba(52, 211, 153, 0.07);
+  border: 1px solid rgba(52, 211, 153, 0.35);
+  border-radius: 10px;
+  padding: 16px 18px;
+  margin-top: 16px;
+}
+.btn.green { background: #10b981; border-color: #10b981; color: #04130d; font-weight: 700; cursor: pointer; }
 </style>
   <script type="application/ld+json">{"@context": "https://schema.org", "@type": "TechArticle", "headline": "FTC Click-to-Cancel Auto-Renewal (16 CFR 425 / ROSCA) & Civil-Penalty Compliance Audit — 15 U.S.C. Sec. 8403 (ROSCA), FTC 16 CFR Part 425 Negative-Option Parity & Sec. 45(m) Civil-Penalty Schedule API & MCP Reference (BI-43)", "alternateName": ["FTC Click-to-Cancel Auto-Renewal (16 CFR 425 / ROSCA) & Civil-Penalty Compliance Audit", "15 U.S.C. Sec. 8403 (ROSCA), FTC 16 CFR Part 425 Negative-Option Parity & Sec. 45(m) Civil-Penalty Schedule", "FTC Click to Cancel Compliance Audit", "ROSCA Auto-Renewal Penalty Calculator", "16 CFR 425 Negative Option Audit", "Visa 0.90% Chargeback Threshold Check", "Subscription Refund Restitution Pool"], "keywords": "BI-43, FTC Click-to-Cancel Auto-Renewal (16 CFR 425 / ROSCA) & Civil-Penalty Compliance Audit, FTC 16 CFR Part 425 / ROSCA 15 U.S.C. 8403 Subscription Compliance Workpaper, FTC Click to Cancel Compliance Audit, ROSCA Auto-Renewal Penalty Calculator, 16 CFR 425 Negative Option Audit, Visa 0.90% Chargeback Threshold Check, Subscription Refund Restitution Pool, QuantLedger, MCP Server, REST API, Calculator API", "description": "FTC Click-to-Cancel Auto-Renewal (16 CFR 425 / ROSCA) & Civil-Penalty Compliance Audit (BI-43 — FTC 16 CFR Part 425 / ROSCA 15 U.S.C. 8403 Subscription Complian", "url": "https://quantledgerapi.github.io/engines/bi-43-ftc-click-to-cancel-auto-renewal-16-cfr/", "author": {"@type": "Organization", "name": "QuantLedger"}, "about": "15 U.S.C. §§ 8401–8405 (Restore Online Shoppers' Confidence Act — ROSCA); FTC Negative Option Rule (16 CFR Part 425 Click-to-Cancel Parity); FTC Act § 5 & § 19 (15 U.S.C. §§ 45(m)(1)(A), 57b); Cal. Bus. & Prof. Code § 17602 (ARL)"}</script>
+  <script src="https://quantledgerapi.github.io/assets/calculator.js" defer></script>
 </head>
 <body>
   <header class="top">
     <div class="wrap nav">
-      <a class="brand" href="https://quantledgerapi.github.io/">QuantLedger API &amp; MCP Docs <span style="color:#9fb0d9;font-weight:400;font-size:0.84rem;">v2.3.1</span></a>
+      <a class="brand" href="https://quantledgerapi.github.io/">QuantLedger API &amp; MCP Docs <span style="color:#9fb0d9;font-weight:400;font-size:0.84rem;">v2.4.1</span></a>
       <nav class="nav-links">
         <a href="https://quantledgerapi.github.io/#engines">All Engines</a>
         <a href="https://quantledgerapi.github.io/sec-edgar-10k-xbrl-covenants/">SEC EDGAR 10-K API</a>
@@ -153,18 +205,71 @@ footer {
     
     <section class="hero">
       <span class="badge">BI-43 &middot; Regulatory Defense, REA Quantum, USDA &amp; Utility Rate-Design Suite</span>
-      <h1>FTC Click-to-Cancel Auto-Renewal (16 CFR 425 / ROSCA) &amp; Civil-Penalty Compliance Audit — API &amp; MCP Calculator (BI-43)</h1>
+      <h1>FTC Click-to-Cancel Auto-Renewal (16 CFR 425 / ROSCA) &amp; Civil-Penalty Compliance Audit — Calculator, Excel Workpaper &amp; API (BI-43)</h1>
       <p class="lead">Parity_Pass = (Cancel_Steps &lt;= Signup_Steps) &amp; Same_Medium_Cancel; Excess_Steps = max(0, C - S. Applies 15 U.S.C. Sec. 8403 (ROSCA) &amp; 16 CFR Part 425 Click-to-Cancel Step-Parity Audit [15 U.S.C. Sec. 8403(1)-(3) &amp; FTC Negative Option Rule 16 CFR Sec. 425.5 / 425.6]; Pre-Renewal Statutory Notice Window &amp; FTC Act Sec. 19 Consumer Restitution Pool [15 U.S.C. Sec. 57b(b) (FTC Act Sec. 19 Redress) &amp; State Auto-Renewal Law (30-Day Notice)]; Payment-Network 0.90% Chargeback Monitoring Threshold &amp; Billing Dispute Audit [Visa Acquirer Monitoring Program (VAMP) / Mastercard Excessive Chargeback Program &amp; CFPB Circular 2023-01]; 15 U.S.C. Sec. 45(m)(1)(A) Civil-Penalty Statutory Ceiling vs. Voluntary Refund Remediation [15 U.S.C. Sec. 45(m)(1)(A), 16 CFR Sec. 1.98(d) &amp; 12 U.S.C. Sec. 5565(c) Civil Penalties]. Outputs: 00 Exec ROSCA Compliance Summary, 01 16CFR425 Click To Cancel Parity, 02 PreRenewal Notice Restitution Pool, 03 VAMP Chargeback Threshold Audit. Calibrated across all 57 US States, Washington, D.C., US Territories, and Federal IRC &sect; 11 baselines in sub-millisecond deterministic Python &amp; NumPy CPU execution.</p>
       <p><strong>Official Statutory &amp; Regulatory Workpaper Title:</strong> 15 U.S.C. Sec. 8403 (ROSCA), FTC 16 CFR Part 425 Negative-Option Parity &amp; Sec. 45(m) Civil-Penalty Schedule</p>
       <p><strong>Official Agency Form / Workpaper Standard:</strong> <code>FTC 16 CFR Part 425 / ROSCA 15 U.S.C. 8403 Subscription Compliance Workpaper</code></p>
       <p><strong>Governing Accounting, Tax &amp; Statutory Authorities:</strong> 15 U.S.C. §§ 8401–8405 (Restore Online Shoppers&#x27; Confidence Act — ROSCA); FTC Negative Option Rule (16 CFR Part 425 Click-to-Cancel Parity); FTC Act § 5 &amp; § 19 (15 U.S.C. §§ 45(m)(1)(A), 57b); Cal. Bus. &amp; Prof. Code § 17602 (ARL)</p>
       <p style="font-size:0.9rem;color:#9fb0d9;"><strong>Common Practitioner &amp; Search Aliases:</strong> FTC Click to Cancel Compliance Audit, ROSCA Auto-Renewal Penalty Calculator, 16 CFR 425 Negative Option Audit, Visa 0.90% Chargeback Threshold Check, Subscription Refund Restitution Pool</p>
       <div class="cta-row">
+        <a class="btn green" href="#ql-calculator">Open Free Live Calculator &darr;</a>
         <a class="btn primary" href="https://rapidapi.com/quantledger/api/quantledger-73-engine-financial-and-statutory-api">Run on RapidAPI (5 Free/Mo)</a>
-        <a class="btn" href="https://apify.com/quantledger/quantledger-cpa-gaap-tax-sec-mcp">Run on Apify Store / MCP</a>
+        <a class="btn" href="https://apify.com/quantledger/quantledger-cpa-gaap-tax-sec-mcp">Run on Apify Store (.xlsx + MCP)</a>
         <a class="btn" href="https://github.com/QuantLedgerAPI/quantledger-mcp">Open-Source MCP SDK Repo</a>
       </div>
     </section>
+
+    
+    <section id="ql-calculator" class="calc-panel" data-engine-code="BI-43">
+      <script id="ql-default-inputs" type="application/json">{"affected_subscriber_accounts": 185000, "recurring_subscription_fee_usd": 49, "unconsented_negative_option_fee_usd": 19.95, "unconsented_addon_account_share": 0.085, "enrollment_click_steps": 2, "cancellation_click_steps": 6, "same_medium_online_cancel_flag": 1, "pre_renewal_reminder_days": 15}</script>
+      <div style="display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap;">
+        <div>
+          <span class="badge" style="margin-bottom:6px;">Live Zero-Code Statutory Calculator &amp; .xlsx Builder</span>
+          <h2 style="margin:0;border:none;padding:0;">Interactive FTC Click-to-Cancel Auto-Renewal (16 CFR 425 / ROSCA) &amp; Civil-Penalty Compliance Audit Calculator (BI-43)</h2>
+        </div>
+        <div style="display:flex;gap:10px;flex-wrap:wrap;">
+          <button id="ql-run-btn" type="button" class="btn green">Recalculate Statutory Preview (Free)</button>
+          <button id="ql-reset-btn" type="button" class="btn" style="cursor:pointer;">Reset Baseline</button>
+        </div>
+      </div>
+      <p style="font-size:0.9rem;color:#9fb0d9;margin:8px 0 12px;">Enter your trial-balance, schedule, or contract numbers below to verify headline statutory outputs in real time across 57 US jurisdictions (zero data stored).</p>
+
+      <div class="calc-grid">
+        <div class="calc-field">
+          <label for="ql-jurisdiction">US State / Territory Jurisdiction (57)</label>
+          <select id="ql-jurisdiction" class="calc-input"><option value="DC" selected>DC</option><option value="NY">NY</option><option value="CA">CA</option><option value="TX">TX</option><option value="FL">FL</option><option value="DE">DE</option><option value="VA">VA</option><option value="IL">IL</option><option value="MA">MA</option><option value="WA">WA</option><option value="PA">PA</option><option value="GA">GA</option><option value="NJ">NJ</option><option value="NC">NC</option><option value="OH">OH</option><option value="AK">AK</option><option value="AL">AL</option><option value="AR">AR</option><option value="AS">AS</option><option value="AZ">AZ</option><option value="CO">CO</option><option value="CT">CT</option><option value="GU">GU</option><option value="HI">HI</option><option value="IA">IA</option><option value="ID">ID</option><option value="IN">IN</option><option value="KS">KS</option><option value="KY">KY</option><option value="LA">LA</option><option value="MD">MD</option><option value="ME">ME</option><option value="MI">MI</option><option value="MN">MN</option><option value="MO">MO</option><option value="MP">MP</option><option value="MS">MS</option><option value="MT">MT</option><option value="ND">ND</option><option value="NE">NE</option><option value="NH">NH</option><option value="NM">NM</option><option value="NV">NV</option><option value="OK">OK</option><option value="OR">OR</option><option value="PR">PR</option><option value="RI">RI</option><option value="SC">SC</option><option value="SD">SD</option><option value="TN">TN</option><option value="US">US</option><option value="UT">UT</option><option value="VI">VI</option><option value="VT">VT</option><option value="WI">WI</option><option value="WV">WV</option><option value="WY">WY</option></select>
+        </div>
+        <div class="calc-field">
+          <label for="ql-naics">6-Digit NAICS or 4-Digit SIC</label>
+          <input id="ql-naics" class="calc-input" type="text" value="541211" />
+        </div>
+        <div class="calc-field"><label>Affected Subscriber Accounts</label><input class="calc-input" type="number" step="any" data-param-key="affected_subscriber_accounts" value="185000" /></div><div class="calc-field"><label>Recurring Subscription Fee (USD)</label><input class="calc-input" type="number" step="any" data-param-key="recurring_subscription_fee_usd" value="49" /></div><div class="calc-field"><label>Unconsented Negative Option Fee (USD)</label><input class="calc-input" type="number" step="any" data-param-key="unconsented_negative_option_fee_usd" value="19.95" /></div><div class="calc-field"><label>Unconsented Addon Account Share</label><input class="calc-input" type="number" step="any" data-param-key="unconsented_addon_account_share" value="0.085" /></div><div class="calc-field"><label>Enrollment Click Steps</label><input class="calc-input" type="number" step="any" data-param-key="enrollment_click_steps" value="2" /></div><div class="calc-field"><label>Cancellation Click Steps</label><input class="calc-input" type="number" step="any" data-param-key="cancellation_click_steps" value="6" /></div><div class="calc-field"><label>Same Medium Online Cancel Flag</label><input class="calc-input" type="number" step="any" data-param-key="same_medium_online_cancel_flag" value="1" /></div><div class="calc-field"><label>Pre Renewal Reminder Days</label><input class="calc-input" type="number" step="any" data-param-key="pre_renewal_reminder_days" value="15" /></div>
+      </div>
+
+      <details style="margin:8px 0 14px;font-size:0.86rem;color:#9fb0d9;">
+        <summary style="cursor:pointer;color:#7cb0ff;">Optional: Paste Advanced Custom Schedule / Array Overrides (JSON)</summary>
+        <textarea id="ql-custom-json" class="calc-input" rows="3" style="margin-top:8px;font-family:monospace;" placeholder='{"custom_parameter": 100000}'></textarea>
+      </details>
+
+      <div id="ql-calc-status" style="font-size:0.85rem;color:#93bcff;margin:6px 0 8px;">Showing verified Washington, D.C. baseline — edit any input and click Recalculate.</div>
+      <h3 style="margin:12px 0 8px;">Computed Headline Statutory &amp; Financial KPIs</h3>
+      <div id="ql-kpi-grid" class="kpi-grid"><div class="kpi-box"><div class="k-lbl">Engine Code</div><div class="k-val">BI-43</div></div><div class="kpi-box"><div class="k-lbl">Click To Cancel Step Parity Compliant</div><div class="k-val">NO</div></div><div class="kpi-box"><div class="k-lbl">Excess Cancellation Steps</div><div class="k-val">4</div></div><div class="kpi-box"><div class="k-lbl">Statutory Restitution Pool (USD)</div><div class="k-val">$1,167,521.25</div></div><div class="kpi-box"><div class="k-lbl">Card Chargeback Dispute Ratio</div><div class="k-val">0.01</div></div><div class="kpi-box"><div class="k-lbl">Voluntary Remediation Penalty Savings (USD)</div><div class="k-val">$2,626,922.81</div></div></div>
+
+      <div class="xlsx-box">
+        <div style="display:flex;justify-content:space-between;align-items:flex-start;gap:16px;flex-wrap:wrap;">
+          <div style="flex:1;min-width:260px;">
+            <h3 style="margin:0 0 6px;color:#fff;">Download 5-Tab Formula-Linked Excel Workpaper (<code>.xlsx</code>) — <span id="ql-xlsx-price">$19.00</span></h3>
+            <p id="ql-lock-meta" style="margin:0 0 8px;font-size:0.88rem;color:#d1fae5;">Includes 5 formatted CPA/analyst tabs compiled from your exact inputs: <code>01_Executive_Summary</code>, <code>02_Statutory_Rules</code> (4 rules), <code>03_Workpaper_Schedule</code> (4 rows + <code>=SUM</code>/<code>=AVERAGE</code> formulas), <code>04_Scenario_Sensitivity</code> (<code>=C-B</code> variance formulas), and <code>05_Compliance_Audit_Flags</code> (3 threshold gates).</p>
+            <div style="display:flex;gap:10px;flex-wrap:wrap;margin-top:10px;">
+              <a class="btn primary" href="https://apify.com/quantledger/quantledger-cpa-gaap-tax-sec-mcp">Export .xlsx Workpaper on Apify ($0.35)</a>
+              <a class="btn" href="https://rapidapi.com/quantledger/api/quantledger-73-engine-financial-and-statutory-api">Export .xlsx via RapidAPI (5 Free/Mo)</a>
+            </div>
+          </div>
+          <div id="ql-paypal-buttons" style="display:none;min-width:270px;max-width:340px;width:100%;"></div>
+        </div>
+      </div>
+    </section>
+    
 
     <h2>1. Deterministic Statutory &amp; Regulatory Laws Executed</h2>
     <p>Unlike prompt-only LLM skills that approximate multi-period schedules in token space, <code>BI-43</code> executes exact pure-Python and NumPy statutory rules in volatile container RAM:</p>

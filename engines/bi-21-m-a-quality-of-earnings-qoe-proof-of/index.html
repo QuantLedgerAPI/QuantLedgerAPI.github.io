@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>M&amp;A Quality of Earnings (QoE) Proof of Cash, EBITDA Bridge, NWC Peg </title>
+  <meta name="description" content="M&amp;A Quality of Earnings (QoE) Proof of Cash, EBITDA Bridge, NWC Peg &amp; Net-Debt Workpaper (BI-21 — AICPA M&amp;A QoE Databook (Proof of Cash, EBITDA Bridge, NWC Peg " />
+  <link rel="canonical" href="https://quantledgerapi.github.io/engines/bi-21-m-a-quality-of-earnings-qoe-proof-of/" />
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="M&amp;A Quality of Earnings (QoE) Proof of Cash, EBITDA Bridge, NWC Peg " />
+  <meta property="og:description" content="M&amp;A Quality of Earnings (QoE) Proof of Cash, EBITDA Bridge, NWC Peg &amp; Net-Debt Workpaper (BI-21 — AICPA M&amp;A QoE Databook (Proof of Cash, EBITDA Bridge, NWC Peg " />
+  <meta property="og:url" content="https://quantledgerapi.github.io/engines/bi-21-m-a-quality-of-earnings-qoe-proof-of/" />
+  <style>
+:root {
+  --bg: #0b1020;
+  --panel: #131b33;
+  --border: #253259;
+  --text: #eef2ff;
+  --muted: #9fb0d9;
+  --accent: #4f8cff;
+  --accent-soft: rgba(79, 140, 255, 0.14);
+  --green: #34d399;
+  --code-bg: #080c18;
+}
+* { box-sizing: border-box; }
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Inter, sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  line-height: 1.62;
+}
+a { color: #7cb0ff; text-decoration: none; }
+a:hover { text-decoration: underline; }
+.wrap { max-width: 1120px; margin: 0 auto; padding: 0 22px; }
+header.top {
+  border-bottom: 1px solid var(--border);
+  background: rgba(11, 16, 32, 0.94);
+  position: sticky;
+  top: 0;
+  z-index: 20;
+  backdrop-filter: blur(8px);
+}
+.nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 14px 0;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+.brand { font-weight: 700; font-size: 1.08rem; color: #fff; letter-spacing: -0.01em; }
+.nav-links { display: flex; gap: 16px; flex-wrap: wrap; font-size: 0.92rem; }
+.btn {
+  display: inline-block;
+  padding: 9px 16px;
+  border-radius: 7px;
+  font-weight: 600;
+  font-size: 0.9rem;
+  border: 1px solid var(--border);
+  background: var(--panel);
+  color: #fff;
+}
+.btn.primary { background: var(--accent); border-color: var(--accent); color: #fff; }
+.btn:hover { text-decoration: none; filter: brightness(1.08); }
+.hero { padding: 44px 0 28px; border-bottom: 1px solid var(--border); }
+.badge {
+  display: inline-block;
+  padding: 4px 10px;
+  border-radius: 999px;
+  background: var(--accent-soft);
+  color: #93bcff;
+  font-size: 0.8rem;
+  font-weight: 600;
+  margin-bottom: 12px;
+}
+h1 { font-size: 2.05rem; line-height: 1.22; margin: 0 0 14px; letter-spacing: -0.02em; }
+h2 { font-size: 1.35rem; margin: 32px 0 12px; border-bottom: 1px solid var(--border); padding-bottom: 8px; }
+h3 { font-size: 1.06rem; margin: 20px 0 8px; color: #cfe0ff; }
+p.lead { font-size: 1.06rem; color: var(--muted); max-width: 880px; margin: 0 0 20px; }
+.cta-row { display: flex; gap: 12px; flex-wrap: wrap; margin-top: 18px; }
+.grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); gap: 16px; margin: 18px 0; }
+.card {
+  background: var(--panel);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 18px;
+}
+.card code.code-pill {
+  background: var(--code-bg);
+  padding: 2px 7px;
+  border-radius: 5px;
+  color: var(--green);
+  font-size: 0.82rem;
+}
+pre {
+  background: var(--code-bg);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 14px 16px;
+  overflow-x: auto;
+  font-size: 0.85rem;
+  line-height: 1.5;
+  color: #dbeafe;
+}
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 14px 0 22px;
+  font-size: 0.92rem;
+}
+th, td {
+  border: 1px solid var(--border);
+  padding: 10px 12px;
+  text-align: left;
+  vertical-align: top;
+}
+th { background: var(--panel); color: #cfe0ff; }
+.search-box {
+  width: 100%;
+  padding: 12px 15px;
+  border-radius: 8px;
+  border: 1px solid var(--border);
+  background: var(--code-bg);
+  color: #fff;
+  font-size: 0.98rem;
+  margin: 10px 0 18px;
+}
+footer {
+  margin-top: 52px;
+  padding: 28px 0 40px;
+  border-top: 1px solid var(--border);
+  color: var(--muted);
+  font-size: 0.85rem;
+}
+</style>
+  <script type="application/ld+json">{"@context": "https://schema.org", "@type": "TechArticle", "headline": "M&A Quality of Earnings (QoE) Proof of Cash, EBITDA Bridge, NWC Peg & Net-Debt Workpaper — Senior Lender Proof-of-Cash Reconciliation, Capped Credit-Agreement EBITDA & 12-Month NWC Peg Schedule API & MCP Reference (BI-21)", "alternateName": ["M&A Quality of Earnings (QoE) Proof of Cash, EBITDA Bridge, NWC Peg & Net-Debt Workpaper", "Senior Lender Proof-of-Cash Reconciliation, Capped Credit-Agreement EBITDA & 12-Month NWC Peg Schedule", "Quality of Earnings QoE Calculator", "Proof of Cash Bank to GL Tie-Out", "Adjusted EBITDA Add-Back Cap", "Net Working Capital Peg Calculator", "M&A Debt-Like Items Schedule"], "keywords": "BI-21, M&A Quality of Earnings (QoE) Proof of Cash, EBITDA Bridge, NWC Peg & Net-Debt Workpaper, AICPA M&A QoE Databook (Proof of Cash, EBITDA Bridge, NWC Peg & Net Debt), Quality of Earnings QoE Calculator, Proof of Cash Bank to GL Tie-Out, Adjusted EBITDA Add-Back Cap, Net Working Capital Peg Calculator, M&A Debt-Like Items Schedule, QuantLedger, MCP Server, REST API, Calculator API, QoE, EBITDA, ASC 606, ASC 842, ASC 450", "description": "M&A Quality of Earnings (QoE) Proof of Cash, EBITDA Bridge, NWC Peg & Net-Debt Workpaper (BI-21 — AICPA M&A QoE Databook (Proof of Cash, EBITDA Bridge, NWC Peg ", "url": "https://quantledgerapi.github.io/engines/bi-21-m-a-quality-of-earnings-qoe-proof-of/", "author": {"@type": "Organization", "name": "QuantLedger"}, "about": "AICPA Consulting Services (CS Section 100) & Transaction Advisory QoE Framework; FASB ASC 606 / ASC 842 / ASC 450"}</script>
+</head>
+<body>
+  <header class="top">
+    <div class="wrap nav">
+      <a class="brand" href="https://quantledgerapi.github.io/">QuantLedger API &amp; MCP Docs <span style="color:#9fb0d9;font-weight:400;font-size:0.84rem;">v2.3.1</span></a>
+      <nav class="nav-links">
+        <a href="https://quantledgerapi.github.io/#engines">All Engines</a>
+        <a href="https://quantledgerapi.github.io/sec-edgar-10k-xbrl-covenants/">SEC EDGAR 10-K API</a>
+        <a href="https://github.com/QuantLedgerAPI/quantledger-mcp">GitHub MCP</a>
+        <a href="https://apify.com/quantledger/quantledger-cpa-gaap-tax-sec-mcp">Apify Store</a>
+        <a class="btn primary" href="https://rapidapi.com/quantledger/api/quantledger-73-engine-financial-and-statutory-api">Get Free API Key</a>
+      </nav>
+    </div>
+  </header>
+  <main class="wrap">
+    
+    <section class="hero">
+      <span class="badge">BI-21 &middot; M&amp;A Quality of Earnings (QoE), SaaS Cohort &amp; Carve-Out Suite</span>
+      <h1>M&amp;A Quality of Earnings (QoE) Proof of Cash, EBITDA Bridge, NWC Peg &amp; Net-Debt Workpaper — API &amp; MCP Calculator (BI-21)</h1>
+      <p class="lead">Rev_PoC = (Deposits_Bank - NonRev_Transfers) + Delta_Net_AR_DefRev; Tie_Pct = 1 - |Rev_PoC - Rev_GL|/Rev_GL. Applies 12-Month Bank-Statement-to-General-Ledger Proof-of-Cash Tie-Out [AICPA Consulting Services Sec. 100 Buy-Side Proof-of-Cash Workpaper Standard]; GAAP-to-Lender Adjusted EBITDA Bridge (Credit-Agreement Add-Back Cap) [Senior Leveraged Credit Agreement Consolidated EBITDA Definition &amp; Cap Clauses]; LTM 12-Month Normalized NWC Peg, Collar &amp; Closing Dollar-for-Dollar True-Up [SPA Section 2.04 Working Capital Purchase-Price Adjustment Mechanics]; SPA Indebtedness &amp; Debt-Like Liability Purchase-Price Deduction Schedule [FASB ASC 606 Contract Liabilities, ASC 450 Contingencies &amp; SPA Indebtedness Schedule]. Outputs: Cover and Index, Executive Summary EBITDA Bridge, EBITDA Adjustments Schedule, Monthly Income Statement 36Mo. Calibrated across all 57 US States, Washington, D.C., US Territories, and Federal IRC &sect; 11 baselines in sub-millisecond deterministic Python &amp; NumPy CPU execution.</p>
+      <p><strong>Official Statutory &amp; Regulatory Workpaper Title:</strong> Senior Lender Proof-of-Cash Reconciliation, Capped Credit-Agreement EBITDA &amp; 12-Month NWC Peg Schedule</p>
+      <p><strong>Official Agency Form / Workpaper Standard:</strong> <code>AICPA M&amp;A QoE Databook (Proof of Cash, EBITDA Bridge, NWC Peg &amp; Net Debt)</code></p>
+      <p><strong>Governing Accounting, Tax &amp; Statutory Authorities:</strong> AICPA Consulting Services (CS Section 100) &amp; Transaction Advisory QoE Framework; FASB ASC 606 / ASC 842 / ASC 450</p>
+      <p style="font-size:0.9rem;color:#9fb0d9;"><strong>Common Practitioner &amp; Search Aliases:</strong> Quality of Earnings QoE Calculator, Proof of Cash Bank to GL Tie-Out, Adjusted EBITDA Add-Back Cap, Net Working Capital Peg Calculator, M&amp;A Debt-Like Items Schedule</p>
+      <div class="cta-row">
+        <a class="btn primary" href="https://rapidapi.com/quantledger/api/quantledger-73-engine-financial-and-statutory-api">Run on RapidAPI (5 Free/Mo)</a>
+        <a class="btn" href="https://apify.com/quantledger/quantledger-cpa-gaap-tax-sec-mcp">Run on Apify Store / MCP</a>
+        <a class="btn" href="https://github.com/QuantLedgerAPI/quantledger-mcp">Open-Source MCP SDK Repo</a>
+      </div>
+    </section>
+
+    <h2>1. Deterministic Statutory &amp; Regulatory Laws Executed</h2>
+    <p>Unlike prompt-only LLM skills that approximate multi-period schedules in token space, <code>BI-21</code> executes exact pure-Python and NumPy statutory rules in volatile container RAM:</p>
+    <ul><li>(1) 12-Month Bank-Statement-to-General-Ledger Proof-of-Cash Tie-Out [AICPA Consulting Services Sec. 100 Buy-Side Proof-of-Cash Workpaper Standard] — Rev_PoC = (Deposits_Bank - NonRev_Transfers) + Delta_Net_AR_DefRev; Tie_Pct = 1 - |Rev_PoC - Rev_GL|/Rev_GL</li><li>(2) GAAP-to-Lender Adjusted EBITDA Bridge (Credit-Agreement Add-Back Cap) [Senior Leveraged Credit Agreement Consolidated EBITDA Definition &amp; Cap Clauses] — EBITDA_Lender = EBITDA_GAAP - Deduct_QoE + min(Claimed_AddBacks, Cap_Pct * EBITDA_GAAP)</li><li>(3) LTM 12-Month Normalized NWC Peg, Collar &amp; Closing Dollar-for-Dollar True-Up [SPA Section 2.04 Working Capital Purchase-Price Adjustment Mechanics] — Peg_NWC = (1/12)*sum(NWC_m); TrueUp = sign(Delta)*max(0, |Closing_NWC - Peg_NWC| - Collar)</li><li>(4) SPA Indebtedness &amp; Debt-Like Liability Purchase-Price Deduction Schedule [FASB ASC 606 Contract Liabilities, ASC 450 Contingencies &amp; SPA Indebtedness Schedule] — Debt_Like = DefRev * Cost_Pct + Stretched_AP_&gt;60d + Unfunded_PTO_Bonus + Deposits_Contingencies</li></ul>
+
+    <h2>2. Input Schema &amp; Workpaper Output Schedules</h2>
+    <h3>Structured Input Datasets (<code>structured_inputs</code>)</h3>
+    <table><thead><tr><th>Input Slot</th><th>Dataset / Trial-Balance Schedule</th><th>Accepted Format</th></tr></thead><tbody><tr><td><code>FILE-1</code></td><td>36-Month Monthly Accrual Trial Balance &amp; Transaction-Level General Ledger Detail Export</td><td>Structured JSON object/array or CSV text</td></tr><tr><td><code>FILE-2</code></td><td>36-Month Native PDF Bank &amp; Merchant Processor Statements + Monthly Bank Reconciliations (All Accounts)</td><td>Structured JSON object/array or CSV text</td></tr><tr><td><code>FILE-3</code></td><td>36-Month Customer Revenue by Invoice, Vendor AP Aging, AR Aging &amp; Inventory Valuation Sub-Ledgers</td><td>Structured JSON object/array or CSV text</td></tr><tr><td><code>FILE-4</code></td><td>3-Year Signed Federal Tax Returns, Payroll Registers, Proposed EBITDA Add-Back Schedule &amp; Draft LOI</td><td>Structured JSON object/array or CSV text</td></tr></tbody></table>
+    <h3>Deterministic Output Workpaper Schedules</h3>
+    <table><thead><tr><th>Workpaper Schedule</th><th>Computed Output Schedule &amp; Tie-Out</th></tr></thead><tbody><tr><td><strong>Schedule 1</strong></td><td>Cover and Index</td></tr><tr><td><strong>Schedule 2</strong></td><td>Executive Summary EBITDA Bridge</td></tr><tr><td><strong>Schedule 3</strong></td><td>EBITDA Adjustments Schedule</td></tr><tr><td><strong>Schedule 4</strong></td><td>Monthly Income Statement 36Mo</td></tr><tr><td><strong>Schedule 5</strong></td><td>Monthly Balance Sheet 36Mo</td></tr><tr><td><strong>Schedule 6</strong></td><td>12Mo Bank to Book Proof of Cash</td></tr></tbody></table>
+
+    <h2>3. Quick Integration — REST API (<code>cURL</code>) &amp; AI Agent MCP</h2>
+    <h3>A. Direct HTTP / REST API Call</h3>
+    <pre><code>curl -X POST &quot;https://quantledger-73-engine-financial-and-statutory-api.p.rapidapi.com/v1/mna/quality-of-earnings-ebitda-and-nwc&quot; \
+  -H &quot;Content-Type: application/json&quot; \
+  -H &quot;X-RapidAPI-Key: YOUR_RAPIDAPI_KEY&quot; \
+  -H &quot;X-RapidAPI-Host: quantledger-73-engine-financial-and-statutory-api.p.rapidapi.com&quot; \
+  -d &#x27;{
+    &quot;jurisdiction&quot;: &quot;NY&quot;,
+    &quot;naics_or_sic&quot;: &quot;541211&quot;,
+    &quot;structured_inputs&quot;: {}
+  }&#x27;</code></pre>
+    <h3>B. Model Context Protocol (MCP) Tool Call</h3>
+    <pre><code>// Tool call inside Claude Desktop, Cursor, VS Code Copilot, LangGraph, or CrewAI:
+execute_institutional_math_engine({
+  &quot;engine_code&quot;: &quot;BI-21&quot;,
+  &quot;jurisdiction&quot;: &quot;DE&quot;,
+  &quot;naics_or_sic&quot;: &quot;541211&quot;,
+  &quot;structured_inputs&quot;: {}
+})</code></pre>
+
+    <p style="margin-top:28px;"><a href="https://quantledgerapi.github.io/">&larr; Back to All 73 QuantLedger Accounting, Tax &amp; SEC Engines</a></p>
+    
+  </main>
+  <footer>
+    <div class="wrap">
+      <p><strong>Stateless Privacy &amp; Computational Utility Notice:</strong> All QuantLedger API and Model Context Protocol (MCP) endpoints evaluate numeric and textual inputs strictly in volatile RAM with zero caller data retention. Outputs provide deterministic accounting, financial, and statutory regulatory calculations for technical and analytical workflows and do not constitute CPA attest/assurance opinions, formal tax opinions, legal advice, or registered investment advice.</p>
+      <p>Public U.S. federal datasets (SEC EDGAR XBRL/10-K, Federal Reserve Bank of New York SOFR/EFFR, U.S. Treasury yields, Census NAICS, and SIC crosswalks) are sourced from official public-domain `.gov` feeds under 17 U.S.C. &sect; 105. &middot; <a href="https://quantledgerapi.github.io/sitemap.xml">XML Sitemap</a> &middot; <a href="https://quantledgerapi.github.io/llms.txt">llms.txt</a></p>
+    </div>
+  </footer>
+</body>
+</html>

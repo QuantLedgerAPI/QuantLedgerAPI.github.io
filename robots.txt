@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://quantledgerapi.github.io/sitemap.xml

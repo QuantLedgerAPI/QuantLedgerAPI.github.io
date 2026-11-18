@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Commercial Credit, Working Capital &amp; Unit-Economics Suite API &amp; MCP </title>
+  <meta name="description" content="Reference documentation for Commercial Credit, Working Capital &amp; Unit-Economics Suite (5 deterministic accounting, tax, and financial API/MCP engines)." />
+  <link rel="canonical" href="https://quantledgerapi.github.io/suites/suite-01/" />
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="Commercial Credit, Working Capital &amp; Unit-Economics Suite API &amp; MCP " />
+  <meta property="og:description" content="Reference documentation for Commercial Credit, Working Capital &amp; Unit-Economics Suite (5 deterministic accounting, tax, and financial API/MCP engines)." />
+  <meta property="og:url" content="https://quantledgerapi.github.io/suites/suite-01/" />
+  <style>
+:root {
+  --bg: #0b1020;
+  --panel: #131b33;
+  --border: #253259;
+  --text: #eef2ff;
+  --muted: #9fb0d9;
+  --accent: #4f8cff;
+  --accent-soft: rgba(79, 140, 255, 0.14);
+  --green: #34d399;
+  --code-bg: #080c18;
+}
+* { box-sizing: border-box; }
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Inter, sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  line-height: 1.62;
+}
+a { color: #7cb0ff; text-decoration: none; }
+a:hover { text-decoration: underline; }
+.wrap { max-width: 1120px; margin: 0 auto; padding: 0 22px; }
+header.top {
+  border-bottom: 1px solid var(--border);
+  background: rgba(11, 16, 32, 0.94);
+  position: sticky;
+  top: 0;
+  z-index: 20;
+  backdrop-filter: blur(8px);
+}
+.nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 14px 0;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+.brand { font-weight: 700; font-size: 1.08rem; color: #fff; letter-spacing: -0.01em; }
+.nav-links { display: flex; gap: 16px; flex-wrap: wrap; font-size: 0.92rem; }
+.btn {
+  display: inline-block;
+  padding: 9px 16px;
+  border-radius: 7px;
+  font-weight: 600;
+  font-size: 0.9rem;
+  border: 1px solid var(--border);
+  background: var(--panel);
+  color: #fff;
+}
+.btn.primary { background: var(--accent); border-color: var(--accent); color: #fff; }
+.btn:hover { text-decoration: none; filter: brightness(1.08); }
+.hero { padding: 44px 0 28px; border-bottom: 1px solid var(--border); }
+.badge {
+  display: inline-block;
+  padding: 4px 10px;
+  border-radius: 999px;
+  background: var(--accent-soft);
+  color: #93bcff;
+  font-size: 0.8rem;
+  font-weight: 600;
+  margin-bottom: 12px;
+}
+h1 { font-size: 2.05rem; line-height: 1.22; margin: 0 0 14px; letter-spacing: -0.02em; }
+h2 { font-size: 1.35rem; margin: 32px 0 12px; border-bottom: 1px solid var(--border); padding-bottom: 8px; }
+h3 { font-size: 1.06rem; margin: 20px 0 8px; color: #cfe0ff; }
+p.lead { font-size: 1.06rem; color: var(--muted); max-width: 880px; margin: 0 0 20px; }
+.cta-row { display: flex; gap: 12px; flex-wrap: wrap; margin-top: 18px; }
+.grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); gap: 16px; margin: 18px 0; }
+.card {
+  background: var(--panel);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 18px;
+}
+.card code.code-pill {
+  background: var(--code-bg);
+  padding: 2px 7px;
+  border-radius: 5px;
+  color: var(--green);
+  font-size: 0.82rem;
+}
+pre {
+  background: var(--code-bg);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 14px 16px;
+  overflow-x: auto;
+  font-size: 0.85rem;
+  line-height: 1.5;
+  color: #dbeafe;
+}
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 14px 0 22px;
+  font-size: 0.92rem;
+}
+th, td {
+  border: 1px solid var(--border);
+  padding: 10px 12px;
+  text-align: left;
+  vertical-align: top;
+}
+th { background: var(--panel); color: #cfe0ff; }
+.search-box {
+  width: 100%;
+  padding: 12px 15px;
+  border-radius: 8px;
+  border: 1px solid var(--border);
+  background: var(--code-bg);
+  color: #fff;
+  font-size: 0.98rem;
+  margin: 10px 0 18px;
+}
+footer {
+  margin-top: 52px;
+  padding: 28px 0 40px;
+  border-top: 1px solid var(--border);
+  color: var(--muted);
+  font-size: 0.85rem;
+}
+</style>
+  <script type="application/ld+json">{"@context": "https://schema.org", "@type": "CollectionPage", "name": "Commercial Credit, Working Capital & Unit-Economics Suite", "url": "https://quantledgerapi.github.io/suites/suite-01/"}</script>
+</head>
+<body>
+  <header class="top">
+    <div class="wrap nav">
+      <a class="brand" href="https://quantledgerapi.github.io/">QuantLedger API &amp; MCP Docs <span style="color:#9fb0d9;font-weight:400;font-size:0.84rem;">v2.2.2</span></a>
+      <nav class="nav-links">
+        <a href="https://quantledgerapi.github.io/#engines">All Engines</a>
+        <a href="https://quantledgerapi.github.io/sec-edgar-10k-xbrl-covenants/">SEC EDGAR 10-K API</a>
+        <a href="https://github.com/QuantLedgerAPI/quantledger-mcp">GitHub MCP</a>
+        <a href="https://apify.com/quantledger/quantledger-cpa-gaap-tax-sec-mcp">Apify Store</a>
+        <a class="btn primary" href="https://rapidapi.com/quantledger/api/quantledger-73-engine-financial-and-statutory-api">Get Free API Key</a>
+      </nav>
+    </div>
+  </header>
+  <main class="wrap">
+    
+        <section class="hero">
+          <span class="badge">SUITE-01</span>
+          <h1>Commercial Credit, Working Capital &amp; Unit-Economics Suite — API &amp; MCP Calculators</h1>
+          <p class="lead">Deterministic pure-Python &amp; NumPy statutory and financial calculation engines calibrated across all 57 US jurisdictions.</p>
+        </section>
+        <table>
+          <thead><tr><th>Code</th><th>Engine Reference</th><th>Governing Authorities</th><th>Calculation Scope</th></tr></thead>
+          <tbody><tr><td><code>BI-01</code></td><td><a href="https://quantledgerapi.github.io/engines/bi-01-corporate-liquidity-solvency-13-week-cash-flow-runway/"><strong>Comprehensive Corporate Liquidity, Solvency &amp; 13-Week Cash-Flow Runway</strong></a></td><td>FASB ASC 205-40 (Going Concern Evaluation); OCC Commercial Lending Comptroller&#x27;s Handbook; ABI 13-Week Cash-Flow Protocol</td><td>Models weekly cash-receipt volatility and mean-reverting working-capital troughs across 1,000 simulated paths, isolating regime shifts into illiquidity and testing 52-week going-concern survival. Applies Ornstein-Uhlenbeck Mean-Reverting Cash-Flow Diffusion (1,000-Path Stress Simulation; Hamilton (1989) Markov Regime-Switching Liquidity Model; Bayesian Conjugate Prior Cash-Receipt Calibration; Merton (1974) Structural Distance-to-Default &amp; Altman Z&#x27;-Score Solvency Model. Outputs: 01 Exec Liquidity Bridge, 02 13Wk Direct Cash Model, 03 Vendor Sequencing Queue, 04 Actual vs Forecast Var.</td></tr><tr><td><code>BI-02</code></td><td><a href="https://quantledgerapi.github.io/engines/bi-02-asc-326-current-expected-credit-losses-cecl-accounts/"><strong>ASC 326 Current Expected Credit Losses (CECL) &amp; Accounts Receivable Collectability</strong></a></td><td>FASB ASC 326-20 (Financial Instruments — Credit Losses / CECL); UCC Article 9 Borrowing Base Eligibility Rules</td><td>Estimates invoice survival probabilities across 30/60/90/120+ day delinquency tiers, computes absorbing default roll-rates, and sizes macro-correlated Expected Credit Loss reserves. Applies Kaplan-Meier &amp; Weibull Parametric Default Hazard Survival Law; Absorbing Markov Chain Aging Roll-Rate Transition Matrix; Fader-Hardie Pareto/NBD Debtor Retention &amp; Collection Velocity Law; Basel / ASC 326 Expected Credit Loss &amp; Vasicek Asset Correlation (PD x LGD x EAD). Outputs: 01 ABL Borrowing Base Cert, 02 UCC Ineligible Waterfall, 03 ASC326 Transition RollRate, 04 Dilution Credit Memo Log.</td></tr><tr><td><code>BI-03</code></td><td><a href="https://quantledgerapi.github.io/engines/bi-03-corporate-indirect-spend-taxonomy-contract-compliance-working-capital/"><strong>Corporate Indirect Spend Taxonomy, Contract Compliance &amp; Working Capital Optimization</strong></a></td><td>IIA IPPF Standard 2130; ISM Principles of Sustainability &amp; Supply Management; FASB ASC 405 (Liabilities / AP Cutoff)</td><td>Quantifies single-source supplier concentration via HHI, runs chi-square first-two-digit tests to flag split purchase orders, and optimizes DPO cash release against early-pay discounts. Applies Pareto-Lorenz Spend Concentration &amp; Herfindahl (HHI) Vendor Dependency Index; Benford&#x27;s Law First-Two-Digit Chi-Square Duplicate &amp; Split-Invoice Forensic Test; Wilson Economic Order Quantity (EOQ) &amp; Working-Capital Payment-Term Optimization; Shephard&#x27;s Lemma Input-Price Pass-Through &amp; Price-Volume-Mix (PVM) Variance Bridge. Outputs: 00 Exec Spend Dashboard, 01 UNSPSC Spend Cube, 02 Duplicate Maverick Scan, 03 DPO Working Capital.</td></tr><tr><td><code>BI-04</code></td><td><a href="https://quantledgerapi.github.io/engines/bi-04-activity-based-costing-abc-contribution-margin-portfolio-rationalizati/"><strong>Activity-Based Costing (ABC), Contribution Margin &amp; Portfolio Rationalization</strong></a></td><td>IMA Statement on Management Accounting (SMA): Activity-Based Costing; FASB ASC 330 (Inventory Overhead Allocation)</td><td>Assigns departmental overhead via time-driven capacity equations, maps cumulative SKU/client profit on the Whale Curve, and solves Nash-Bertrand repricing floors without volume loss. Applies Kaplan-Anderson Time-Driven Activity-Based Costing (TDABC) Capacity Absorption Equations; Deaton-Muellbauer Almost Ideal Demand System (AIDS) &amp; Slutsky Price Elasticity; Nash-Bertrand Differentiated Margin &amp; Price-Competition Equilibrium; Huff / Hotelling Cross-SKU Cannibalization &amp; Whale-Curve Profit Concentration Law. Outputs: 00 Exec Margin Dashboard, 01 Kaplan TDABC Cost Pools, 02 ASC330 UNICAP Allocation, 03 Lerner Price Elasticity.</td></tr><tr><td><code>BI-05</code></td><td><a href="https://quantledgerapi.github.io/engines/bi-05-commercial-credit-modification-covenant-cure-debt-service-viability/"><strong>Commercial Credit Modification, Covenant Cure &amp; Debt-Service Viability</strong></a></td><td>OCC Troubled Debt Restructuring / Loan Modification Guidance (ASU 2022-02); 11 U.S.C. § 1129(a)(11) Feasibility Standard</td><td>Applies Ornstein-Uhlenbeck Mean-Reverting Debt-Service Cash-Flow Diffusion; Hamilton (1989) Markov Regime-Switching Credit Stress Model; Merton (1974) Structural Distance-to-Default &amp; Altman Z&#x27;-Score Reorganization Solvency Law; ASU 2022-02 Effective-Interest-Rate Modification &amp; 11 U.S.C. § 1129(a. Outputs: 01 Workout Exec Summary, 02 Capital Stack Debt Grid, 03 ASC470 50 10Pct Test, 04 Covenant Cure Bridge.</td></tr></tbody>
+        </table>
+        <p><a href="https://quantledgerapi.github.io/">&larr; Back to All 10 Institutional Suites</a></p>
+        
+  </main>
+  <footer>
+    <div class="wrap">
+      <p><strong>Stateless Privacy &amp; Computational Utility Notice:</strong> All QuantLedger API and Model Context Protocol (MCP) endpoints evaluate numeric and textual inputs strictly in volatile RAM with zero caller data retention. Outputs provide deterministic mathematical, econometric, and statutory calculations for technical and analytical workflows and do not constitute CPA attest/assurance opinions, formal tax opinions, legal advice, or registered investment advice.</p>
+      <p>Public U.S. federal datasets (SEC EDGAR XBRL/10-K, Federal Reserve Bank of New York SOFR/EFFR, U.S. Treasury yields, Census NAICS, and SIC crosswalks) are sourced from official public-domain `.gov` feeds under 17 U.S.C. &sect; 105. &middot; <a href="https://quantledgerapi.github.io/sitemap.xml">XML Sitemap</a> &middot; <a href="https://quantledgerapi.github.io/llms.txt">llms.txt</a></p>
+    </div>
+  </footer>
+</body>
+</html>

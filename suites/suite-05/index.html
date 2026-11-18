@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>M&amp;A Quality of Earnings (QoE), SaaS Cohort &amp; Carve-Out Suite API &amp; M</title>
+  <meta name="description" content="Reference documentation for M&amp;A Quality of Earnings (QoE), SaaS Cohort &amp; Carve-Out Suite (5 deterministic accounting, tax, and financial API/MCP engines)." />
+  <link rel="canonical" href="https://quantledgerapi.github.io/suites/suite-05/" />
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="M&amp;A Quality of Earnings (QoE), SaaS Cohort &amp; Carve-Out Suite API &amp; M" />
+  <meta property="og:description" content="Reference documentation for M&amp;A Quality of Earnings (QoE), SaaS Cohort &amp; Carve-Out Suite (5 deterministic accounting, tax, and financial API/MCP engines)." />
+  <meta property="og:url" content="https://quantledgerapi.github.io/suites/suite-05/" />
+  <style>
+:root {
+  --bg: #0b1020;
+  --panel: #131b33;
+  --border: #253259;
+  --text: #eef2ff;
+  --muted: #9fb0d9;
+  --accent: #4f8cff;
+  --accent-soft: rgba(79, 140, 255, 0.14);
+  --green: #34d399;
+  --code-bg: #080c18;
+}
+* { box-sizing: border-box; }
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Inter, sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  line-height: 1.62;
+}
+a { color: #7cb0ff; text-decoration: none; }
+a:hover { text-decoration: underline; }
+.wrap { max-width: 1120px; margin: 0 auto; padding: 0 22px; }
+header.top {
+  border-bottom: 1px solid var(--border);
+  background: rgba(11, 16, 32, 0.94);
+  position: sticky;
+  top: 0;
+  z-index: 20;
+  backdrop-filter: blur(8px);
+}
+.nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 14px 0;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+.brand { font-weight: 700; font-size: 1.08rem; color: #fff; letter-spacing: -0.01em; }
+.nav-links { display: flex; gap: 16px; flex-wrap: wrap; font-size: 0.92rem; }
+.btn {
+  display: inline-block;
+  padding: 9px 16px;
+  border-radius: 7px;
+  font-weight: 600;
+  font-size: 0.9rem;
+  border: 1px solid var(--border);
+  background: var(--panel);
+  color: #fff;
+}
+.btn.primary { background: var(--accent); border-color: var(--accent); color: #fff; }
+.btn:hover { text-decoration: none; filter: brightness(1.08); }
+.hero { padding: 44px 0 28px; border-bottom: 1px solid var(--border); }
+.badge {
+  display: inline-block;
+  padding: 4px 10px;
+  border-radius: 999px;
+  background: var(--accent-soft);
+  color: #93bcff;
+  font-size: 0.8rem;
+  font-weight: 600;
+  margin-bottom: 12px;
+}
+h1 { font-size: 2.05rem; line-height: 1.22; margin: 0 0 14px; letter-spacing: -0.02em; }
+h2 { font-size: 1.35rem; margin: 32px 0 12px; border-bottom: 1px solid var(--border); padding-bottom: 8px; }
+h3 { font-size: 1.06rem; margin: 20px 0 8px; color: #cfe0ff; }
+p.lead { font-size: 1.06rem; color: var(--muted); max-width: 880px; margin: 0 0 20px; }
+.cta-row { display: flex; gap: 12px; flex-wrap: wrap; margin-top: 18px; }
+.grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); gap: 16px; margin: 18px 0; }
+.card {
+  background: var(--panel);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 18px;
+}
+.card code.code-pill {
+  background: var(--code-bg);
+  padding: 2px 7px;
+  border-radius: 5px;
+  color: var(--green);
+  font-size: 0.82rem;
+}
+pre {
+  background: var(--code-bg);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 14px 16px;
+  overflow-x: auto;
+  font-size: 0.85rem;
+  line-height: 1.5;
+  color: #dbeafe;
+}
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 14px 0 22px;
+  font-size: 0.92rem;
+}
+th, td {
+  border: 1px solid var(--border);
+  padding: 10px 12px;
+  text-align: left;
+  vertical-align: top;
+}
+th { background: var(--panel); color: #cfe0ff; }
+.search-box {
+  width: 100%;
+  padding: 12px 15px;
+  border-radius: 8px;
+  border: 1px solid var(--border);
+  background: var(--code-bg);
+  color: #fff;
+  font-size: 0.98rem;
+  margin: 10px 0 18px;
+}
+footer {
+  margin-top: 52px;
+  padding: 28px 0 40px;
+  border-top: 1px solid var(--border);
+  color: var(--muted);
+  font-size: 0.85rem;
+}
+</style>
+  <script type="application/ld+json">{"@context": "https://schema.org", "@type": "CollectionPage", "name": "M&A Quality of Earnings (QoE), SaaS Cohort & Carve-Out Suite", "url": "https://quantledgerapi.github.io/suites/suite-05/"}</script>
+</head>
+<body>
+  <header class="top">
+    <div class="wrap nav">
+      <a class="brand" href="https://quantledgerapi.github.io/">QuantLedger API &amp; MCP Docs <span style="color:#9fb0d9;font-weight:400;font-size:0.84rem;">v2.2.2</span></a>
+      <nav class="nav-links">
+        <a href="https://quantledgerapi.github.io/#engines">All Engines</a>
+        <a href="https://quantledgerapi.github.io/sec-edgar-10k-xbrl-covenants/">SEC EDGAR 10-K API</a>
+        <a href="https://github.com/QuantLedgerAPI/quantledger-mcp">GitHub MCP</a>
+        <a href="https://apify.com/quantledger/quantledger-cpa-gaap-tax-sec-mcp">Apify Store</a>
+        <a class="btn primary" href="https://rapidapi.com/quantledger/api/quantledger-73-engine-financial-and-statutory-api">Get Free API Key</a>
+      </nav>
+    </div>
+  </header>
+  <main class="wrap">
+    
+        <section class="hero">
+          <span class="badge">SUITE-05</span>
+          <h1>M&amp;A Quality of Earnings (QoE), SaaS Cohort &amp; Carve-Out Suite — API &amp; MCP Calculators</h1>
+          <p class="lead">Deterministic pure-Python &amp; NumPy statutory and financial calculation engines calibrated across all 57 US jurisdictions.</p>
+        </section>
+        <table>
+          <thead><tr><th>Code</th><th>Engine Reference</th><th>Governing Authorities</th><th>Calculation Scope</th></tr></thead>
+          <tbody><tr><td><code>BI-21</code></td><td><a href="https://quantledgerapi.github.io/engines/bi-21-institutional-quality-of-earnings-qoe-normalized-ebitda-net/"><strong>Institutional Quality of Earnings (QoE), Normalized EBITDA &amp; Net Working Capital (NWC) Peg</strong></a></td><td>AICPA Consulting Services (CS Section 100) &amp; Transaction Advisory QoE Framework; FASB ASC 606 / ASC 842 / ASC 450</td><td>Screens 36 months of trial balances via Beneish M-Score and Dechow-Dichev accrual regressions, reconciles GAAP-to-Normalized EBITDA with 12-month Proof-of-Cash, and locks the NWC Peg. Applies Beneish (1999) 8-Variable M-Score Earnings Manipulation &amp; Accrual Anomaly Index; Dechow-Dichev (2002) Working-Capital Accrual Quality &amp; Cash-Conversion Regression; Benford&#x27;s Law First-Two-Digit Forensic Distribution (Journal-Entry &amp; Revenue Cutoff Test); Seasonality-Adjusted 12-Month Net Working Capital (NWC) Peg &amp; Price-Volume-Mix (PVM) Bridge. Outputs: Cover and Index, Executive Summary EBITDA Bridge, EBITDA Adjustments Schedule, Monthly Income Statement 36Mo.</td></tr><tr><td><code>BI-22</code></td><td><a href="https://quantledgerapi.github.io/engines/bi-22-corporate-carve-out-standalone-financial-reconstruction-transition-ser/"><strong>Corporate Carve-Out Standalone Financial Reconstruction &amp; Transition Services Agreement (TSA) Pricing</strong></a></td><td>SEC Regulation S-X Rule 3-05 &amp; Article 11 (Carve-Out &amp; Pro Forma Financial Statements); FASB ASC 205-20 (Discontinued Operations)</td><td>Separates parent corporate allocations from true standalone Day-1 OpCo run-rate costs, quantifies parent stranded overhead, and prices Transition Services Agreement (TSA) schedules at arm&#x27;s length. Applies Shapley-Value Cooperative Game-Theoretic Shared-Service Cost Allocation Theorem; Simultaneous Reciprocal Service-Department Matrix Algebra (Standalone Cost Reconstruction; Activity-Based Costing (ABC) Stranded-Cost &amp; Step-Function Dis-Synergy Model; IRC § 482 Comparable Profits Method (CPM) Arm&#x27;s-Length TSA SLA Pricing Equation. Outputs: 01 CarveOut Exec Bridge, 02 Reg SX Cost Allocation, 03 Standalone Day1 Model, 04 TSA Service Schedule.</td></tr><tr><td><code>BI-23</code></td><td><a href="https://quantledgerapi.github.io/engines/bi-23-asc-606-recurring-revenue-quality-net-dollar-retention/"><strong>ASC 606 Recurring Revenue Quality, Net Dollar Retention (NDR) &amp; Cohort Unit-Economics</strong></a></td><td>FASB ASC 606 (Contract Identification, Performance Obligations &amp; Variable Consideration); SEC Non-GAAP Financial Measures C&amp;DI Guidance; SaaS Capital / Bessemer Institutional SaaS Metrics Standard</td><td>Tracks cohort expansion, contraction, and churn via Markov transition matrices, computes true fully burdened LTV/CAC and Magic Number, and unbundles multi-element contracts under ASC 606 SSP rules. Applies Kaplan-Meier &amp; Weibull Parametric Logo/Dollar Churn Survival Hazard Law; Absorbing &amp; Expanding Markov Chain Net Dollar Retention (NDR) Cohort Transition Matrix; Fader-Hardie Pareto/NBD &amp; Beta-Geometric Customer Lifetime Value (LTV / CAC) Law; FASB ASC 606 Relative Standalone Selling Price (SSP) Multi-Element Allocation Equation. Outputs: 00 Exec SaaS KPI Dashboard, 01 ARR Snowball RollForward, 02 Customer Cohort LayerCake, 03 ASC606 RevRec Deferred.</td></tr><tr><td><code>BI-24</code></td><td><a href="https://quantledgerapi.github.io/engines/bi-24-post-merger-integration-pmi-cognizable-synergy-verification-100/"><strong>Post-Merger Integration (PMI) Cognizable Synergy Verification &amp; 100-Day Value-Capture</strong></a></td><td>FASB ASC 805 (Business Combinations); FTC/DOJ 2023 Merger Guidelines § 3.3 (Verifiable Merger-Specific Efficiencies Standard)</td><td>Separates verifiable, merger-specific synergies from speculative revenue hopes, models the 24-month Cost-to-Achieve (CTA) cash J-curve, and stress-tests 100-Day critical-path integration delays. Applies Risk-Adjusted Parametric Synergy Realization &amp; Cost-to-Achieve (CTA) J-Curve Model; Cobb-Douglas &amp; Translog Post-Merger Economies-of-Scale &amp; Scope Cost Function; Critical Path (PERT / Beta Distribution) 100-Day Integration Milestone Delay Simulation; Markov Customer &amp; Key-Talent Attrition Hazard During Post-Close Integration. Outputs: 00 Exec Synergy Dashboard, 01 Headcount Org Duplication, 02 Procurement PP and E Harmonize, 03 Rev CrossSell Cannibalization.</td></tr><tr><td><code>BI-25</code></td><td><a href="https://quantledgerapi.github.io/engines/bi-25-pre-loi-sell-side-exit-readiness-value-driver/"><strong>Pre-LOI Sell-Side Exit Readiness, Value-Driver Remediation &amp; Working Capital Optimization</strong></a></td><td>AICPA SSVS No. 1 (VS Section 100) (Valuation of a Business, Business Ownership Interest, Security, or Intangible Asset); IRS Revenue Ruling 59-60</td><td>Values the enterprise across DCF, precedent M&amp;A, and public-comp methodologies, quantifies the buyer multiple haircut from customer concentration, and maps 180-day pre-LOI EBITDA/NWC value levers. Applies Multi-Stage Discounted Cash Flow (DCF) &amp; CAPM / Kroll Size-Adjusted WACC Valuation; Hedonic Valuation Multiple Regression (EV/EBITDA Sensitivity to Growth, Margin &amp; Retention; Herfindahl-Hirschman (HHI) Customer/Vendor Concentration &amp; Key-Person Valuation Discount; Cash-Conversion Cycle (DSO + DIO - DPO) Working-Capital Release Optimization. Outputs: 00 Exec Valuation Readiness, 01 SellSide QoE PreRehearsal, 02 SSVS1 DCF and Comps Valuation, 03 RevRul 59 60 Multiple Scorer.</td></tr></tbody>
+        </table>
+        <p><a href="https://quantledgerapi.github.io/">&larr; Back to All 10 Institutional Suites</a></p>
+        
+  </main>
+  <footer>
+    <div class="wrap">
+      <p><strong>Stateless Privacy &amp; Computational Utility Notice:</strong> All QuantLedger API and Model Context Protocol (MCP) endpoints evaluate numeric and textual inputs strictly in volatile RAM with zero caller data retention. Outputs provide deterministic mathematical, econometric, and statutory calculations for technical and analytical workflows and do not constitute CPA attest/assurance opinions, formal tax opinions, legal advice, or registered investment advice.</p>
+      <p>Public U.S. federal datasets (SEC EDGAR XBRL/10-K, Federal Reserve Bank of New York SOFR/EFFR, U.S. Treasury yields, Census NAICS, and SIC crosswalks) are sourced from official public-domain `.gov` feeds under 17 U.S.C. &sect; 105. &middot; <a href="https://quantledgerapi.github.io/sitemap.xml">XML Sitemap</a> &middot; <a href="https://quantledgerapi.github.io/llms.txt">llms.txt</a></p>
+    </div>
+  </footer>
+</body>
+</html>

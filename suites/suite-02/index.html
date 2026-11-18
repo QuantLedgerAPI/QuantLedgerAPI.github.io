@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Federal GovCon, DCAA Wrap-Rate &amp; FAR/CAS Pricing Suite API &amp; MCP | Q</title>
+  <meta name="description" content="Reference documentation for Federal GovCon, DCAA Wrap-Rate &amp; FAR/CAS Pricing Suite (5 deterministic accounting, tax, and financial API/MCP engines)." />
+  <link rel="canonical" href="https://quantledgerapi.github.io/suites/suite-02/" />
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="Federal GovCon, DCAA Wrap-Rate &amp; FAR/CAS Pricing Suite API &amp; MCP | Q" />
+  <meta property="og:description" content="Reference documentation for Federal GovCon, DCAA Wrap-Rate &amp; FAR/CAS Pricing Suite (5 deterministic accounting, tax, and financial API/MCP engines)." />
+  <meta property="og:url" content="https://quantledgerapi.github.io/suites/suite-02/" />
+  <style>
+:root {
+  --bg: #0b1020;
+  --panel: #131b33;
+  --border: #253259;
+  --text: #eef2ff;
+  --muted: #9fb0d9;
+  --accent: #4f8cff;
+  --accent-soft: rgba(79, 140, 255, 0.14);
+  --green: #34d399;
+  --code-bg: #080c18;
+}
+* { box-sizing: border-box; }
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Inter, sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  line-height: 1.62;
+}
+a { color: #7cb0ff; text-decoration: none; }
+a:hover { text-decoration: underline; }
+.wrap { max-width: 1120px; margin: 0 auto; padding: 0 22px; }
+header.top {
+  border-bottom: 1px solid var(--border);
+  background: rgba(11, 16, 32, 0.94);
+  position: sticky;
+  top: 0;
+  z-index: 20;
+  backdrop-filter: blur(8px);
+}
+.nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 14px 0;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+.brand { font-weight: 700; font-size: 1.08rem; color: #fff; letter-spacing: -0.01em; }
+.nav-links { display: flex; gap: 16px; flex-wrap: wrap; font-size: 0.92rem; }
+.btn {
+  display: inline-block;
+  padding: 9px 16px;
+  border-radius: 7px;
+  font-weight: 600;
+  font-size: 0.9rem;
+  border: 1px solid var(--border);
+  background: var(--panel);
+  color: #fff;
+}
+.btn.primary { background: var(--accent); border-color: var(--accent); color: #fff; }
+.btn:hover { text-decoration: none; filter: brightness(1.08); }
+.hero { padding: 44px 0 28px; border-bottom: 1px solid var(--border); }
+.badge {
+  display: inline-block;
+  padding: 4px 10px;
+  border-radius: 999px;
+  background: var(--accent-soft);
+  color: #93bcff;
+  font-size: 0.8rem;
+  font-weight: 600;
+  margin-bottom: 12px;
+}
+h1 { font-size: 2.05rem; line-height: 1.22; margin: 0 0 14px; letter-spacing: -0.02em; }
+h2 { font-size: 1.35rem; margin: 32px 0 12px; border-bottom: 1px solid var(--border); padding-bottom: 8px; }
+h3 { font-size: 1.06rem; margin: 20px 0 8px; color: #cfe0ff; }
+p.lead { font-size: 1.06rem; color: var(--muted); max-width: 880px; margin: 0 0 20px; }
+.cta-row { display: flex; gap: 12px; flex-wrap: wrap; margin-top: 18px; }
+.grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); gap: 16px; margin: 18px 0; }
+.card {
+  background: var(--panel);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 18px;
+}
+.card code.code-pill {
+  background: var(--code-bg);
+  padding: 2px 7px;
+  border-radius: 5px;
+  color: var(--green);
+  font-size: 0.82rem;
+}
+pre {
+  background: var(--code-bg);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 14px 16px;
+  overflow-x: auto;
+  font-size: 0.85rem;
+  line-height: 1.5;
+  color: #dbeafe;
+}
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 14px 0 22px;
+  font-size: 0.92rem;
+}
+th, td {
+  border: 1px solid var(--border);
+  padding: 10px 12px;
+  text-align: left;
+  vertical-align: top;
+}
+th { background: var(--panel); color: #cfe0ff; }
+.search-box {
+  width: 100%;
+  padding: 12px 15px;
+  border-radius: 8px;
+  border: 1px solid var(--border);
+  background: var(--code-bg);
+  color: #fff;
+  font-size: 0.98rem;
+  margin: 10px 0 18px;
+}
+footer {
+  margin-top: 52px;
+  padding: 28px 0 40px;
+  border-top: 1px solid var(--border);
+  color: var(--muted);
+  font-size: 0.85rem;
+}
+</style>
+  <script type="application/ld+json">{"@context": "https://schema.org", "@type": "CollectionPage", "name": "Federal GovCon, DCAA Wrap-Rate & FAR/CAS Pricing Suite", "url": "https://quantledgerapi.github.io/suites/suite-02/"}</script>
+</head>
+<body>
+  <header class="top">
+    <div class="wrap nav">
+      <a class="brand" href="https://quantledgerapi.github.io/">QuantLedger API &amp; MCP Docs <span style="color:#9fb0d9;font-weight:400;font-size:0.84rem;">v2.2.2</span></a>
+      <nav class="nav-links">
+        <a href="https://quantledgerapi.github.io/#engines">All Engines</a>
+        <a href="https://quantledgerapi.github.io/sec-edgar-10k-xbrl-covenants/">SEC EDGAR 10-K API</a>
+        <a href="https://github.com/QuantLedgerAPI/quantledger-mcp">GitHub MCP</a>
+        <a href="https://apify.com/quantledger/quantledger-cpa-gaap-tax-sec-mcp">Apify Store</a>
+        <a class="btn primary" href="https://rapidapi.com/quantledger/api/quantledger-73-engine-financial-and-statutory-api">Get Free API Key</a>
+      </nav>
+    </div>
+  </header>
+  <main class="wrap">
+    
+        <section class="hero">
+          <span class="badge">SUITE-02</span>
+          <h1>Federal GovCon, DCAA Wrap-Rate &amp; FAR/CAS Pricing Suite — API &amp; MCP Calculators</h1>
+          <p class="lead">Deterministic pure-Python &amp; NumPy statutory and financial calculation engines calibrated across all 57 US jurisdictions.</p>
+        </section>
+        <table>
+          <thead><tr><th>Code</th><th>Engine Reference</th><th>Governing Authorities</th><th>Calculation Scope</th></tr></thead>
+          <tbody><tr><td><code>BI-06</code></td><td><a href="https://quantledgerapi.github.io/engines/bi-06-independent-price-to-win-ptw-far-15-404/"><strong>Independent Price-to-Win (PTW) &amp; FAR 15.404-1 Cost/Price Realism Analysis</strong></a></td><td>FAR 15.404-1(b)–(d) (Proposal Analysis Techniques &amp; Cost Realism); FAR 52.222-46 (Professional Employee Compensation)</td><td>Reconstructs competitor indirect wrap rates from historical FPDS awards, maps Best-Value Tradeoff win-probability against price, and enforces FAR 52.222-46 wage floors preventing realism adjustments. Applies McFadden Multinomial Logit Best-Value Tradeoff Win-Probability (P(Win)) Model; Bayesian First-Price Sealed-Bid Competitor Wrap-Rate Posterior Estimation; Wright / Crawford Unit Learning-Curve Direct-Labor Efficiency Law (Y_x = a * x^b); FAR 15.404-1(d) Cost-Realism Escalation &amp; FAR 52.222-46 Compensation Floor Distribution. Outputs: 01 PTW Exec Summary, 02 Section B CLIN Summary, 03 Labor Rate Wrap Build, 04 FAR 52 222 46 Realism.</td></tr><tr><td><code>BI-07</code></td><td><a href="https://quantledgerapi.github.io/engines/bi-07-forward-pricing-indirect-rate-proposal-fprp-cas-401/"><strong>Forward Pricing Indirect Rate Proposal (FPRP) &amp; CAS 401–418 Allocation</strong></a></td><td>FAR Subpart 31.2 (Cost Principles for Commercial Organizations); 48 CFR Part 9904 (CAS 403, 410, 418); DCAA CAM Chapter 9 (ICE Model / FPRP)</td><td>Solves simultaneous reciprocal cost-pool allocations across Fringe, Overhead, and G&amp;A (TCI vs. Value-Added base), modeling wrap-rate sensitivity to contract awards and backlog runoff. Applies CAS 410/418 Simultaneous Three-Pool Reciprocal Matrix Algebra (Fringe, OH, G&amp;A; Cobb-Douglas &amp; CES Direct-to-Indirect Labor Production Elasticity; Mincer Human-Capital Earnings &amp; Fringe-Pool Step-Aging Matrix; Erlang-C Shared-Service Capacity Utilization &amp; Base-Dilution Sensitivity Law. Outputs: Schedule A, Schedule B, Schedule C, Schedule D.</td></tr><tr><td><code>BI-08</code></td><td><a href="https://quantledgerapi.github.io/engines/bi-08-cleared-direct-labor-utilization-uncompensated-overtime-subcontractor/"><strong>Cleared Direct-Labor Utilization, Uncompensated Overtime &amp; Subcontractor Pass-Through</strong></a></td><td>FAR 52.215-22 / 52.215-23 (Limitations on Pass-Through Charges); DCAA CAM 6-410 (Uncompensated Overtime); 13 CFR § 125.6 (Limitations on Subcontracting / Ostensible Subcontractor)</td><td>Optimizes cleared Secret/TS-SCI billable bench buffers under DCSA adjudication delays, calculates uncompensated overtime rate dilution, and locks prime labor share above the 50% statutory floor. Applies Erlang-C Cleared-Bench Queueing &amp; Security-Clearance Onboarding Delay Law; DCAA CAM 6-410 Uncompensated Overtime Effective-Hourly-Rate Dilution Equation; Markov Chain Cleared-Personnel Attrition &amp; Replacement Cost Hazard Model; Constrained Linear Programming Prime vs. Subcontractor Workshare Optimization (13 CFR § 125.6 &amp; FAR 52.215-23). Outputs: 01 Exec Labor Workshare, 02 DCAA CAM 6 410 UCOT, 03 FAR 52 215 23 PassThru, 04 Cleared Bench Burn Model.</td></tr><tr><td><code>BI-09</code></td><td><a href="https://quantledgerapi.github.io/engines/bi-09-baa-far-part-25-taa-dfars-berry-amendment/"><strong>BAA (FAR Part 25), TAA &amp; DFARS Berry Amendment Domestic Content &amp; Tariff Impact</strong></a></td><td>FAR Part 25 (Buy American Act — 65% scaling to 75% in 2029 domestic content rule); DFARS 252.225-7001 / 7012 (Berry Amendment &amp; Specialty Metals); 19 U.S.C. § 2411 (Section 301 Tariffs)</td><td>Propagates sub-tier foreign material costs and Section 301/232 tariffs through the indented BoM via Leontief matrix inversion and optimizes domestic component swaps to clear the 65%/75% BAA step. Applies Leontief Inverse Matrix (I - A)^-1 Multi-Tier Bill-of-Materials Cost-Propagation Law; Armington CES Domestic-vs-Foreign Component Substitution Elasticity; Shephard&#x27;s Lemma Tariff Pass-Through &amp; Margin-Absorption Theorem; FAR 25.003 Domestic Component Cost-Ratio Step-Function (65% to 75%) Threshold Equation. Outputs: 01 Exec Origin Dashboard, 02 BOM Component Origin, 03 DFARS Berry Specialty, 04 Sec301 Tariff PassThru.</td></tr><tr><td><code>BI-10</code></td><td><a href="https://quantledgerapi.github.io/engines/bi-10-nist-sp-800-171-rev-3-dfars-252/"><strong>NIST SP 800-171 Rev. 3, DFARS 252.204-7012 &amp; 32 CFR Part 170 CMMC Level 2 Readiness &amp; ROI</strong></a></td><td>32 CFR Part 170 (CMMC Program Final Rule); 48 CFR / DFARS 252.204-7012, -7019, -7020, -7021; NIST SP 800-171 Rev. 2 / Rev. 3 (110 Security Requirements)</td><td>Computes exact DoD SPRS weighted scores (-1/-3/-5 weights across 110 controls), sizes optimal enclave remediation CapEx via Gordon-Loeb, and values CUI defense backlog protected from False Claims liability. Applies Gordon-Loeb Optimal Cybersecurity Investment Model (z* &lt;= (1/e) * v * L; Factor Analysis of Information Risk (FAIR) Loss-Exceedance Curve Parametric Simulation; DoD SPRS 110-Control Weighted Deficit Scoring Equation (+110 to -203); Risk-Adjusted Net Present Value (NPV) Contract-At-Risk Retention Valuation. Outputs: SPRS Score Summary, NIST 110 Control Matrix, POAM 180Day Remediation, CUI Boundary Asset Inventory.</td></tr></tbody>
+        </table>
+        <p><a href="https://quantledgerapi.github.io/">&larr; Back to All 10 Institutional Suites</a></p>
+        
+  </main>
+  <footer>
+    <div class="wrap">
+      <p><strong>Stateless Privacy &amp; Computational Utility Notice:</strong> All QuantLedger API and Model Context Protocol (MCP) endpoints evaluate numeric and textual inputs strictly in volatile RAM with zero caller data retention. Outputs provide deterministic mathematical, econometric, and statutory calculations for technical and analytical workflows and do not constitute CPA attest/assurance opinions, formal tax opinions, legal advice, or registered investment advice.</p>
+      <p>Public U.S. federal datasets (SEC EDGAR XBRL/10-K, Federal Reserve Bank of New York SOFR/EFFR, U.S. Treasury yields, Census NAICS, and SIC crosswalks) are sourced from official public-domain `.gov` feeds under 17 U.S.C. &sect; 105. &middot; <a href="https://quantledgerapi.github.io/sitemap.xml">XML Sitemap</a> &middot; <a href="https://quantledgerapi.github.io/llms.txt">llms.txt</a></p>
+    </div>
+  </footer>
+</body>
+</html>

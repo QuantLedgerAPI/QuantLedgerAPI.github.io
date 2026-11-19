@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>US KYB, OFAC Sanctions, BIS Entity List &amp; OIG Exclusions Screener + </title>
+  <meta name="description" content="Batch-screen 1 to 5,000 companies or individuals against 138,000+ live U.S. OFAC SDN/SSI, Commerce BIS Entity List, State Dept ITAR, HHS OIG Exclusions, OFAC 50" />
+  <link rel="canonical" href="https://quantledgerapi.github.io/us-kyb-ofac-sanctions-screener/" />
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="US KYB, OFAC Sanctions, BIS Entity List &amp; OIG Exclusions Screener + " />
+  <meta property="og:description" content="Batch-screen 1 to 5,000 companies or individuals against 138,000+ live U.S. OFAC SDN/SSI, Commerce BIS Entity List, State Dept ITAR, HHS OIG Exclusions, OFAC 50" />
+  <meta property="og:url" content="https://quantledgerapi.github.io/us-kyb-ofac-sanctions-screener/" />
+  <style>
+:root {
+  --bg: #0b1020;
+  --panel: #131b33;
+  --border: #253259;
+  --text: #eef2ff;
+  --muted: #9fb0d9;
+  --accent: #4f8cff;
+  --accent-soft: rgba(79, 140, 255, 0.14);
+  --green: #34d399;
+  --code-bg: #080c18;
+}
+* { box-sizing: border-box; }
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Inter, sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  line-height: 1.62;
+}
+a { color: #7cb0ff; text-decoration: none; }
+a:hover { text-decoration: underline; }
+.wrap { max-width: 1120px; margin: 0 auto; padding: 0 22px; }
+header.top {
+  border-bottom: 1px solid var(--border);
+  background: rgba(11, 16, 32, 0.94);
+  position: sticky;
+  top: 0;
+  z-index: 20;
+  backdrop-filter: blur(8px);
+}
+.nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 14px 0;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+.brand { font-weight: 700; font-size: 1.08rem; color: #fff; letter-spacing: -0.01em; }
+.nav-links { display: flex; gap: 16px; flex-wrap: wrap; font-size: 0.92rem; }
+.btn {
+  display: inline-block;
+  padding: 9px 16px;
+  border-radius: 7px;
+  font-weight: 600;
+  font-size: 0.9rem;
+  border: 1px solid var(--border);
+  background: var(--panel);
+  color: #fff;
+}
+.btn.primary { background: var(--accent); border-color: var(--accent); color: #fff; }
+.btn:hover { text-decoration: none; filter: brightness(1.08); }
+.hero { padding: 44px 0 28px; border-bottom: 1px solid var(--border); }
+.badge {
+  display: inline-block;
+  padding: 4px 10px;
+  border-radius: 999px;
+  background: var(--accent-soft);
+  color: #93bcff;
+  font-size: 0.8rem;
+  font-weight: 600;
+  margin-bottom: 12px;
+}
+h1 { font-size: 2.05rem; line-height: 1.22; margin: 0 0 14px; letter-spacing: -0.02em; }
+h2 { font-size: 1.35rem; margin: 32px 0 12px; border-bottom: 1px solid var(--border); padding-bottom: 8px; }
+h3 { font-size: 1.06rem; margin: 20px 0 8px; color: #cfe0ff; }
+p.lead { font-size: 1.06rem; color: var(--muted); max-width: 880px; margin: 0 0 20px; }
+.cta-row { display: flex; gap: 12px; flex-wrap: wrap; margin-top: 18px; }
+.grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); gap: 16px; margin: 18px 0; }
+.card {
+  background: var(--panel);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 18px;
+}
+.card code.code-pill {
+  background: var(--code-bg);
+  padding: 2px 7px;
+  border-radius: 5px;
+  color: var(--green);
+  font-size: 0.82rem;
+}
+pre {
+  background: var(--code-bg);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 14px 16px;
+  overflow-x: auto;
+  font-size: 0.85rem;
+  line-height: 1.5;
+  color: #dbeafe;
+}
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 14px 0 22px;
+  font-size: 0.92rem;
+}
+th, td {
+  border: 1px solid var(--border);
+  padding: 10px 12px;
+  text-align: left;
+  vertical-align: top;
+}
+th { background: var(--panel); color: #cfe0ff; }
+.search-box {
+  width: 100%;
+  padding: 12px 15px;
+  border-radius: 8px;
+  border: 1px solid var(--border);
+  background: var(--code-bg);
+  color: #fff;
+  font-size: 0.98rem;
+  margin: 10px 0 18px;
+}
+footer {
+  margin-top: 52px;
+  padding: 28px 0 40px;
+  border-top: 1px solid var(--border);
+  color: var(--muted);
+  font-size: 0.85rem;
+}
+.calc-panel {
+  background: linear-gradient(180deg, #131b33 0%, #0e1529 100%);
+  border: 1px solid #35508c;
+  border-radius: 12px;
+  padding: 22px;
+  margin: 26px 0 30px;
+}
+.calc-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(235px, 1fr));
+  gap: 12px;
+  margin: 14px 0;
+}
+.calc-field label {
+  display: block;
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: #bcd0f7;
+  margin-bottom: 4px;
+}
+.calc-input {
+  width: 100%;
+  padding: 9px 11px;
+  border-radius: 7px;
+  border: 1px solid var(--border);
+  background: var(--code-bg);
+  color: #fff;
+  font-size: 0.92rem;
+}
+.kpi-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(210px, 1fr));
+  gap: 11px;
+  margin: 14px 0;
+}
+.kpi-box {
+  background: var(--code-bg);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 11px 13px;
+}
+.kpi-box .k-lbl { font-size: 0.77rem; color: var(--muted); margin-bottom: 4px; }
+.kpi-box .k-val { font-size: 1.08rem; font-weight: 700; color: var(--green); word-break: break-word; }
+.xlsx-box {
+  background: rgba(52, 211, 153, 0.07);
+  border: 1px solid rgba(52, 211, 153, 0.35);
+  border-radius: 10px;
+  padding: 16px 18px;
+  margin-top: 16px;
+}
+.btn.green { background: #10b981; border-color: #10b981; color: #04130d; font-weight: 700; cursor: pointer; }
+</style>
+  <script type="application/ld+json">{"@context": "https://schema.org", "@type": "WebApplication", "name": "US KYB, OFAC Sanctions, BIS Entity List & OIG Exclusions Screener + API", "applicationCategory": "BusinessApplication", "operatingSystem": "All", "description": "Batch-screen 1 to 5,000 companies or individuals against 138,000+ live U.S. OFAC SDN/SSI, Commerce BIS Entity List, State Dept ITAR, HHS OIG Exclusions, OFAC 50% Rule, and SEC EDGAR records with 5-tab .xlsx workpaper export.", "url": "https://quantledgerapi.github.io/us-kyb-ofac-sanctions-screener/"}</script>
+  <script src="https://quantledgerapi.github.io/assets/kyb_screener.js" defer></script>
+</head>
+<body>
+  <header class="top">
+    <div class="wrap nav">
+      <a class="brand" href="https://quantledgerapi.github.io/">QuantLedger API &amp; MCP Docs <span style="color:#9fb0d9;font-weight:400;font-size:0.84rem;">v2.5.1</span></a>
+      <nav class="nav-links">
+        <a href="https://quantledgerapi.github.io/#engines">All Engines</a>
+        <a href="https://quantledgerapi.github.io/us-kyb-ofac-sanctions-screener/">US KYB &amp; OFAC Screener</a>
+        <a href="https://quantledgerapi.github.io/sec-edgar-10k-xbrl-covenants/">SEC EDGAR 10-K API</a>
+        <a href="https://github.com/QuantLedgerAPI/quantledger-mcp">GitHub MCP</a>
+        <a href="https://apify.com/quantledger/quantledger-cpa-gaap-tax-sec-mcp">Apify Store</a>
+        <a class="btn primary" href="https://rapidapi.com/quantledger/api/quantledger-73-engine-financial-and-statutory-api">Get Free API Key</a>
+      </nav>
+    </div>
+  </header>
+  <main class="wrap">
+    
+    <section class="hero">
+      <span class="badge">138,000+ Live U.S. Federal Watchlist Names &middot; Jaro-Winkler Phonetics &middot; OFAC 50% Rule &middot; 5-Tab .xlsx</span>
+      <h1>Batch US KYB, OFAC Consolidated Sanctions, BIS Entity List, OIG Exclusions &amp; SEC EDGAR Screener</h1>
+      <p class="lead">Screen vendor onboarding spreadsheets, commercial borrowers, healthcare providers, freight counterparties, or M&amp;A target lists against <strong>12 U.S. Consolidated Screening Lists</strong> (<code>OFAC SDN/SSI/CMIC</code>, <code>Commerce BIS Entity List/Denied Persons</code>, <code>State Dept ITAR</code>), <strong>HHS OIG Federal Exclusions</strong> (<code>42 U.S.C. &sect; 1320a-7</code>), <strong>OFAC 50% Beneficial Ownership Aggregation</strong> (<code>31 CFR &sect; 501.801</code>), and <strong>SEC EDGAR Public Issuer CIKs</strong> in stateless volatile RAM.</p>
+      <div class="cta-row">
+        <a class="btn green" href="#ql-kyb-panel">Run Free Live Screener Below &darr;</a>
+        <a class="btn primary" href="https://apify.com/quantledger/us-kyb-ofac-sanctions-csl-screener-mcp">Batch Screen 1–5,000 on Apify ($0.08/Entity)</a>
+        <a class="btn" href="https://rapidapi.com/quantledger/api/quantledger-73-engine-financial-and-statutory-api">REST API on RapidAPI (5 Free/Mo)</a>
+      </div>
+    </section>
+
+    <section id="ql-kyb-panel" class="calc-panel">
+      <div style="display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap;">
+        <div>
+          <span class="badge" style="margin-bottom:6px;">Zero-Code Browser Compliance Screener &amp; 5-Tab .xlsx Builder</span>
+          <h2 style="margin:0;border:none;padding:0;">Live Multi-Entity OFAC, BIS, ITAR, OIG &amp; SEC Screener</h2>
+        </div>
+        <div style="display:flex;gap:10px;flex-wrap:wrap;">
+          <button id="ql-kyb-run" type="button" class="btn green">Screen Entities Now (Free Preview up to 25)</button>
+          <button id="ql-kyb-sample" type="button" class="btn" style="cursor:pointer;">Load Sample Mix</button>
+        </div>
+      </div>
+      <p style="font-size:0.9rem;color:#9fb0d9;margin:8px 0 12px;">Paste one legal entity or individual name per line (free browser preview screens up to 25 entities; PayPal `.xlsx` checkout compiles up to 500 entities; Apify/API screens up to 5,000 entities per call).</p>
+
+      <div class="calc-grid" style="grid-template-columns: 2fr 1fr;">
+        <div class="calc-field">
+          <label for="ql-kyb-entities">Company, Vendor, Borrower, or Principal Names (1 Per Line)</label>
+          <textarea id="ql-kyb-entities" class="calc-input" rows="6" style="font-family:monospace;">Apple Inc.
+Caterpillar Inc.
+AEROCARIBBEAN AIRLINES
+Aerocaribean Airline
+#1 MARKETING SERVICE, INC</textarea>
+        </div>
+        <div class="calc-field">
+          <label for="ql-kyb-threshold">Jaro-Winkler Fuzzy Similarity Threshold</label>
+          <select id="ql-kyb-threshold" class="calc-input">
+            <option value="0.84">0.84 — Wide Phonetic Sensitivity (High Recall)</option>
+            <option value="0.88" selected>0.88 — Standard FFIEC BSA/AML Threshold</option>
+            <option value="0.92">0.92 — Tight Name Similarity</option>
+            <option value="0.95">0.95 — Near-Exact Sanctions Hits Only</option>
+          </select>
+          <p style="font-size:0.8rem;color:#9fb0d9;margin-top:10px;">Scores &ge; <code>0.95</code> flag as direct blocked hits; scores between threshold and <code>0.95</code> flag for secondary compliance review.</p>
+        </div>
+      </div>
+
+      <div id="ql-kyb-status" style="font-size:0.86rem;color:#93bcff;margin:8px 0;">Click "Screen Entities Now" to run a live federal watchlist check in volatile RAM.</div>
+      <div id="ql-kyb-kpis" class="kpi-grid"></div>
+
+      <table>
+        <thead>
+          <tr>
+            <th>Queried Entity</th>
+            <th>Disposition</th>
+            <th>Risk (0–100)</th>
+            <th>Jaro-Winkler</th>
+            <th>Watchlist</th>
+            <th>Matched Federal Entry</th>
+            <th>SEC EDGAR CIK</th>
+          </tr>
+        </thead>
+        <tbody id="ql-kyb-tbody">
+          <tr><td colspan="7" style="color:#9fb0d9;">Click <strong>Screen Entities Now</strong> above to populate live OFAC, BIS, OIG, and SEC results.</td></tr>
+        </tbody>
+      </table>
+
+      <div class="xlsx-box">
+        <div style="display:flex;justify-content:space-between;align-items:flex-start;gap:16px;flex-wrap:wrap;">
+          <div style="flex:1;min-width:260px;">
+            <h3 style="margin:0 0 6px;color:#fff;">Download Signed 5-Tab KYB &amp; Sanctions Audit Workpaper (<code>.xlsx</code>) — <span id="ql-kyb-price">$19.00</span></h3>
+            <p style="margin:0 0 8px;font-size:0.88rem;color:#d1fae5;">Compiles up to 500 pasted entities into a 5-tab Excel compliance file: <code>01_Executive_Summary</code>, <code>02_Statutory_Rules</code> (OFAC 50% Rule, EAR Part 744, LEIE &sect; 1320a-7, Jaro-Winkler), <code>03_Workpaper_Schedule</code>, <code>04_Scenario_Sensitivity</code> (0.84 vs 0.88 vs 0.93 thresholds), and <code>05_Compliance_Audit_Flags</code>.</p>
+            <div style="display:flex;gap:10px;flex-wrap:wrap;margin-top:10px;">
+              <a class="btn primary" href="https://apify.com/quantledger/us-kyb-ofac-sanctions-csl-screener-mcp">Screen up to 5,000 Entities on Apify ($0.08/Entity)</a>
+              <a class="btn" href="https://rapidapi.com/quantledger/api/quantledger-73-engine-financial-and-statutory-api">Automate via RapidAPI REST / MCP</a>
+            </div>
+          </div>
+          <div id="ql-kyb-paypal" style="display:none;min-width:270px;max-width:340px;width:100%;"></div>
+        </div>
+      </div>
+    </section>
+
+    <h2>1. Official Federal Sanctions, Export-Control &amp; Exclusion Lists Indexed</h2>
+    <ul>
+      <li><strong>U.S. Department of the Treasury OFAC:</strong> Specially Designated Nationals (<code>SDN</code>) + AKAs, Sectoral Sanctions Identifications (<code>SSI</code>), Non-SDN Chinese Military-Industrial Complex (<code>CMIC</code>), Menu-Based Sanctions (<code>NS-MBS</code>), Foreign Sanctions Evaders, and Correspondent Account / Payable-Through (<code>CAPTA</code>).</li>
+      <li><strong>U.S. Department of Commerce BIS:</strong> Entity List (<code>15 CFR Part 744, Supp. No. 4</code>), Denied Persons List (<code>DPL</code>), Unverified List (<code>UVL</code>), and Military End User (<code>MEU</code>) List.</li>
+      <li><strong>U.S. Department of State DDTC / ISN:</strong> ITAR Statutory &amp; Administrative Debarred Parties (<code>22 CFR Part 127</code>) and Nonproliferation Sanctions.</li>
+      <li><strong>U.S. Department of Health &amp; Human Services OIG:</strong> List of Excluded Individuals and Entities (<code>LEIE</code> — <code>42 U.S.C. &sect; 1320a-7</code>).</li>
+      <li><strong>OFAC Revised 50% Rule (<code>31 CFR &sect; 501.801</code>) &amp; SEC EDGAR:</strong> Aggregates blocked equity percentages across structured <code>beneficial_owners</code> arrays and cross-checks public company <code>CIK</code> / stock tickers.</li>
+    </ul>
+
+    <h2>2. Programmatic REST API &amp; Model Context Protocol (MCP) Integration</h2>
+    <pre><code>curl -X POST &quot;https://quantledger-73-engine-financial-and-statutory-api.p.rapidapi.com/v1/kyb/batch-screen&quot; \
+  -H &quot;Content-Type: application/json&quot; \
+  -H &quot;X-RapidAPI-Key: YOUR_RAPIDAPI_KEY&quot; \
+  -H &quot;X-RapidAPI-Host: quantledger-73-engine-financial-and-statutory-api.p.rapidapi.com&quot; \
+  -d &#x27;{
+    &quot;entities&quot;: [
+      &quot;Apple Inc.&quot;,
+      &quot;AEROCARIBBEAN AIRLINES&quot;,
+      {&quot;entity_name&quot;: &quot;Meridian Global Freight LLC&quot;, &quot;beneficial_owners&quot;: [{&quot;name&quot;: &quot;AEROCARIBBEAN AIRLINES&quot;, &quot;ownership_pct&quot;: 55}]}
+    ],
+    &quot;fuzzy_threshold&quot;: 0.88
+  }&#x27;</code></pre>
+    
+  </main>
+  <footer>
+    <div class="wrap">
+      <p><strong>Stateless Privacy &amp; Computational Utility Notice:</strong> All QuantLedger API and Model Context Protocol (MCP) endpoints evaluate numeric and textual inputs strictly in volatile RAM with zero caller data retention. Outputs provide deterministic accounting, financial, and statutory regulatory calculations for technical and analytical workflows and do not constitute CPA attest/assurance opinions, formal tax opinions, legal advice, or registered investment advice.</p>
+      <p>Public U.S. federal datasets (SEC EDGAR XBRL/10-K, Federal Reserve Bank of New York SOFR/EFFR, U.S. Treasury yields, Census NAICS, and SIC crosswalks) are sourced from official public-domain `.gov` feeds under 17 U.S.C. &sect; 105. &middot; <a href="https://quantledgerapi.github.io/sitemap.xml">XML Sitemap</a> &middot; <a href="https://quantledgerapi.github.io/llms.txt">llms.txt</a></p>
+    </div>
+  </footer>
+</body>
+</html>

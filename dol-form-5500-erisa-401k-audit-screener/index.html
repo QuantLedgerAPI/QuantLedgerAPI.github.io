@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>DOL Form 5500 401(k) CPA Audit &amp; ERISA Fee Screener</title>
+  <meta name="description" content="Screen 121,000+ official U.S. DOL EBSA Form 5500 retirement plans for 80-120 participant first-time CPA audit leads, ERISA Sec. 408(b)(2) excess fees, Line 4a l" />
+  <link rel="canonical" href="https://quantledgerapi.github.io/dol-form-5500-erisa-401k-audit-screener/" />
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="DOL Form 5500 401(k) CPA Audit &amp; ERISA Fee Screener" />
+  <meta property="og:description" content="Screen 121,000+ official U.S. DOL EBSA Form 5500 retirement plans for 80-120 participant first-time CPA audit leads, ERISA Sec. 408(b)(2) excess fees, Line 4a l" />
+  <meta property="og:url" content="https://quantledgerapi.github.io/dol-form-5500-erisa-401k-audit-screener/" />
+  <style>
+:root {
+  --bg: #0b1020;
+  --panel: #131b33;
+  --border: #253259;
+  --text: #eef2ff;
+  --muted: #9fb0d9;
+  --accent: #4f8cff;
+  --accent-soft: rgba(79, 140, 255, 0.14);
+  --green: #34d399;
+  --code-bg: #080c18;
+}
+* { box-sizing: border-box; }
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Inter, sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  line-height: 1.62;
+}
+a { color: #7cb0ff; text-decoration: none; }
+a:hover { text-decoration: underline; }
+.wrap { max-width: 1120px; margin: 0 auto; padding: 0 22px; }
+header.top {
+  border-bottom: 1px solid var(--border);
+  background: rgba(11, 16, 32, 0.94);
+  position: sticky;
+  top: 0;
+  z-index: 20;
+  backdrop-filter: blur(8px);
+}
+.nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 14px 0;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+.brand { font-weight: 700; font-size: 1.08rem; color: #fff; letter-spacing: -0.01em; }
+.nav-links { display: flex; gap: 16px; flex-wrap: wrap; font-size: 0.92rem; }
+.btn {
+  display: inline-block;
+  padding: 9px 16px;
+  border-radius: 7px;
+  font-weight: 600;
+  font-size: 0.9rem;
+  border: 1px solid var(--border);
+  background: var(--panel);
+  color: #fff;
+}
+.btn.primary { background: var(--accent); border-color: var(--accent); color: #fff; }
+.btn:hover { text-decoration: none; filter: brightness(1.08); }
+.hero { padding: 44px 0 28px; border-bottom: 1px solid var(--border); }
+.badge {
+  display: inline-block;
+  padding: 4px 10px;
+  border-radius: 999px;
+  background: var(--accent-soft);
+  color: #93bcff;
+  font-size: 0.8rem;
+  font-weight: 600;
+  margin-bottom: 12px;
+}
+h1 { font-size: 2.05rem; line-height: 1.22; margin: 0 0 14px; letter-spacing: -0.02em; }
+h2 { font-size: 1.35rem; margin: 32px 0 12px; border-bottom: 1px solid var(--border); padding-bottom: 8px; }
+h3 { font-size: 1.06rem; margin: 20px 0 8px; color: #cfe0ff; }
+p.lead { font-size: 1.06rem; color: var(--muted); max-width: 880px; margin: 0 0 20px; }
+.cta-row { display: flex; gap: 12px; flex-wrap: wrap; margin-top: 18px; }
+.grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); gap: 16px; margin: 18px 0; }
+.card {
+  background: var(--panel);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 18px;
+}
+.card code.code-pill {
+  background: var(--code-bg);
+  padding: 2px 7px;
+  border-radius: 5px;
+  color: var(--green);
+  font-size: 0.82rem;
+}
+pre {
+  background: var(--code-bg);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 14px 16px;
+  overflow-x: auto;
+  font-size: 0.85rem;
+  line-height: 1.5;
+  color: #dbeafe;
+}
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 14px 0 22px;
+  font-size: 0.92rem;
+}
+th, td {
+  border: 1px solid var(--border);
+  padding: 10px 12px;
+  text-align: left;
+  vertical-align: top;
+}
+th { background: var(--panel); color: #cfe0ff; }
+.search-box {
+  width: 100%;
+  padding: 12px 15px;
+  border-radius: 8px;
+  border: 1px solid var(--border);
+  background: var(--code-bg);
+  color: #fff;
+  font-size: 0.98rem;
+  margin: 10px 0 18px;
+}
+footer {
+  margin-top: 52px;
+  padding: 28px 0 40px;
+  border-top: 1px solid var(--border);
+  color: var(--muted);
+  font-size: 0.85rem;
+}
+.calc-panel {
+  background: linear-gradient(180deg, #131b33 0%, #0e1529 100%);
+  border: 1px solid #35508c;
+  border-radius: 12px;
+  padding: 22px;
+  margin: 26px 0 30px;
+}
+.calc-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(235px, 1fr));
+  gap: 12px;
+  margin: 14px 0;
+}
+.calc-field label {
+  display: block;
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: #bcd0f7;
+  margin-bottom: 4px;
+}
+.calc-input {
+  width: 100%;
+  padding: 9px 11px;
+  border-radius: 7px;
+  border: 1px solid var(--border);
+  background: var(--code-bg);
+  color: #fff;
+  font-size: 0.92rem;
+}
+.kpi-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(210px, 1fr));
+  gap: 11px;
+  margin: 14px 0;
+}
+.kpi-box {
+  background: var(--code-bg);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 11px 13px;
+}
+.kpi-box .k-lbl { font-size: 0.77rem; color: var(--muted); margin-bottom: 4px; }
+.kpi-box .k-val { font-size: 1.08rem; font-weight: 700; color: var(--green); word-break: break-word; }
+.xlsx-box {
+  background: rgba(52, 211, 153, 0.07);
+  border: 1px solid rgba(52, 211, 153, 0.35);
+  border-radius: 10px;
+  padding: 16px 18px;
+  margin-top: 16px;
+}
+.btn.green { background: #10b981; border-color: #10b981; color: #04130d; font-weight: 700; cursor: pointer; }
+</style>
+  <script type="application/ld+json">{"@context": "https://schema.org", "@type": "WebApplication", "name": "DOL Form 5500 401(k) CPA Audit & ERISA Fee Screener", "applicationCategory": "BusinessApplication", "operatingSystem": "All", "description": "Screen 121,000+ official U.S. DOL EBSA Form 5500 retirement plans for 80-120 participant first-time CPA audit leads, ERISA Sec. 408(b)(2) excess fees, Line 4a late deferrals, and bond shortfalls to .xlsx or API.", "url": "https://quantledgerapi.github.io/dol-form-5500-erisa-401k-audit-screener/"}</script>
+  <script src="https://quantledgerapi.github.io/assets/form_5500_screener.js" defer></script>
+</head>
+<body>
+  <header class="top">
+    <div class="wrap nav">
+      <a class="brand" href="https://quantledgerapi.github.io/">QuantLedger API &amp; MCP Docs <span style="color:#9fb0d9;font-weight:400;font-size:0.84rem;">v2.7.1</span></a>
+      <nav class="nav-links">
+        <a href="https://quantledgerapi.github.io/#engines">All Engines</a>
+        <a href="https://quantledgerapi.github.io/us-kyb-ofac-sanctions-screener/">US KYB &amp; OFAC</a>
+        <a href="https://quantledgerapi.github.io/sec-form-d-private-fundraising-leads/">SEC Form D Leads</a>
+        <a href="https://quantledgerapi.github.io/dol-form-5500-erisa-401k-audit-screener/">DOL Form 5500 Audit</a>
+        <a href="https://quantledgerapi.github.io/sec-edgar-10k-xbrl-covenants/">SEC 10-K API</a>
+        <a href="https://github.com/QuantLedgerAPI/quantledger-mcp">GitHub MCP</a>
+        <a href="https://apify.com/quantledger/quantledger-cpa-gaap-tax-sec-mcp">Apify Store</a>
+        <a class="btn primary" href="https://rapidapi.com/quantledger/api/quantledger-73-engine-financial-and-statutory-api">Get Free API Key</a>
+      </nav>
+    </div>
+  </header>
+  <main class="wrap">
+    
+    <section class="hero">
+      <span class="badge">121,000+ Live DOL EFAST2 Plans &middot; 80-120 CPA Audit Rule &middot; ERISA &sect; 408(b)(2) Fees &middot; 5-Tab .xlsx</span>
+      <h1>Live DOL Form 5500 Retirement Plan CPA Audit &amp; ERISA &sect; 408(b)(2) Fee-Trigger Screener</h1>
+      <p class="lead">Screen <strong>121,000+ official U.S. Department of Labor EBSA EFAST2 (<code>Form 5500</code> + <code>Schedule H</code> + <code>Schedule I</code>)</strong> retirement plans in milliseconds for <strong>post-2023 account-balance <code>80–120</code> CPA audit transitions</strong>, <strong>missing IQPA audit opinions</strong>, <strong><code>ERISA &sect; 408(b)(2)</code> excess recordkeeping fees</strong>, <strong>Line <code>4a</code> late employee deferrals</strong>, and <strong><code>ERISA &sect; 412</code> fidelity-bond shortfalls</strong>.</p>
+      <div class="cta-row">
+        <a class="btn green" href="#ql-f5500-panel">Screen Live Form 5500 Plans Below &darr;</a>
+        <a class="btn primary" href="https://apify.com/quantledger/dol-form-5500-erisa-401k-audit-leads-mcp">Automate on Apify ($0.10/Plan)</a>
+        <a class="btn" href="https://rapidapi.com/quantledger/api/quantledger-73-engine-financial-and-statutory-api">REST API on RapidAPI (5 Free/Mo)</a>
+      </div>
+    </section>
+
+    <section id="ql-f5500-panel" class="calc-panel">
+      <div style="display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap;">
+        <div>
+          <span class="badge" style="margin-bottom:6px;">Zero-Code CPA Benefit-Plan Audit &amp; 401(k) Advisor Lead Finder</span>
+          <h2 style="margin:0;border:none;padding:0;">Interactive DOL Form 5500 &amp; ERISA Compliance Screener</h2>
+        </div>
+        <button id="ql-f55-run" type="button" class="btn green">Screen Live Form 5500 Plans (Free Preview)</button>
+      </div>
+      <p style="font-size:0.9rem;color:#9fb0d9;margin:8px 0 12px;">Filter 121,000+ official DOL EFAST2 filings by statutory trigger, US state, company/EIN/CPA firm, and minimum plan assets (free preview displays 15 live plans; PayPal <code>.xlsx</code> checkout compiles up to 100 enriched plans).</p>
+
+      <div class="calc-grid">
+        <div class="calc-field">
+          <label for="ql-f55-year">DOL EFAST2 Plan Year</label>
+          <select id="ql-f55-year" class="calc-input">
+            <option value="2025" selected>2025 Latest FOIA Cohort</option>
+            <option value="2024">2024 FOIA Cohort</option>
+          </select>
+        </div>
+        <div class="calc-field">
+          <label for="ql-f55-trigger">Primary CPA Audit / ERISA Trigger</label>
+          <select id="ql-f55-trigger" class="calc-input">
+            <option value="FIRST_TIME_CPA_AUDIT_ZONE" selected>First-Time CPA Audit Zone (75-140 Acct-Bal Partcp)</option>
+            <option value="MISSING_CPA_AUDIT_OPINION">Large Plans Missing CPA Audit Opinion on File</option>
+            <option value="HIGH_FEE_BENCHMARK_ALERT">ERISA Sec. 408(b)(2) Excess Admin/Recordkeeping Fees</option>
+            <option value="LATE_DEFERRAL_VIOLATION">Line 4a Late Participant Deferrals (DOL VFCP)</option>
+            <option value="FIDELITY_BOND_SHORTFALL">ERISA Sec. 412 Statutory 10% Fidelity Bond Shortfall</option>
+            <option value="ALL_TRIGGERS">All High-Urgency Audit &amp; ERISA Triggers</option>
+            <option value="ALL_PLANS">All Active Retirement Plans (Unfiltered)</option>
+          </select>
+        </div>
+        <div class="calc-field">
+          <label for="ql-f55-state">Optional US State (e.g. CA, TX, NY, FL, IL)</label>
+          <input id="ql-f55-state" class="calc-input" type="text" maxlength="2" value="CA" placeholder="All US" />
+        </div>
+        <div class="calc-field">
+          <label for="ql-f55-query">Company, EIN, CPA Firm, or Custodian</label>
+          <input id="ql-f55-query" class="calc-input" type="text" placeholder="Optional keyword or 9-digit EIN" />
+        </div>
+        <div class="calc-field">
+          <label for="ql-f55-minassets">Minimum Plan Net Assets ($ USD)</label>
+          <input id="ql-f55-minassets" class="calc-input" type="number" step="100000" value="500000" />
+        </div>
+      </div>
+
+      <div id="ql-f55-status" style="font-size:0.86rem;color:#93bcff;margin:8px 0;">Click "Screen Live Form 5500 Plans" to query the official DOL EFAST2 index.</div>
+      <div id="ql-f55-kpis" class="kpi-grid"></div>
+
+      <table>
+        <thead>
+          <tr>
+            <th>Sponsor &amp; EIN</th>
+            <th>Fiduciary Signer &amp; Phone</th>
+            <th>Acct-Bal Partcp</th>
+            <th>Net Assets EOY</th>
+            <th>CPA Audit Trigger &amp; Firm</th>
+            <th>408(b)(2) Fee (bps)</th>
+            <th>4a Late &amp; Bond Gap</th>
+          </tr>
+        </thead>
+        <tbody id="ql-f55-tbody">
+          <tr><td colspan="7" style="color:#9fb0d9;">Click <strong>Screen Live Form 5500 Plans</strong> above to inspect CPA audit and 401(k) advisor opportunities.</td></tr>
+        </tbody>
+      </table>
+
+      <div class="xlsx-box">
+        <div style="display:flex;justify-content:space-between;align-items:flex-start;gap:16px;flex-wrap:wrap;">
+          <div style="flex:1;min-width:260px;">
+            <h3 style="margin:0 0 6px;color:#fff;">Download 100-Plan 5-Tab Form 5500 &amp; ERISA Excel Workpaper (<code>.xlsx</code>) — <span id="ql-f55-price">$19.00</span></h3>
+            <p style="margin:0 0 8px;font-size:0.88rem;color:#d1fae5;">Compiles up to 100 matching retirement plans with fiduciary signer names, phone numbers, account-balance participant counts, incumbent CPA firms, <code>ERISA &sect; 408(b)(2)</code> excess-fee savings, Line <code>4a</code> late-deferral amounts, and <code>ERISA &sect; 412</code> bond shortfalls into a formula-linked <code>.xlsx</code> workbook.</p>
+            <div style="display:flex;gap:10px;flex-wrap:wrap;margin-top:10px;">
+              <a class="btn primary" href="https://apify.com/quantledger/dol-form-5500-erisa-401k-audit-leads-mcp">Run Batch on Apify ($0.10/Plan)</a>
+              <a class="btn" href="https://rapidapi.com/quantledger/api/quantledger-73-engine-financial-and-statutory-api">Connect via RapidAPI REST / MCP</a>
+            </div>
+          </div>
+          <div id="ql-f55-paypal" style="display:none;min-width:270px;max-width:340px;width:100%;"></div>
+        </div>
+      </div>
+    </section>
+
+    <h2>1. Four Deterministic ERISA &amp; IRC Audit Rules Evaluated Per Plan</h2>
+    <ul>
+      <li><strong><code>29 CFR &sect; 2520.104-46</code> Post-2023 Account-Balance <code>80–120</code> IQPA Audit Rule:</strong> Evaluates <code>PARTCP_ACCOUNT_BAL_CNT_BOY</code> and Schedule I/H attachment to isolate growing companies entering their first Independent Qualified Public Accountant (<code>IQPA</code>) audit, plus Schedule H filers missing an audit opinion on file.</li>
+      <li><strong><code>ERISA &sect; 408(b)(2)</code> (<code>29 CFR &sect; 2550.408b-2</code>) Excess Fee Basis-Points Screen:</strong> Benchmarks reported administrative &amp; recordkeeping expenses against institutional asset-tier norms and calculates annual recoverable excess fee dollars.</li>
+      <li><strong><code>29 CFR &sect; 2510.3-102</code> Late Participant Deferrals &amp; <code>IRC &sect; 401(k)(8)</code> Refunds:</strong> Flags Line <code>4a</code> untimely employee contribution transmittals (DOL <code>VFCP</code> / <code>IRC &sect; 4975</code> exposure) and ADP/ACP corrective distributions suited for Safe-Harbor 401(k) plan redesign.</li>
+      <li><strong><code>ERISA &sect; 412</code> (<code>29 U.S.C. &sect; 1112</code>) Statutory 10% Fidelity Bond Screen:</strong> Verifies whether reported Line <code>4e</code> fidelity bond coverage meets the statutory <code>10%</code> plan-asset requirement (<code>$500K</code> cap, or <code>$1M</code> with employer securities).</li>
+    </ul>
+
+    <h2>2. Programmatic REST API &amp; Model Context Protocol (MCP) Integration</h2>
+    <pre><code>curl -X POST &quot;https://quantledger-73-engine-financial-and-statutory-api.p.rapidapi.com/v1/dol-ebsa/form-5500-audit-screen&quot; \
+  -H &quot;Content-Type: application/json&quot; \
+  -H &quot;X-RapidAPI-Key: YOUR_RAPIDAPI_KEY&quot; \
+  -H &quot;X-RapidAPI-Host: quantledger-73-engine-financial-and-statutory-api.p.rapidapi.com&quot; \
+  -d &#x27;{
+    &quot;plan_year&quot;: 2025,
+    &quot;trigger_filter&quot;: &quot;FIRST_TIME_CPA_AUDIT_ZONE&quot;,
+    &quot;state_filter&quot;: &quot;CA&quot;,
+    &quot;min_assets_usd&quot;: 500000,
+    &quot;max_results&quot;: 25
+  }&#x27;</code></pre>
+    
+  </main>
+  <footer>
+    <div class="wrap">
+      <p><strong>Stateless Privacy &amp; Computational Utility Notice:</strong> All QuantLedger API and Model Context Protocol (MCP) endpoints evaluate numeric and textual inputs strictly in volatile RAM with zero caller data retention. Outputs provide deterministic accounting, financial, and statutory regulatory calculations for technical and analytical workflows and do not constitute CPA attest/assurance opinions, formal tax opinions, legal advice, or registered investment advice.</p>
+      <p>Public U.S. federal datasets (SEC EDGAR XBRL/10-K, Federal Reserve Bank of New York SOFR/EFFR, U.S. Treasury yields, Census NAICS, and SIC crosswalks) are sourced from official public-domain `.gov` feeds under 17 U.S.C. &sect; 105. &middot; <a href="https://quantledgerapi.github.io/sitemap.xml">XML Sitemap</a> &middot; <a href="https://quantledgerapi.github.io/llms.txt">llms.txt</a></p>
+    </div>
+  </footer>
+</body>
+</html>

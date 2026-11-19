@@ -1,0 +1,565 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Google Sheets =QUANTLEDGER(), Excel Scripts &amp; n8n Node</title>
+  <meta name="description" content="Run 73 GAAP, IRC corporate tax, 409A, US KYB/OFAC sanctions, SEC Form D fundraising, and DOL Form 5500 CPA audit formulas directly inside Google Sheets, Microso" />
+  <link rel="canonical" href="https://quantledgerapi.github.io/google-sheets-excel-formulas-and-n8n/" />
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="Google Sheets =QUANTLEDGER(), Excel Scripts &amp; n8n Node" />
+  <meta property="og:description" content="Run 73 GAAP, IRC corporate tax, 409A, US KYB/OFAC sanctions, SEC Form D fundraising, and DOL Form 5500 CPA audit formulas directly inside Google Sheets, Microso" />
+  <meta property="og:url" content="https://quantledgerapi.github.io/google-sheets-excel-formulas-and-n8n/" />
+  <style>
+:root {
+  --bg: #0b1020;
+  --panel: #131b33;
+  --border: #253259;
+  --text: #eef2ff;
+  --muted: #9fb0d9;
+  --accent: #4f8cff;
+  --accent-soft: rgba(79, 140, 255, 0.14);
+  --green: #34d399;
+  --code-bg: #080c18;
+}
+* { box-sizing: border-box; }
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Inter, sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  line-height: 1.62;
+}
+a { color: #7cb0ff; text-decoration: none; }
+a:hover { text-decoration: underline; }
+.wrap { max-width: 1120px; margin: 0 auto; padding: 0 22px; }
+header.top {
+  border-bottom: 1px solid var(--border);
+  background: rgba(11, 16, 32, 0.94);
+  position: sticky;
+  top: 0;
+  z-index: 20;
+  backdrop-filter: blur(8px);
+}
+.nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 14px 0;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+.brand { font-weight: 700; font-size: 1.08rem; color: #fff; letter-spacing: -0.01em; }
+.nav-links { display: flex; gap: 16px; flex-wrap: wrap; font-size: 0.92rem; }
+.btn {
+  display: inline-block;
+  padding: 9px 16px;
+  border-radius: 7px;
+  font-weight: 600;
+  font-size: 0.9rem;
+  border: 1px solid var(--border);
+  background: var(--panel);
+  color: #fff;
+}
+.btn.primary { background: var(--accent); border-color: var(--accent); color: #fff; }
+.btn:hover { text-decoration: none; filter: brightness(1.08); }
+.hero { padding: 44px 0 28px; border-bottom: 1px solid var(--border); }
+.badge {
+  display: inline-block;
+  padding: 4px 10px;
+  border-radius: 999px;
+  background: var(--accent-soft);
+  color: #93bcff;
+  font-size: 0.8rem;
+  font-weight: 600;
+  margin-bottom: 12px;
+}
+h1 { font-size: 2.05rem; line-height: 1.22; margin: 0 0 14px; letter-spacing: -0.02em; }
+h2 { font-size: 1.35rem; margin: 32px 0 12px; border-bottom: 1px solid var(--border); padding-bottom: 8px; }
+h3 { font-size: 1.06rem; margin: 20px 0 8px; color: #cfe0ff; }
+p.lead { font-size: 1.06rem; color: var(--muted); max-width: 880px; margin: 0 0 20px; }
+.cta-row { display: flex; gap: 12px; flex-wrap: wrap; margin-top: 18px; }
+.grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); gap: 16px; margin: 18px 0; }
+.card {
+  background: var(--panel);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 18px;
+}
+.card code.code-pill {
+  background: var(--code-bg);
+  padding: 2px 7px;
+  border-radius: 5px;
+  color: var(--green);
+  font-size: 0.82rem;
+}
+pre {
+  background: var(--code-bg);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 14px 16px;
+  overflow-x: auto;
+  font-size: 0.85rem;
+  line-height: 1.5;
+  color: #dbeafe;
+}
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 14px 0 22px;
+  font-size: 0.92rem;
+}
+th, td {
+  border: 1px solid var(--border);
+  padding: 10px 12px;
+  text-align: left;
+  vertical-align: top;
+}
+th { background: var(--panel); color: #cfe0ff; }
+.search-box {
+  width: 100%;
+  padding: 12px 15px;
+  border-radius: 8px;
+  border: 1px solid var(--border);
+  background: var(--code-bg);
+  color: #fff;
+  font-size: 0.98rem;
+  margin: 10px 0 18px;
+}
+footer {
+  margin-top: 52px;
+  padding: 28px 0 40px;
+  border-top: 1px solid var(--border);
+  color: var(--muted);
+  font-size: 0.85rem;
+}
+.calc-panel {
+  background: linear-gradient(180deg, #131b33 0%, #0e1529 100%);
+  border: 1px solid #35508c;
+  border-radius: 12px;
+  padding: 22px;
+  margin: 26px 0 30px;
+}
+.calc-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(235px, 1fr));
+  gap: 12px;
+  margin: 14px 0;
+}
+.calc-field label {
+  display: block;
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: #bcd0f7;
+  margin-bottom: 4px;
+}
+.calc-input {
+  width: 100%;
+  padding: 9px 11px;
+  border-radius: 7px;
+  border: 1px solid var(--border);
+  background: var(--code-bg);
+  color: #fff;
+  font-size: 0.92rem;
+}
+.kpi-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(210px, 1fr));
+  gap: 11px;
+  margin: 14px 0;
+}
+.kpi-box {
+  background: var(--code-bg);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 11px 13px;
+}
+.kpi-box .k-lbl { font-size: 0.77rem; color: var(--muted); margin-bottom: 4px; }
+.kpi-box .k-val { font-size: 1.08rem; font-weight: 700; color: var(--green); word-break: break-word; }
+.xlsx-box {
+  background: rgba(52, 211, 153, 0.07);
+  border: 1px solid rgba(52, 211, 153, 0.35);
+  border-radius: 10px;
+  padding: 16px 18px;
+  margin-top: 16px;
+}
+.btn.green { background: #10b981; border-color: #10b981; color: #04130d; font-weight: 700; cursor: pointer; }
+</style>
+  <script type="application/ld+json">{"@context": "https://schema.org", "@type": "SoftwareApplication", "name": "Google Sheets =QUANTLEDGER(), Excel Scripts & n8n Node", "applicationCategory": "BusinessApplication", "operatingSystem": "Google Sheets, Microsoft Excel, n8n", "description": "Run 73 GAAP, IRC corporate tax, 409A, US KYB/OFAC sanctions, SEC Form D fundraising, and DOL Form 5500 CPA audit formulas directly inside Google Sheets, Microsoft Excel, and n8n.", "url": "https://quantledgerapi.github.io/google-sheets-excel-formulas-and-n8n/"}</script>
+  <script src="https://quantledgerapi.github.io/assets/spreadsheet_n8n_demo.js" defer></script>
+</head>
+<body>
+  <header class="top">
+    <div class="wrap nav">
+      <a class="brand" href="https://quantledgerapi.github.io/">QuantLedger API &amp; MCP Docs <span style="color:#9fb0d9;font-weight:400;font-size:0.84rem;">v2.8.0</span></a>
+      <nav class="nav-links">
+        <a href="https://quantledgerapi.github.io/#engines">All Engines</a>
+        <a href="https://quantledgerapi.github.io/us-kyb-ofac-sanctions-screener/">US KYB &amp; OFAC</a>
+        <a href="https://quantledgerapi.github.io/sec-form-d-private-fundraising-leads/">SEC Form D Leads</a>
+        <a href="https://quantledgerapi.github.io/dol-form-5500-erisa-401k-audit-screener/">DOL Form 5500 Audit</a>
+        <a href="https://quantledgerapi.github.io/google-sheets-excel-formulas-and-n8n/">Sheets/Excel &amp; n8n</a>
+        <a href="https://quantledgerapi.github.io/sec-edgar-10k-xbrl-covenants/">SEC 10-K API</a>
+        <a href="https://github.com/QuantLedgerAPI/quantledger-mcp">GitHub MCP</a>
+        <a href="https://apify.com/quantledger/quantledger-cpa-gaap-tax-sec-mcp">Apify Store</a>
+        <a class="btn primary" href="https://rapidapi.com/quantledger/api/quantledger-73-engine-financial-and-statutory-api">Get Free API Key</a>
+      </nav>
+    </div>
+  </header>
+  <main class="wrap">
+    
+    <section class="hero">
+      <span class="badge">=QUANTLEDGER() Custom Formulas &middot; Google Sheets &middot; Microsoft Excel &middot; n8n Workflow Node</span>
+      <h1>Google Sheets <code>=QUANTLEDGER()</code> Formulas, Excel Spill Scripts &amp; Official <code>n8n</code> Node</h1>
+      <p class="lead">Call all <strong>73 deterministic GAAP, IRC Corporate Tax, 409A, DCAA, QoE &amp; Credit engines</strong>, screen <strong>138,000+ US OFAC/BIS/OIG sanctions</strong>, pull <strong>live SEC Form D funded startups</strong>, and filter <strong>121,000+ DOL Form 5500 retirement plans</strong> directly inside spreadsheet cells or automated <code>n8n</code> pipelines — with zero setup required to test.</p>
+      <div class="cta-row">
+        <a class="btn green" href="#ql-sheet-sim">Try Live Formula Simulator &darr;</a>
+        <a class="btn primary" href="#google-sheets">10-Sec Google Sheets Script</a>
+        <a class="btn" href="#microsoft-excel">Excel Office Script &amp; Power Query</a>
+        <a class="btn" href="https://github.com/QuantLedgerAPI/n8n-nodes-quantledger">n8n Community Node (GitHub)</a>
+        <a class="btn" href="https://rapidapi.com/quantledger/api/quantledger-73-engine-financial-and-statutory-api">Unlock 100-Row Pro Key ($49/Mo)</a>
+      </div>
+    </section>
+
+    <section id="ql-sheet-sim" class="calc-panel">
+      <div style="display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap;">
+        <div>
+          <span class="badge" style="margin-bottom:6px;">Live 2D Spill Array Preview</span>
+          <h2 style="margin:0;border:none;padding:0;">Interactive Spreadsheet Formula Bar Simulator</h2>
+        </div>
+        <button id="ql-sim-run" type="button" class="btn green">Evaluate Spill Formula (Free)</button>
+      </div>
+      <div class="calc-grid" style="margin-top:14px;">
+        <div class="calc-field">
+          <label for="ql-sim-preset">Spreadsheet Function</label>
+          <select id="ql-sim-preset" class="calc-input">
+            <option value="ENGINE" selected>=QUANTLEDGER() — 73 GAAP / Tax Solvers</option>
+            <option value="KYB">=QUANTLEDGER_KYB() — US OFAC / BIS / OIG Sanctions</option>
+            <option value="FORM_D">=QUANTLEDGER_FORMD() — Live SEC Form D Leads</option>
+            <option value="FORM_5500">=QUANTLEDGER_5500() — DOL Form 5500 CPA Audit Leads</option>
+            <option value="TAX">=QUANTLEDGER_TAX() — 57-State Tax &amp; NY Fed SOFR</option>
+          </select>
+        </div>
+        <div class="calc-field">
+          <label for="ql-sim-code">Engine Code (BI-01..BI-73)</label>
+          <input id="ql-sim-code" class="calc-input" type="text" value="BI-17" />
+        </div>
+        <div class="calc-field">
+          <label for="ql-sim-jur">US State / Jurisdiction</label>
+          <input id="ql-sim-jur" class="calc-input" type="text" value="NY" maxlength="4" />
+        </div>
+        <div class="calc-field">
+          <label for="ql-sim-mode">Spill Output Mode</label>
+          <select id="ql-sim-mode" class="calc-input">
+            <option value="kpis" selected>kpis (2-Col Executive Metrics)</option>
+            <option value="schedule">schedule (Multi-Period Workpaper Table)</option>
+          </select>
+        </div>
+      </div>
+      <div style="display:flex;align-items:center;gap:10px;margin:10px 0;">
+        <strong style="color:#34d399;font-family:monospace;font-size:1.05rem;">fx</strong>
+        <input id="ql-formula-bar" class="calc-input" type="text" readonly style="font-family:monospace;color:#93bcff;" value='=QUANTLEDGER("BI-17", "NY", , "kpis")' />
+      </div>
+      <div id="ql-sim-status" style="font-size:0.86rem;color:#93bcff;margin:6px 0 10px;">Select any function above and click "Evaluate Spill Formula" to preview exact 2D cell output.</div>
+      <div style="overflow-x:auto;">
+        <table>
+          <thead id="ql-sim-thead"><tr><th>#</th><th>A</th><th>B</th></tr></thead>
+          <tbody id="ql-sim-tbody"><tr><td>1</td><td colspan="2" style="color:#9fb0d9;">Click <strong>Evaluate Spill Formula</strong> above to render the live spreadsheet spill table.</td></tr></tbody>
+        </table>
+      </div>
+    </section>
+
+    <h2 id="google-sheets">1. Google Sheets Custom Functions (<code>=QUANTLEDGER</code>, <code>=QUANTLEDGER_KYB</code>, <code>=QUANTLEDGER_FORMD</code>, <code>=QUANTLEDGER_5500</code>)</h2>
+    <p>Open any Google Sheet &rarr; click <strong>Extensions &rarr; Apps Script</strong> &rarr; paste the script below and click <strong>Save</strong>. Works immediately in free 12-row preview mode with 10-minute SHA-256 cell memoization; add a <a href="https://rapidapi.com/quantledger/api/quantledger-73-engine-financial-and-statutory-api">RapidAPI Key</a> from the <strong>QuantLedger</strong> sheet menu anytime to unlock 100-row Pro tables.</p>
+    <div style="display:flex;gap:10px;flex-wrap:wrap;margin-bottom:10px;">
+      <button type="button" class="btn green" data-copy-target="code-gs">Copy Google Apps Script</button>
+      <a class="btn" href="https://quantledgerapi.github.io/downloads/QuantLedger_GoogleSheets.gs" download>Download QuantLedger_GoogleSheets.gs</a>
+    </div>
+    <pre><code id="code-gs">/**
+ * QuantLedger 73-Engine GAAP, Tax, KYB, Form D &amp; Form 5500 Custom Functions for Google Sheets
+ * Version: 2.8.0 | Docs: https://quantledgerapi.github.io/google-sheets-excel-formulas-and-n8n/
+ *
+ * 10-SECOND INSTALL:
+ *   1. In Google Sheets, click Extensions -&gt; Apps Script, paste this file, and click Save.
+ *   2. Type =QUANTLEDGER(&quot;BI-17&quot;, &quot;NY&quot;) or =QUANTLEDGER_KYB(A2:A10) in any cell — works immediately in free preview mode!
+ *   3. Optional Pro Mode (100 rows &amp; higher quota): Reload your sheet -&gt; QuantLedger menu -&gt; Set RapidAPI Key
+ *      (get 5 free/mo or Pro at https://rapidapi.com/quantledger/api/quantledger-73-engine-financial-and-statutory-api).
+ */
+
+const QL_RAPIDAPI_URL = &#x27;https://quantledger-73-engine-financial-and-statutory-api.p.rapidapi.com/v1/spreadsheet/formula-eval&#x27;;
+const QL_RAPIDAPI_HOST = &#x27;quantledger-73-engine-financial-and-statutory-api.p.rapidapi.com&#x27;;
+const QL_FREE_DEMO_URL = &#x27;https://quantledger-ghost-kitchen-3yplwqtnha-uc.a.run.app/v1/public/spreadsheet-demo&#x27;;
+
+function onOpen() {
+  SpreadsheetApp.getUi()
+    .createMenu(&#x27;QuantLedger&#x27;)
+    .addItem(&#x27;Set RapidAPI Key (Unlock 100-Row Pro Mode)&#x27;, &#x27;quantledgerSetApiKey&#x27;)
+    .addItem(&#x27;Clear Formula Cache&#x27;, &#x27;quantledgerClearCache&#x27;)
+    .addToUi();
+}
+
+function quantledgerSetApiKey() {
+  const ui = SpreadsheetApp.getUi();
+  const res = ui.prompt(
+    &#x27;QuantLedger RapidAPI Key&#x27;,
+    &#x27;Paste your X-RapidAPI-Key from rapidapi.com/quantledger (leave blank to use free 12-row preview mode):&#x27;,
+    ui.ButtonSet.OK_CANCEL
+  );
+  if (res.getSelectedButton() === ui.Button.OK) {
+    PropertiesService.getScriptProperties().setProperty(&#x27;RAPIDAPI_KEY&#x27;, res.getResponseText().trim());
+    ui.alert(&#x27;Saved! Re-enter or refresh your =QUANTLEDGER(...) formulas to apply.&#x27;);
+  }
+}
+
+function quantledgerClearCache() {
+  CacheService.getScriptCache().removeAll([&#x27;ql_ping&#x27;]);
+  SpreadsheetApp.getUi().alert(&#x27;Cache notice: New parameter edits automatically bypass cached cells (10-min TTL).&#x27;);
+}
+
+function _qlInvokeBridge(payload) {
+  const apiKey = (PropertiesService.getScriptProperties().getProperty(&#x27;RAPIDAPI_KEY&#x27;) || &#x27;&#x27;).trim();
+  const rawJson = JSON.stringify(payload);
+  const digest = Utilities.computeDigest(Utilities.DigestAlgorithm.SHA_256, (apiKey ? &#x27;PRO:&#x27; : &#x27;DEMO:&#x27;) + rawJson);
+  const cacheKey = &#x27;ql_&#x27; + digest.slice(0, 16).map(function (b) { return (&#x27;0&#x27; + (b &amp; 0xff).toString(16)).slice(-2); }).join(&#x27;&#x27;);
+  const cache = CacheService.getScriptCache();
+  const hit = cache.get(cacheKey);
+  if (hit) {
+    return JSON.parse(hit);
+  }
+  const url = apiKey ? QL_RAPIDAPI_URL : QL_FREE_DEMO_URL;
+  const headers = { &#x27;Content-Type&#x27;: &#x27;application/json&#x27; };
+  if (apiKey) {
+    headers[&#x27;X-RapidAPI-Key&#x27;] = apiKey;
+    headers[&#x27;X-RapidAPI-Host&#x27;] = QL_RAPIDAPI_HOST;
+  }
+  const resp = UrlFetchApp.fetch(url, {
+    method: &#x27;post&#x27;,
+    headers: headers,
+    payload: rawJson,
+    muteHttpExceptions: true,
+  });
+  const code = resp.getResponseCode();
+  const data = JSON.parse(resp.getContentText() || &#x27;{}&#x27;);
+  if (code &gt;= 400) {
+    throw new Error(data.detail || data.message || (&#x27;QuantLedger HTTP &#x27; + code));
+  }
+  const out = (String(payload.output_mode || &#x27;&#x27;).toLowerCase().indexOf(&#x27;scalar&#x27;) === 0)
+    ? data.scalar_value
+    : (data.rows || [[&#x27;No rows returned&#x27;]]);
+  const serialized = JSON.stringify(out);
+  if (serialized.length &lt; 95000) {
+    cache.put(cacheKey, serialized, 600);
+  }
+  return out;
+}
+
+/**
+ * Executes any of QuantLedger&#x27;s 73 deterministic GAAP, IRC Tax, 409A, QoE, DCAA, CRE or Credit engines (BI-01..BI-73).
+ * @param {&quot;BI-17&quot;} engineCode Engine code from BI-01 to BI-73 (e.g. &quot;BI-17&quot; ASC 842 Lease, &quot;BI-07&quot; DCAA Wrap, &quot;BI-48&quot; 409A).
+ * @param {&quot;NY&quot;} jurisdiction 2-letter US State, DC, PR, GU, VI, AS, MP, or US.
+ * @param {A2:B8} inputRange Optional 2-column [parameter_name, value] cell range or JSON string.
+ * @param {&quot;kpis&quot;} outputMode &quot;kpis&quot; (2-col summary), &quot;schedule&quot; (multi-period tie-out table), or &quot;scalar:&lt;metric_key&gt;&quot;.
+ * @return 2D spill array or scalar value.
+ * @customfunction
+ */
+function QUANTLEDGER(engineCode, jurisdiction, inputRange, outputMode) {
+  let parsedInputs = inputRange || null;
+  if (typeof inputRange === &#x27;string&#x27; &amp;&amp; inputRange.trim().charAt(0) === &#x27;{&#x27;) {
+    parsedInputs = JSON.parse(inputRange);
+  }
+  return _qlInvokeBridge({
+    formula_type: &#x27;ENGINE&#x27;,
+    engine_code: engineCode || &#x27;BI-17&#x27;,
+    jurisdiction: jurisdiction || &#x27;DC&#x27;,
+    output_mode: outputMode || &#x27;kpis&#x27;,
+    range_or_inputs: parsedInputs,
+  });
+}
+
+/**
+ * Batch-screens company or individual names against 138,000+ US OFAC SDN/SSI, Commerce BIS Entity List, ITAR, OIG &amp; SEC records.
+ * @param {A2:A20} entitiesRange Cell or range of counterparty names to screen.
+ * @return 2D compliance screening spill table.
+ * @customfunction
+ */
+function QUANTLEDGER_KYB(entitiesRange) {
+  const list = Array.isArray(entitiesRange) ? entitiesRange : [[entitiesRange || &#x27;Apple Inc.&#x27;]];
+  return _qlInvokeBridge({ formula_type: &#x27;KYB&#x27;, range_or_inputs: list });
+}
+
+/**
+ * Pulls live SEC EDGAR Form D newly funded startups with CEO/CFO signer contact, phone, capital closed, IRC 409A &amp; QSBS flags.
+ * @param {&quot;CA&quot;} state Optional 2-letter US state filter (or &quot;ALL&quot;).
+ * @param {14} daysBack Lookback window in calendar days (1 to 90).
+ * @param {250000} minSoldUsd Minimum closed capital in USD.
+ * @return 2D live Form D fundraising leads spill table.
+ * @customfunction
+ */
+function QUANTLEDGER_FORMD(state, daysBack, minSoldUsd) {
+  return _qlInvokeBridge({
+    formula_type: &#x27;FORM_D&#x27;,
+    jurisdiction: state || &#x27;ALL&#x27;,
+    days_back: Number(daysBack || 14),
+    min_amount_usd: Number(minSoldUsd || 250000),
+  });
+}
+
+/**
+ * Screens 121,000+ DOL EBSA Form 5500 retirement plans for 80-120 CPA audit transitions, ERISA 408(b)(2) excess fees &amp; late deferrals.
+ * @param {&quot;CA&quot;} state Optional 2-letter US state filter (or &quot;ALL&quot;).
+ * @param {&quot;FIRST_TIME_CPA_AUDIT_ZONE&quot;} triggerFilter FIRST_TIME_CPA_AUDIT_ZONE, HIGH_FEE_BENCHMARK_ALERT, MISSING_CPA_AUDIT_OPINION, LATE_DEFERRAL_VIOLATION, or FIDELITY_BOND_SHORTFALL.
+ * @param {500000} minAssetsUsd Minimum net plan assets in USD.
+ * @return 2D DOL Form 5500 CPA audit &amp; ERISA compliance spill table.
+ * @customfunction
+ */
+function QUANTLEDGER_5500(state, triggerFilter, minAssetsUsd) {
+  return _qlInvokeBridge({
+    formula_type: &#x27;FORM_5500&#x27;,
+    jurisdiction: state || &#x27;CA&#x27;,
+    trigger_filter: triggerFilter || &#x27;FIRST_TIME_CPA_AUDIT_ZONE&#x27;,
+    min_amount_usd: Number(minAssetsUsd || 500000),
+  });
+}
+
+/**
+ * Returns 57-jurisdiction US corporate tax rate, apportionment formula, Federal IRC Sec. 11 rate, and live NY Fed SOFR benchmark.
+ * @param {&quot;NY&quot;} jurisdiction 2-letter US State, DC, Territory, or US code.
+ * @return 2D statutory tax &amp; benchmark rate table.
+ * @customfunction
+ */
+function QUANTLEDGER_TAX(jurisdiction) {
+  return _qlInvokeBridge({ formula_type: &#x27;TAX&#x27;, jurisdiction: jurisdiction || &#x27;NY&#x27; });
+}
+</code></pre>
+
+    <h2 id="microsoft-excel">2. Microsoft Excel — Automate Office Script &amp; Desktop Power Query</h2>
+    <h3>A. Excel Web &amp; Desktop Automate (Office Script TypeScript)</h3>
+    <div style="display:flex;gap:10px;flex-wrap:wrap;margin-bottom:10px;">
+      <button type="button" class="btn green" data-copy-target="code-ts">Copy Excel Office Script (.ts)</button>
+      <a class="btn" href="https://quantledgerapi.github.io/downloads/QuantLedger_Excel_OfficeScript.ts" download>Download QuantLedger_Excel_OfficeScript.ts</a>
+    </div>
+    <pre><code id="code-ts">/**
+ * QuantLedger Microsoft Excel Automate (Office Script) — 2D Statutory &amp; Compliance Spill Writer
+ * Version: 2.8.0 | Docs: https://quantledgerapi.github.io/google-sheets-excel-formulas-and-n8n/
+ *
+ * HOW TO USE IN EXCEL (WEB OR DESKTOP):
+ *   1. Open Excel -&gt; Automate tab -&gt; New Script -&gt; paste this TypeScript file and click Save.
+ *   2. Click Run (works immediately in free 12-row demo mode, or paste your RapidAPI key below for 100-row Pro mode).
+ */
+
+async function main(
+  workbook: ExcelScript.Workbook,
+  formulaType: string = &quot;ENGINE&quot;,
+  engineCode: string = &quot;BI-17&quot;,
+  jurisdiction: string = &quot;NY&quot;,
+  outputMode: string = &quot;schedule&quot;,
+  rapidApiKey: string = &quot;&quot;
+): Promise&lt;void&gt; {
+  const sheet = workbook.getActiveWorksheet();
+  const usePro = rapidApiKey.trim().length &gt; 0;
+  const endpoint = usePro
+    ? &quot;https://quantledger-73-engine-financial-and-statutory-api.p.rapidapi.com/v1/spreadsheet/formula-eval&quot;
+    : &quot;https://quantledger-ghost-kitchen-3yplwqtnha-uc.a.run.app/v1/public/spreadsheet-demo&quot;;
+
+  const headers: Record&lt;string, string&gt; = { &quot;Content-Type&quot;: &quot;application/json&quot; };
+  if (usePro) {
+    headers[&quot;X-RapidAPI-Key&quot;] = rapidApiKey.trim();
+    headers[&quot;X-RapidAPI-Host&quot;] = &quot;quantledger-73-engine-financial-and-statutory-api.p.rapidapi.com&quot;;
+  }
+
+  const response = await fetch(endpoint, {
+    method: &quot;POST&quot;,
+    headers,
+    body: JSON.stringify({
+      formula_type: formulaType,
+      engine_code: engineCode,
+      jurisdiction,
+      output_mode: outputMode,
+      max_rows: usePro ? 50 : 12,
+    }),
+  });
+
+  const payload = await response.json();
+  if (!response.ok) {
+    throw new Error(payload?.detail || `QuantLedger HTTP ${response.status}`);
+  }
+
+  const rows: (string | number | boolean)[][] = payload.rows || [[&quot;No data&quot;]];
+  const rowCount = rows.length;
+  const colCount = rows[0].length;
+
+  const targetRange = sheet.getRangeByIndexes(0, 0, rowCount, colCount);
+  targetRange.setValues(rows);
+  const headerRange = sheet.getRangeByIndexes(0, 0, 1, colCount);
+  headerRange.getFormat().getFill().setColor(&quot;#131B33&quot;);
+  headerRange.getFormat().getFont().setColor(&quot;#FFFFFF&quot;);
+  headerRange.getFormat().getFont().setBold(true);
+  targetRange.getFormat().autofitColumns();
+}
+</code></pre>
+
+    <h3>B. Excel Desktop Power Query (<code>Web.Contents</code> M Function)</h3>
+    <div style="display:flex;gap:10px;flex-wrap:wrap;margin-bottom:10px;">
+      <button type="button" class="btn green" data-copy-target="code-pq">Copy Power Query (.pq)</button>
+      <a class="btn" href="https://quantledgerapi.github.io/downloads/QuantLedger_PowerQuery.pq" download>Download QuantLedger_PowerQuery.pq</a>
+    </div>
+    <pre><code id="code-pq">// QuantLedger Microsoft Excel Desktop Power Query (M) Function — v2.8.0
+// 1. In Excel Desktop: Data -&gt; Get Data -&gt; From Other Sources -&gt; Blank Query -&gt; Advanced Editor
+// 2. Paste this query, click Done, and invoke fnQuantLedger(&quot;ENGINE&quot;, &quot;BI-17&quot;, &quot;NY&quot;, &quot;schedule&quot;, &quot;&quot;)
+let
+    fnQuantLedger = (
+        formulaType as text,
+        engineCode as text,
+        jurisdiction as text,
+        outputMode as text,
+        optional rapidApiKey as nullable text
+    ) as table =&gt;
+    let
+        cleanKey = if rapidApiKey = null then &quot;&quot; else Text.Trim(rapidApiKey),
+        usePro = Text.Length(cleanKey) &gt; 0,
+        targetUrl = if usePro
+            then &quot;https://quantledger-73-engine-financial-and-statutory-api.p.rapidapi.com/v1/spreadsheet/formula-eval&quot;
+            else &quot;https://quantledger-ghost-kitchen-3yplwqtnha-uc.a.run.app/v1/public/spreadsheet-demo&quot;,
+        reqHeaders = if usePro
+            then [#&quot;Content-Type&quot;=&quot;application/json&quot;, #&quot;X-RapidAPI-Key&quot;=cleanKey, #&quot;X-RapidAPI-Host&quot;=&quot;quantledger-73-engine-financial-and-statutory-api.p.rapidapi.com&quot;]
+            else [#&quot;Content-Type&quot;=&quot;application/json&quot;],
+        bodyBytes = Json.FromValue([
+            formula_type = formulaType,
+            engine_code = engineCode,
+            jurisdiction = jurisdiction,
+            output_mode = outputMode,
+            max_rows = if usePro then 100 else 12
+        ]),
+        rawResp = Web.Contents(targetUrl, [Headers = reqHeaders, Content = bodyBytes]),
+        parsed = Json.Document(rawResp),
+        rowsList = parsed[rows],
+        colNames = List.Transform(rowsList{0}, each Text.From(_)),
+        dataRows = List.Skip(rowsList, 1),
+        outTable = Table.FromRows(dataRows, colNames)
+    in
+        outTable
+in
+    fnQuantLedger
+</code></pre>
+
+    <h2 id="n8n-node">3. Official <code>n8n-nodes-quantledger</code> Workflow Automation Node</h2>
+    <p>Automate daily SEC Form D startup fundraising alerts into HubSpot/Slack, screen new Stripe/ERP customers against 138K+ OFAC/BIS/OIG watchlists, or route DOL Form 5500 CPA audit transitions into your CRM with zero custom HTTP boilerplate.</p>
+    <pre><code># Self-hosted n8n instant install from GitHub:
+cd ~/.n8n/nodes
+npm install git+https://github.com/QuantLedgerAPI/n8n-nodes-quantledger.git
+
+# Or inside n8n Settings -> Community Nodes (once published to npm):
+n8n-nodes-quantledger</code></pre>
+    <div class="cta-row">
+      <a class="btn primary" href="https://github.com/QuantLedgerAPI/n8n-nodes-quantledger">View n8n-nodes-quantledger on GitHub</a>
+      <a class="btn" href="https://rapidapi.com/quantledger/api/quantledger-73-engine-financial-and-statutory-api">Get RapidAPI Key for Production Workflows</a>
+    </div>
+    
+  </main>
+  <footer>
+    <div class="wrap">
+      <p><strong>Stateless Privacy &amp; Computational Utility Notice:</strong> All QuantLedger API and Model Context Protocol (MCP) endpoints evaluate numeric and textual inputs strictly in volatile RAM with zero caller data retention. Outputs provide deterministic accounting, financial, and statutory regulatory calculations for technical and analytical workflows and do not constitute CPA attest/assurance opinions, formal tax opinions, legal advice, or registered investment advice.</p>
+      <p>Public U.S. federal datasets (SEC EDGAR XBRL/10-K, Federal Reserve Bank of New York SOFR/EFFR, U.S. Treasury yields, Census NAICS, and SIC crosswalks) are sourced from official public-domain `.gov` feeds under 17 U.S.C. &sect; 105. &middot; <a href="https://quantledgerapi.github.io/sitemap.xml">XML Sitemap</a> &middot; <a href="https://quantledgerapi.github.io/llms.txt">llms.txt</a></p>
+    </div>
+  </footer>
+</body>
+</html>

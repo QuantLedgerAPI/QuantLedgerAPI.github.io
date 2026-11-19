@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Live SEC Form D Startup Fundraising Leads, 409A &amp; Tax Nexus Feed</title>
+  <meta name="description" content="Pull live SEC EDGAR Form D private fundraising leads with CEO/CFO signer contacts, phone, dollars closed, IRC Sec. 409A valuation urgency, IRC Sec. 1202 QSBS st" />
+  <link rel="canonical" href="https://quantledgerapi.github.io/sec-form-d-private-fundraising-leads/" />
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="Live SEC Form D Startup Fundraising Leads, 409A &amp; Tax Nexus Feed" />
+  <meta property="og:description" content="Pull live SEC EDGAR Form D private fundraising leads with CEO/CFO signer contacts, phone, dollars closed, IRC Sec. 409A valuation urgency, IRC Sec. 1202 QSBS st" />
+  <meta property="og:url" content="https://quantledgerapi.github.io/sec-form-d-private-fundraising-leads/" />
+  <style>
+:root {
+  --bg: #0b1020;
+  --panel: #131b33;
+  --border: #253259;
+  --text: #eef2ff;
+  --muted: #9fb0d9;
+  --accent: #4f8cff;
+  --accent-soft: rgba(79, 140, 255, 0.14);
+  --green: #34d399;
+  --code-bg: #080c18;
+}
+* { box-sizing: border-box; }
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Inter, sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  line-height: 1.62;
+}
+a { color: #7cb0ff; text-decoration: none; }
+a:hover { text-decoration: underline; }
+.wrap { max-width: 1120px; margin: 0 auto; padding: 0 22px; }
+header.top {
+  border-bottom: 1px solid var(--border);
+  background: rgba(11, 16, 32, 0.94);
+  position: sticky;
+  top: 0;
+  z-index: 20;
+  backdrop-filter: blur(8px);
+}
+.nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 14px 0;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+.brand { font-weight: 700; font-size: 1.08rem; color: #fff; letter-spacing: -0.01em; }
+.nav-links { display: flex; gap: 16px; flex-wrap: wrap; font-size: 0.92rem; }
+.btn {
+  display: inline-block;
+  padding: 9px 16px;
+  border-radius: 7px;
+  font-weight: 600;
+  font-size: 0.9rem;
+  border: 1px solid var(--border);
+  background: var(--panel);
+  color: #fff;
+}
+.btn.primary { background: var(--accent); border-color: var(--accent); color: #fff; }
+.btn:hover { text-decoration: none; filter: brightness(1.08); }
+.hero { padding: 44px 0 28px; border-bottom: 1px solid var(--border); }
+.badge {
+  display: inline-block;
+  padding: 4px 10px;
+  border-radius: 999px;
+  background: var(--accent-soft);
+  color: #93bcff;
+  font-size: 0.8rem;
+  font-weight: 600;
+  margin-bottom: 12px;
+}
+h1 { font-size: 2.05rem; line-height: 1.22; margin: 0 0 14px; letter-spacing: -0.02em; }
+h2 { font-size: 1.35rem; margin: 32px 0 12px; border-bottom: 1px solid var(--border); padding-bottom: 8px; }
+h3 { font-size: 1.06rem; margin: 20px 0 8px; color: #cfe0ff; }
+p.lead { font-size: 1.06rem; color: var(--muted); max-width: 880px; margin: 0 0 20px; }
+.cta-row { display: flex; gap: 12px; flex-wrap: wrap; margin-top: 18px; }
+.grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); gap: 16px; margin: 18px 0; }
+.card {
+  background: var(--panel);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 18px;
+}
+.card code.code-pill {
+  background: var(--code-bg);
+  padding: 2px 7px;
+  border-radius: 5px;
+  color: var(--green);
+  font-size: 0.82rem;
+}
+pre {
+  background: var(--code-bg);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 14px 16px;
+  overflow-x: auto;
+  font-size: 0.85rem;
+  line-height: 1.5;
+  color: #dbeafe;
+}
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 14px 0 22px;
+  font-size: 0.92rem;
+}
+th, td {
+  border: 1px solid var(--border);
+  padding: 10px 12px;
+  text-align: left;
+  vertical-align: top;
+}
+th { background: var(--panel); color: #cfe0ff; }
+.search-box {
+  width: 100%;
+  padding: 12px 15px;
+  border-radius: 8px;
+  border: 1px solid var(--border);
+  background: var(--code-bg);
+  color: #fff;
+  font-size: 0.98rem;
+  margin: 10px 0 18px;
+}
+footer {
+  margin-top: 52px;
+  padding: 28px 0 40px;
+  border-top: 1px solid var(--border);
+  color: var(--muted);
+  font-size: 0.85rem;
+}
+.calc-panel {
+  background: linear-gradient(180deg, #131b33 0%, #0e1529 100%);
+  border: 1px solid #35508c;
+  border-radius: 12px;
+  padding: 22px;
+  margin: 26px 0 30px;
+}
+.calc-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(235px, 1fr));
+  gap: 12px;
+  margin: 14px 0;
+}
+.calc-field label {
+  display: block;
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: #bcd0f7;
+  margin-bottom: 4px;
+}
+.calc-input {
+  width: 100%;
+  padding: 9px 11px;
+  border-radius: 7px;
+  border: 1px solid var(--border);
+  background: var(--code-bg);
+  color: #fff;
+  font-size: 0.92rem;
+}
+.kpi-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(210px, 1fr));
+  gap: 11px;
+  margin: 14px 0;
+}
+.kpi-box {
+  background: var(--code-bg);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 11px 13px;
+}
+.kpi-box .k-lbl { font-size: 0.77rem; color: var(--muted); margin-bottom: 4px; }
+.kpi-box .k-val { font-size: 1.08rem; font-weight: 700; color: var(--green); word-break: break-word; }
+.xlsx-box {
+  background: rgba(52, 211, 153, 0.07);
+  border: 1px solid rgba(52, 211, 153, 0.35);
+  border-radius: 10px;
+  padding: 16px 18px;
+  margin-top: 16px;
+}
+.btn.green { background: #10b981; border-color: #10b981; color: #04130d; font-weight: 700; cursor: pointer; }
+</style>
+  <script type="application/ld+json">{"@context": "https://schema.org", "@type": "WebApplication", "name": "Live SEC Form D Startup Fundraising Leads, 409A & Tax Nexus Feed", "applicationCategory": "BusinessApplication", "operatingSystem": "All", "description": "Pull live SEC EDGAR Form D private fundraising leads with CEO/CFO signer contacts, phone, dollars closed, IRC Sec. 409A valuation urgency, IRC Sec. 1202 QSBS status, and 57-state tax nexus to .xlsx or API.", "url": "https://quantledgerapi.github.io/sec-form-d-private-fundraising-leads/"}</script>
+  <script src="https://quantledgerapi.github.io/assets/form_d_screener.js" defer></script>
+</head>
+<body>
+  <header class="top">
+    <div class="wrap nav">
+      <a class="brand" href="https://quantledgerapi.github.io/">QuantLedger API &amp; MCP Docs <span style="color:#9fb0d9;font-weight:400;font-size:0.84rem;">v2.6.1</span></a>
+      <nav class="nav-links">
+        <a href="https://quantledgerapi.github.io/#engines">All Engines</a>
+        <a href="https://quantledgerapi.github.io/us-kyb-ofac-sanctions-screener/">US KYB &amp; OFAC</a>
+        <a href="https://quantledgerapi.github.io/sec-form-d-private-fundraising-leads/">SEC Form D Leads</a>
+        <a href="https://quantledgerapi.github.io/sec-edgar-10k-xbrl-covenants/">SEC 10-K API</a>
+        <a href="https://github.com/QuantLedgerAPI/quantledger-mcp">GitHub MCP</a>
+        <a href="https://apify.com/quantledger/quantledger-cpa-gaap-tax-sec-mcp">Apify Store</a>
+        <a class="btn primary" href="https://rapidapi.com/quantledger/api/quantledger-73-engine-financial-and-statutory-api">Get Free API Key</a>
+      </nav>
+    </div>
+  </header>
+  <main class="wrap">
+    
+    <section class="hero">
+      <span class="badge">Live SEC EDGAR Form D XML &middot; CEO/CFO Contacts &middot; IRC &sect; 409A Trigger &middot; 5-Tab .xlsx</span>
+      <h1>Live SEC Form D Private-Raise Leads, CEO/CFO Contacts &amp; 409A / State Tax Trigger Feed</h1>
+      <p class="lead">Identify newly funded operating startups and private companies directly from live <strong>SEC EDGAR Form D (<code>primary_doc.xml</code>)</strong> filings — enriched in real time with <strong>Executive Signer Name, Title &amp; Phone</strong>, <strong>Closed Capital (<code>totalAmountSold</code>)</strong>, <strong><code>IRC &sect; 409A</code> Safe-Harbor Revaluation Urgency</strong>, <strong><code>IRC &sect; 1202</code> QSBS Eligibility</strong>, and <strong>57-Jurisdiction Corporate Tax Apportionment</strong>.</p>
+      <div class="cta-row">
+        <a class="btn green" href="#ql-formd-panel">Pull Live Form D Raises Below &darr;</a>
+        <a class="btn primary" href="https://apify.com/quantledger/sec-form-d-private-fundraising-leads-mcp">Automate on Apify ($0.12/Lead)</a>
+        <a class="btn" href="https://rapidapi.com/quantledger/api/quantledger-73-engine-financial-and-statutory-api">REST API on RapidAPI (5 Free/Mo)</a>
+      </div>
+    </section>
+
+    <section id="ql-formd-panel" class="calc-panel">
+      <div style="display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap;">
+        <div>
+          <span class="badge" style="margin-bottom:6px;">Zero-Code Live Fundraising Lead Finder &amp; 5-Tab .xlsx Builder</span>
+          <h2 style="margin:0;border:none;padding:0;">Interactive SEC Form D Private-Raise &amp; 409A Explorer</h2>
+        </div>
+        <button id="ql-fd-run" type="button" class="btn green">Pull Live Form D Filings (Free Preview)</button>
+      </div>
+      <p style="font-size:0.9rem;color:#9fb0d9;margin:8px 0 12px;">Filter live SEC Form D notices by state, sector, and minimum closed capital (free browser preview returns up to 12 live issuers; PayPal `.xlsx` checkout compiles up to 100 enriched leads).</p>
+
+      <div class="calc-grid">
+        <div class="calc-field">
+          <label for="ql-fd-days">Lookback Window (Days)</label>
+          <input id="ql-fd-days" class="calc-input" type="number" min="1" max="90" value="14" />
+        </div>
+        <div class="calc-field">
+          <label for="ql-fd-state">Optional US State (e.g. CA, NY, TX, MA)</label>
+          <input id="ql-fd-state" class="calc-input" type="text" maxlength="2" placeholder="All US States" />
+        </div>
+        <div class="calc-field">
+          <label for="ql-fd-kw">Industry / Keyword Filter</label>
+          <input id="ql-fd-kw" class="calc-input" type="text" placeholder="e.g. Technology, Health Care, AI" />
+        </div>
+        <div class="calc-field">
+          <label for="ql-fd-min">Minimum Closed Capital ($ USD)</label>
+          <input id="ql-fd-min" class="calc-input" type="number" step="50000" value="100000" />
+        </div>
+        <div class="calc-field" style="display:flex;align-items:center;gap:8px;padding-top:22px;">
+          <input id="ql-fd-oponly" type="checkbox" checked />
+          <label for="ql-fd-oponly" style="margin:0;cursor:pointer;">Operating Companies Only (Exclude Pooled Funds)</label>
+        </div>
+      </div>
+
+      <div id="ql-fd-status" style="font-size:0.86rem;color:#93bcff;margin:8px 0;">Click "Pull Live Form D Filings" to query SEC EDGAR and compute 409A &amp; tax triggers.</div>
+      <div id="ql-fd-kpis" class="kpi-grid"></div>
+
+      <table>
+        <thead>
+          <tr>
+            <th>Date</th>
+            <th>Company &amp; HQ</th>
+            <th>Executive Signer &amp; Phone</th>
+            <th>Closed ($)</th>
+            <th>Security</th>
+            <th>IRC &sect; 409A Trigger</th>
+            <th>QSBS &amp; Tax</th>
+          </tr>
+        </thead>
+        <tbody id="ql-fd-tbody">
+          <tr><td colspan="7" style="color:#9fb0d9;">Click <strong>Pull Live Form D Filings</strong> above to inspect newly funded companies.</td></tr>
+        </tbody>
+      </table>
+
+      <div class="xlsx-box">
+        <div style="display:flex;justify-content:space-between;align-items:flex-start;gap:16px;flex-wrap:wrap;">
+          <div style="flex:1;min-width:260px;">
+            <h3 style="margin:0 0 6px;color:#fff;">Download 100-Lead 5-Tab Form D &amp; 409A Excel Workpaper (<code>.xlsx</code>) — <span id="ql-fd-price">$19.00</span></h3>
+            <p style="margin:0 0 8px;font-size:0.88rem;color:#d1fae5;">Compiles up to 100 matching Form D issuers with executive signer names, phone numbers, closed dollars, <code>IRC &sect; 409A</code> urgency, <code>IRC &sect; 1202</code> QSBS flags, <code>Rule 503</code> 15-day timeliness, and 57-state tax rates into a formula-linked <code>.xlsx</code> file.</p>
+            <div style="display:flex;gap:10px;flex-wrap:wrap;margin-top:10px;">
+              <a class="btn primary" href="https://apify.com/quantledger/sec-form-d-private-fundraising-leads-mcp">Schedule Daily Feed on Apify ($0.12/Lead)</a>
+              <a class="btn" href="https://rapidapi.com/quantledger/api/quantledger-73-engine-financial-and-statutory-api">Connect via RapidAPI REST / MCP</a>
+            </div>
+          </div>
+          <div id="ql-fd-paypal" style="display:none;min-width:270px;max-width:340px;width:100%;"></div>
+        </div>
+      </div>
+    </section>
+
+    <h2>1. Four Statutory &amp; Tax Intelligence Layers Computed Per Form D Issuer</h2>
+    <ul>
+      <li><strong><code>IRC &sect; 409A</code> Material Financing Safe-Harbor Reset (<code>26 CFR &sect; 1.409A-1(b)(5)(iv)(B)</code>):</strong> Identifies operating C-Corps closing <code>&ge; $250,000</code> of equity or convertible/option securities that require an updated 409A common-stock valuation (see <a href="https://quantledgerapi.github.io/engines/bi-48-irc-409a-common-stock-valuation-opm-pwerm/">BI-48 409A Calculator</a>).</li>
+      <li><strong>Dual-State Foreign Qualification &amp; 57-Jurisdiction Tax Rate:</strong> Compares state of incorporation (e.g. Delaware) against principal operating state (e.g. California, New York, Texas) and computes combined federal + state statutory corporate tax rate.</li>
+      <li><strong><code>IRC &sect; 1202</code> Qualified Small Business Stock (QSBS) Screen:</strong> Evaluates C-Corp status, domestic incorporation, gross offering cap (<code>&le; $50M</code>), and non-excluded trade categories under <code>26 U.S.C. &sect; 1202(e)(3)</code>.</li>
+      <li><strong><code>17 CFR &sect; 230.503</code> 15-Day Timeliness &amp; <code>SEC &sect; 15(a)</code> Finder-Fee Screen:</strong> Measures exact calendar days from <code>dateOfFirstSale</code> to <code>filingDate</code> and flags disclosed finder fees lacking a registered broker-dealer <code>CRD</code>.</li>
+    </ul>
+
+    <h2>2. Programmatic REST API &amp; Model Context Protocol (MCP) Integration</h2>
+    <pre><code>curl -X POST &quot;https://quantledger-73-engine-financial-and-statutory-api.p.rapidapi.com/v1/sec-edgar/form-d-private-raises&quot; \
+  -H &quot;Content-Type: application/json&quot; \
+  -H &quot;X-RapidAPI-Key: YOUR_RAPIDAPI_KEY&quot; \
+  -H &quot;X-RapidAPI-Host: quantledger-73-engine-financial-and-statutory-api.p.rapidapi.com&quot; \
+  -d &#x27;{
+    &quot;days_back&quot;: 14,
+    &quot;max_results&quot;: 25,
+    &quot;state_filter&quot;: &quot;CA&quot;,
+    &quot;industry_keyword&quot;: &quot;Technology&quot;,
+    &quot;min_amount_sold_usd&quot;: 250000,
+    &quot;exclude_pooled_funds&quot;: true
+  }&#x27;</code></pre>
+    
+  </main>
+  <footer>
+    <div class="wrap">
+      <p><strong>Stateless Privacy &amp; Computational Utility Notice:</strong> All QuantLedger API and Model Context Protocol (MCP) endpoints evaluate numeric and textual inputs strictly in volatile RAM with zero caller data retention. Outputs provide deterministic accounting, financial, and statutory regulatory calculations for technical and analytical workflows and do not constitute CPA attest/assurance opinions, formal tax opinions, legal advice, or registered investment advice.</p>
+      <p>Public U.S. federal datasets (SEC EDGAR XBRL/10-K, Federal Reserve Bank of New York SOFR/EFFR, U.S. Treasury yields, Census NAICS, and SIC crosswalks) are sourced from official public-domain `.gov` feeds under 17 U.S.C. &sect; 105. &middot; <a href="https://quantledgerapi.github.io/sitemap.xml">XML Sitemap</a> &middot; <a href="https://quantledgerapi.github.io/llms.txt">llms.txt</a></p>
+    </div>
+  </footer>
+</body>
+</html>

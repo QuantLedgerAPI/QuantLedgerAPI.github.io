@@ -1,6 +1,6 @@
 /**
  * QuantLedger 73-Engine GAAP, Tax, KYB, Form D & Form 5500 Custom Functions for Google Sheets
- * Version: 2.8.0 | Docs: https://quantledgerapi.github.io/google-sheets-excel-formulas-and-n8n/
+ * Version: 2.8.2 | Docs: https://quantledgerapi.github.io/google-sheets-excel-formulas-and-n8n/
  *
  * 10-SECOND INSTALL:
  *   1. In Google Sheets, click Extensions -> Apps Script, paste this file, and click Save.

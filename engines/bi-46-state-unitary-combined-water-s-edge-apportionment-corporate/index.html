@@ -191,7 +191,7 @@ footer {
 <body>
   <header class="top">
     <div class="wrap nav">
-      <a class="brand" href="https://quantledgerapi.github.io/">QuantLedger API &amp; MCP Docs <span style="color:#9fb0d9;font-weight:400;font-size:0.84rem;">v2.8.0</span></a>
+      <a class="brand" href="https://quantledgerapi.github.io/">QuantLedger API &amp; MCP Docs <span style="color:#9fb0d9;font-weight:400;font-size:0.84rem;">v2.8.2</span></a>
       <nav class="nav-links">
         <a href="https://quantledgerapi.github.io/#engines">All Engines</a>
         <a href="https://quantledgerapi.github.io/us-kyb-ofac-sanctions-screener/">US KYB &amp; OFAC</a>
@@ -210,7 +210,7 @@ footer {
     <section class="hero">
       <span class="badge">BI-46 &middot; National IRC Tax Code, Valuation &amp; Municipal Finance Suite</span>
       <h1>State Unitary Combined Water&#x27;s-Edge Apportionment &amp; Corporate Franchise Tax Return Workpaper — Calculator, Excel Workpaper &amp; API (BI-46)</h1>
-      <p class="lead">Alpha_DC = Sales_DC_Finnigan / (Sales_Everywhere - Sales_Excluded_Treasury. Applies D.C. Form D-20 Finnigan Single-Sales-Factor Apportionment Rule [D.C. Official Code Sec. 47-1810.02(g)(3) &amp; 9 DCMR Sec. 156.9]; Water&#x27;s-Edge Unitary Combined Taxable Income &amp; Intercompany Elimination [D.C. Official Code Sec. 47-1805.02a &amp; 9 DCMR Sec. 156.11]; FASB ASC 740-10-35 State Apportionment Deferred Tax Remeasurement [FASB ASC 740-10-35 &amp; D.C. Official Code Sec. 47-1810.04(c)(2)]; D.C. OTR Sec. 47-4201 Daily Compounded Underpayment Interest &amp; Sec. 47-4213 Penalty [D.C. Official Code Secs. 47-4201, 47-4213 &amp; 47-4221]. Outputs: Summary Budget Bridge, FormD20 Unitary Group Roster, Schedule 1A Interco Elim, Market Sourcing Sales Factor. Calibrated across all 57 US States, Washington, D.C., US Territories, and Federal IRC &sect; 11 baselines in sub-millisecond deterministic Python &amp; NumPy CPU execution.</p>
+      <p class="lead">Evaluates D.C. Form D-20 Finnigan Single-Sales-Factor Apportionment Rule; Water&#x27;s-Edge Unitary Combined Taxable Income &amp; Intercompany Elimination; FASB ASC 740-10-35 State Apportionment Deferred Tax Remeasurement; D.C. OTR Sec. 47-4201 Daily Compounded Underpayment Interest &amp; Sec. 47-4213 Penalty. Submit: Sales Dc Finnigan, Sales Everywhere, Sales Excluded Treasury, Ti Fed Sum. Excel Tabs: Summary Budget Bridge, Form D20 Unitary Group Roster, Schedule 1A Interco Elim, Market Sourcing Sales Factor. Calibrated across all 57 US States, Washington, D.C., US Territories, and Federal IRC &sect; 11 baselines in sub-millisecond deterministic Python &amp; NumPy CPU execution.</p>
       <p><strong>Official Statutory &amp; Regulatory Workpaper Title:</strong> Unitary Combined Group Intercompany Elimination, Single-Sales-Factor Apportionment &amp; ASC 740 DTA Schedule</p>
       <p><strong>Official Agency Form / Workpaper Standard:</strong> <code>Unitary Combined Franchise Tax Return (Form D-20 / Finnegan Sales Factor)</code></p>
       <p><strong>Governing Accounting, Tax &amp; Statutory Authorities:</strong> D.C. Official Code §§ 47-1805.02a, 47-1810.02, 47-1810.07 (Unitary Combined &amp; Market Sourcing); D.C. Code § 47-1817.01 (QHTC); 9 DCMR § 156 &amp; FASB ASC 740</p>
@@ -277,7 +277,7 @@ footer {
 
     <h2>1. Deterministic Statutory &amp; Regulatory Laws Executed</h2>
     <p>Unlike prompt-only LLM skills that approximate multi-period schedules in token space, <code>BI-46</code> executes exact pure-Python and NumPy statutory rules in volatile container RAM:</p>
-    <ul><li>(1) D.C. Form D-20 Finnigan Single-Sales-Factor Apportionment Rule [D.C. Official Code Sec. 47-1810.02(g)(3) &amp; 9 DCMR Sec. 156.9] — Alpha_DC = Sales_DC_Finnigan / (Sales_Everywhere - Sales_Excluded_Treasury)</li><li>(2) Water&#x27;s-Edge Unitary Combined Taxable Income &amp; Intercompany Elimination [D.C. Official Code Sec. 47-1805.02a &amp; 9 DCMR Sec. 156.11] — TI_comb = sum_{m in W} (TI_Fed,m + Add_DC,m - Sub_DC,m) - Elim_Interco</li><li>(3) FASB ASC 740-10-35 State Apportionment Deferred Tax Remeasurement [FASB ASC 740-10-35 &amp; D.C. Official Code Sec. 47-1810.04(c)(2)] — Delta_DTA_DC = Temp_Diff_net * (Alpha_DC_new * tau_DC - Alpha_DC_old * tau_DC_prior)</li><li>(4) D.C. OTR Sec. 47-4201 Daily Compounded Underpayment Interest &amp; Sec. 47-4213 Penalty [D.C. Official Code Secs. 47-4201, 47-4213 &amp; 47-4221] — Int_47_4201 = Tax_Underpaid * [(1 + 0.10 / 365)^d - 1] + Penalty_47_4213</li></ul>
+    <ul><li>(1) D.C. Form D-20 Finnigan Single-Sales-Factor Apportionment Rule [D.C. Official Code Sec. 47-1810.02(g)(3) &amp; 9 DCMR Sec. 156.9]</li><li>(2) Water&#x27;s-Edge Unitary Combined Taxable Income &amp; Intercompany Elimination [D.C. Official Code Sec. 47-1805.02a &amp; 9 DCMR Sec. 156.11]</li><li>(3) FASB ASC 740-10-35 State Apportionment Deferred Tax Remeasurement [FASB ASC 740-10-35 &amp; D.C. Official Code Sec. 47-1810.04(c)(2)]</li><li>(4) D.C. OTR Sec. 47-4201 Daily Compounded Underpayment Interest &amp; Sec. 47-4213 Penalty [D.C. Official Code Secs. 47-4201, 47-4213 &amp; 47-4221]</li></ul>
 
     <h2>2. Input Schema &amp; Workpaper Output Schedules</h2>
     <h3>Structured Input Datasets (<code>structured_inputs</code>)</h3>

@@ -191,7 +191,7 @@ footer {
 <body>
   <header class="top">
     <div class="wrap nav">
-      <a class="brand" href="https://quantledgerapi.github.io/">QuantLedger API &amp; MCP Docs <span style="color:#9fb0d9;font-weight:400;font-size:0.84rem;">v2.8.0</span></a>
+      <a class="brand" href="https://quantledgerapi.github.io/">QuantLedger API &amp; MCP Docs <span style="color:#9fb0d9;font-weight:400;font-size:0.84rem;">v2.8.2</span></a>
       <nav class="nav-links">
         <a href="https://quantledgerapi.github.io/#engines">All Engines</a>
         <a href="https://quantledgerapi.github.io/us-kyb-ofac-sanctions-screener/">US KYB &amp; OFAC</a>
@@ -210,7 +210,7 @@ footer {
     <section class="hero">
       <span class="badge">BI-61 &middot; Technical FASB GAAP, ERISA, U.S. Customs &amp; Cyber Loss Suite</span>
       <h1>IRC Section 263A UNICAP Inventory Absorption &amp; IRS Form 3115 Sec. 481(a) Method-Change — Calculator, Excel Workpaper &amp; API (BI-61)</h1>
-      <p class="lead">Ratio_Absorb = Additional_Sec263A_Costs / Total_Sec471_Costs; AddOn_263A_End = Ratio_Absorb * Sec471_Ending_FIFO_Inv. Applies Treas. Reg. Sec. 1.263A-2(b) Simplified Production Method (SPM) Absorption [26 U.S.C. Sec. 263A &amp; Treas. Reg. Secs. 1.263A-2(b), -3(d)]; Treas. Reg. Sec. 1.263A-1(g)(4) Mixed-Service 90/10 De Minimis Screen [Treas. Reg. Sec. 1.263A-1(g)(4)(ii) Mixed-Service Allocation Rules]; Treas. Reg. Sec. 1.263A-2(b)(4) 3-Year Historic Absorption Ratio (HAR) Election [Treas. Reg. Sec. 1.263A-2(b)(4) Qualifying 3-Year HAR Election]; IRS Form 3115 &amp; 26 U.S.C. Sec. 481(a) Method-Change Adjustment [26 U.S.C. Sec. 481(a) &amp; IRS Rev. Proc. 2024-23 Automatic Change #237]. Outputs: Form3115 Summary Budget Bridge, Sec263A Additional Costs Pool, Mixed Service StepDown Matrix, SPM SRM Absorption Ratio Calc. Calibrated across all 57 US States, Washington, D.C., US Territories, and Federal IRC &sect; 11 baselines in sub-millisecond deterministic Python &amp; NumPy CPU execution.</p>
+      <p class="lead">Evaluates Treas. Reg. Sec. 1.263A-2(b) Simplified Production Method (SPM) Absorption; Treas. Reg. Sec. 1.263A-1(g)(4) Mixed-Service 90/10 De Minimis Screen; Treas. Reg. Sec. 1.263A-2(b)(4) 3-Year Historic Absorption Ratio (HAR) Election; IRS Form 3115 &amp; 26 U.S.C. Sec. 481(a) Method-Change Adjustment. Submit: Sec471 Ending Fifo Inventory. Excel Tabs: Form 3115 Summary Budget Bridge, Sec263A Additional Costs Pool, Mixed Service Step Down Matrix, SPM SRM Absorption Ratio Calc. Calibrated across all 57 US States, Washington, D.C., US Territories, and Federal IRC &sect; 11 baselines in sub-millisecond deterministic Python &amp; NumPy CPU execution.</p>
       <p><strong>Official Statutory &amp; Regulatory Workpaper Title:</strong> Treas. Reg. 1.263A-1/-2/-3 Simplified Production/Resale Ratio, Mixed-Service Step-Down &amp; Form 3115 Filing</p>
       <p><strong>Official Agency Form / Workpaper Standard:</strong> <code>IRS Form 3115 (Rev. Proc. 2024-23) &amp; IRC Sec. 263A / Sec. 481(a) Schedule</code></p>
       <p><strong>Governing Accounting, Tax &amp; Statutory Authorities:</strong> 26 U.S.C. § 263A &amp; Treas. Reg. §§ 1.263A-1 to -3 (Final UNICAP Rules); IRC § 481(a); IRS Form 3115 &amp; Rev. Proc. 2024-23</p>
@@ -277,7 +277,7 @@ footer {
 
     <h2>1. Deterministic Statutory &amp; Regulatory Laws Executed</h2>
     <p>Unlike prompt-only LLM skills that approximate multi-period schedules in token space, <code>BI-61</code> executes exact pure-Python and NumPy statutory rules in volatile container RAM:</p>
-    <ul><li>(1) Treas. Reg. Sec. 1.263A-2(b) Simplified Production Method (SPM) Absorption [26 U.S.C. Sec. 263A &amp; Treas. Reg. Secs. 1.263A-2(b), -3(d)] — Ratio_Absorb = Additional_Sec263A_Costs / Total_Sec471_Costs; AddOn_263A_End = Ratio_Absorb * Sec471_Ending_FIFO_Inv</li><li>(2) Treas. Reg. Sec. 1.263A-1(g)(4) Mixed-Service 90/10 De Minimis Screen [Treas. Reg. Sec. 1.263A-1(g)(4)(ii) Mixed-Service Allocation Rules] — Alloc_MixedSvc,d = Cost_Dept,d * (1.0 if r_d &gt;= 0.90 else 0.0 if r_d &lt;= 0.10 else r_d)</li><li>(3) Treas. Reg. Sec. 1.263A-2(b)(4) 3-Year Historic Absorption Ratio (HAR) Election [Treas. Reg. Sec. 1.263A-2(b)(4) Qualifying 3-Year HAR Election] — Ratio_HAR = sum_{y=t-3}^{t-1} Additional_263A(y) / sum_{y=t-3}^{t-1} Sec471_Incurred(y)</li><li>(4) IRS Form 3115 &amp; 26 U.S.C. Sec. 481(a) Method-Change Adjustment [26 U.S.C. Sec. 481(a) &amp; IRS Rev. Proc. 2024-23 Automatic Change #237] — Adj_481a = Inv_Tax_NewMethod_Open - Inv_Tax_OldMethod_Open (100% Yr-1 Deduction if &lt; 0; 25%/Yr x 4 Yrs if &gt; 0)</li></ul>
+    <ul><li>(1) Treas. Reg. Sec. 1.263A-2(b) Simplified Production Method (SPM) Absorption [26 U.S.C. Sec. 263A &amp; Treas. Reg. Secs. 1.263A-2(b), -3(d)]</li><li>(2) Treas. Reg. Sec. 1.263A-1(g)(4) Mixed-Service 90/10 De Minimis Screen [Treas. Reg. Sec. 1.263A-1(g)(4)(ii) Mixed-Service Allocation Rules]</li><li>(3) Treas. Reg. Sec. 1.263A-2(b)(4) 3-Year Historic Absorption Ratio (HAR) Election [Treas. Reg. Sec. 1.263A-2(b)(4) Qualifying 3-Year HAR Election]</li><li>(4) IRS Form 3115 &amp; 26 U.S.C. Sec. 481(a) Method-Change Adjustment [26 U.S.C. Sec. 481(a) &amp; IRS Rev. Proc. 2024-23 Automatic Change #237]</li></ul>
 
     <h2>2. Input Schema &amp; Workpaper Output Schedules</h2>
     <h3>Structured Input Datasets (<code>structured_inputs</code>)</h3>

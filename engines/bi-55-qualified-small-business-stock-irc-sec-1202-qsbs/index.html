@@ -191,7 +191,7 @@ footer {
 <body>
   <header class="top">
     <div class="wrap nav">
-      <a class="brand" href="https://quantledgerapi.github.io/">QuantLedger API &amp; MCP Docs <span style="color:#9fb0d9;font-weight:400;font-size:0.84rem;">v2.8.0</span></a>
+      <a class="brand" href="https://quantledgerapi.github.io/">QuantLedger API &amp; MCP Docs <span style="color:#9fb0d9;font-weight:400;font-size:0.84rem;">v2.8.2</span></a>
       <nav class="nav-links">
         <a href="https://quantledgerapi.github.io/#engines">All Engines</a>
         <a href="https://quantledgerapi.github.io/us-kyb-ofac-sanctions-screener/">US KYB &amp; OFAC</a>
@@ -210,7 +210,7 @@ footer {
     <section class="hero">
       <span class="badge">BI-55 &middot; National IRC Tax Code, Valuation &amp; Municipal Finance Suite</span>
       <h1>Qualified Small Business Stock (IRC Sec. 1202 QSBS) $50M/$75M Gross-Asset &amp; Gain-Exclusion Audit — Calculator, Excel Workpaper &amp; API (BI-55)</h1>
-      <p class="lead">AGA_Post(k) = Cash_Post(k) + sum_a Adjusted_Tax_Basis(Asset_a, k) &lt;= $50,000,000. Applies IRC Sec. 1202(d)(1) $50,000,000 Aggregate Gross Assets Tax-Basis Ceiling [26 U.S.C. Sec. 1202(d)(1)-(2)]; IRC Sec. 1202(e)(1) 80% Active Business Requirement &amp; Sec. 1202(e)(6) Working-Capital Cap [26 U.S.C. Secs. 1202(e)(1), 1202(e)(3) &amp; 1202(e)(6)]; Treas. Reg. Sec. 1.1202-2 Five-Percent De Minimis Stock Redemption Taint Test [26 U.S.C. Sec. 1202(c)(3) &amp; Treas. Reg. Sec. 1.1202-2(a)-(d)]; IRC Sec. 1202(b)(1) Greater of $10,000,000 or 10x Basis Per-Taxpayer Gain Exclusion [26 U.S.C. Secs. 1202(a)(4) &amp; 1202(b)(1)(A)-(B)]. Outputs: 01 Summary Budget Bridge, 02 50M Gross Asset Basis Test, 03 80Pct Active Business Ratio, 04 Reg 1 1202 2 Redemption Test. Calibrated across all 57 US States, Washington, D.C., US Territories, and Federal IRC &sect; 11 baselines in sub-millisecond deterministic Python &amp; NumPy CPU execution.</p>
+      <p class="lead">Evaluates IRC Sec. 1202(d)(1) $50,000,000 Aggregate Gross Assets Tax-Basis Ceiling; IRC Sec. 1202(e)(1) 80% Active Business Requirement &amp; Sec. 1202(e)(6) Working-Capital Cap; Treas. Reg. Sec. 1.1202-2 Five-Percent De Minimis Stock Redemption Taint Test; IRC Sec. 1202(b)(1) Greater of $10,000,000 or 10x Basis Per-Taxpayer Gain Exclusion. Submit: Cash Post Issuance, Adjusted Tax Basis Assets, Contributed Builtin FMV, Assets Qual Trade. Excel Tabs: Summary Budget Bridge, 50M Gross Asset Basis Test, 80Pct Active Business Ratio, Reg 1 1202 2 Redemption Test. Calibrated across all 57 US States, Washington, D.C., US Territories, and Federal IRC &sect; 11 baselines in sub-millisecond deterministic Python &amp; NumPy CPU execution.</p>
       <p><strong>Official Statutory &amp; Regulatory Workpaper Title:</strong> 26 U.S.C. Sec. 1202 Gross-Asset Ceiling, 80% Active-Business Test &amp; Redemption Taint Eligibility Workpaper</p>
       <p><strong>Official Agency Form / Workpaper Standard:</strong> <code>IRC Sec. 1202 QSBS Attestation &amp; Schedule D / Form 8949 Exclusion Workpaper</code></p>
       <p><strong>Governing Accounting, Tax &amp; Statutory Authorities:</strong> 26 U.S.C. § 1202(a)-(k) (Qualified Small Business Stock Exclusion); Treas. Reg. § 1.1202-2 (Stock Redemptions); IRC § 1202(e)(3) &amp; § 1202(e)(6)</p>
@@ -277,7 +277,7 @@ footer {
 
     <h2>1. Deterministic Statutory &amp; Regulatory Laws Executed</h2>
     <p>Unlike prompt-only LLM skills that approximate multi-period schedules in token space, <code>BI-55</code> executes exact pure-Python and NumPy statutory rules in volatile container RAM:</p>
-    <ul><li>(1) IRC Sec. 1202(d)(1) $50,000,000 Aggregate Gross Assets Tax-Basis Ceiling [26 U.S.C. Sec. 1202(d)(1)-(2)] — AGA_Post(k) = Cash_Post(k) + sum_a Adjusted_Tax_Basis(Asset_a, k) &lt;= $50,000,000</li><li>(2) IRC Sec. 1202(e)(1) 80% Active Business Requirement &amp; Sec. 1202(e)(6) Working-Capital Cap [26 U.S.C. Secs. 1202(e)(1), 1202(e)(3) &amp; 1202(e)(6)] — Active_Ratio(q) = (Assets_Qual_Trade(q) + WC_SafeHarbor_1202e6(q)) / Total_Assets(q) &gt;= 0.80</li><li>(3) Treas. Reg. Sec. 1.1202-2 Five-Percent De Minimis Stock Redemption Taint Test [26 U.S.C. Sec. 1202(c)(3) &amp; Treas. Reg. Sec. 1.1202-2(a)-(d)] — Taint_Related = I(Redemp_[-1,+1] &gt; 5%); Taint_Sig = I(Redemp_[-2,+2] &gt; 5% Pre-Redemp FMV)</li><li>(4) IRC Sec. 1202(b)(1) Greater of $10,000,000 or 10x Basis Per-Taxpayer Gain Exclusion [26 U.S.C. Secs. 1202(a)(4) &amp; 1202(b)(1)(A)-(B)] — Gain_Excl_Holder = pct_vintage * max($10,000,000, 10.0 * Basis_1202_Issued)</li></ul>
+    <ul><li>(1) IRC Sec. 1202(d)(1) $50,000,000 Aggregate Gross Assets Tax-Basis Ceiling [26 U.S.C. Sec. 1202(d)(1)-(2)]</li><li>(2) IRC Sec. 1202(e)(1) 80% Active Business Requirement &amp; Sec. 1202(e)(6) Working-Capital Cap [26 U.S.C. Secs. 1202(e)(1), 1202(e)(3) &amp; 1202(e)(6)]</li><li>(3) Treas. Reg. Sec. 1.1202-2 Five-Percent De Minimis Stock Redemption Taint Test [26 U.S.C. Sec. 1202(c)(3) &amp; Treas. Reg. Sec. 1.1202-2(a)-(d)]</li><li>(4) IRC Sec. 1202(b)(1) Greater of $10,000,000 or 10x Basis Per-Taxpayer Gain Exclusion [26 U.S.C. Secs. 1202(a)(4) &amp; 1202(b)(1)(A)-(B)]</li></ul>
 
     <h2>2. Input Schema &amp; Workpaper Output Schedules</h2>
     <h3>Structured Input Datasets (<code>structured_inputs</code>)</h3>

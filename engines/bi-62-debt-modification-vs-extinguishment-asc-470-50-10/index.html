@@ -191,7 +191,7 @@ footer {
 <body>
   <header class="top">
     <div class="wrap nav">
-      <a class="brand" href="https://quantledgerapi.github.io/">QuantLedger API &amp; MCP Docs <span style="color:#9fb0d9;font-weight:400;font-size:0.84rem;">v2.8.0</span></a>
+      <a class="brand" href="https://quantledgerapi.github.io/">QuantLedger API &amp; MCP Docs <span style="color:#9fb0d9;font-weight:400;font-size:0.84rem;">v2.8.2</span></a>
       <nav class="nav-links">
         <a href="https://quantledgerapi.github.io/#engines">All Engines</a>
         <a href="https://quantledgerapi.github.io/us-kyb-ofac-sanctions-screener/">US KYB &amp; OFAC</a>
@@ -210,7 +210,7 @@ footer {
     <section class="hero">
       <span class="badge">BI-62 &middot; Technical FASB GAAP, ERISA, U.S. Customs &amp; Cyber Loss Suite</span>
       <h1>Debt Modification vs. Extinguishment (ASC 470-50 10% Cash-Flow Test) &amp; OID Schedule — Calculator, Excel Workpaper &amp; API (BI-62)</h1>
-      <p class="lead">Pct_PV_Diff,l = |PV(CF_New,l + Fees_Net,l ; r_EIR_orig) - PV(CF_Old_Rem,l ; r_EIR_orig)| / PV(CF_Old_Rem,l ; r_EIR_orig. Applies FASB ASC 470-50-40-10 Syndicate Lender-by-Lender 10% Cash-Flow Test [FASB ASC 470-50-40-10 &amp; ASC 470-50-40-12 Syndicate Debt Test]; FASB ASC 835-30-35 Effective-Interest Rate (EIR) &amp; OID Accretion [FASB ASC 835-30-35-2 Effective-Interest Amortization Method]; FASB ASC 470-50-40-17 Lender vs. Third-Party Fee Bifurcation Rule [FASB ASC 470-50-40-17 to 40-18 Debt Issuance Cost Rules]; OCC Bulletin 2013-9 Leveraged-Lending Fixed-Charge &amp; Leverage Test [OCC Bulletin 2013-9 Interagency Leveraged-Lending Guidance]. Outputs: 01 Summary Budget Bridge, 02 Lender 10Pct PV CashFlow, 03 ASC835 Effective Rate OID, 04 Fee Treatment Bifurcation. Calibrated across all 57 US States, Washington, D.C., US Territories, and Federal IRC &sect; 11 baselines in sub-millisecond deterministic Python &amp; NumPy CPU execution.</p>
+      <p class="lead">Evaluates FASB ASC 470-50-40-10 Syndicate Lender-by-Lender 10% Cash-Flow Test; FASB ASC 835-30-35 Effective-Interest Rate (EIR) &amp; OID Accretion; FASB ASC 470-50-40-17 Lender vs. Third-Party Fee Bifurcation Rule; OCC Bulletin 2013-9 Leveraged-Lending Fixed-Charge &amp; Leverage Test. Submit: Syndicated Facility Principal, Original Eir, New Credit Spread, Old Remaining Years. Excel Tabs: Summary Budget Bridge, Lender 10Pct PV Cash Flow, ASC835 Effective Rate OID, Fee Treatment Bifurcation. Calibrated across all 57 US States, Washington, D.C., US Territories, and Federal IRC &sect; 11 baselines in sub-millisecond deterministic Python &amp; NumPy CPU execution.</p>
       <p><strong>Official Statutory &amp; Regulatory Workpaper Title:</strong> FASB ASC 470-50-40 Lender-by-Lender 10% PV Cash-Flow Test, Third-Party Fee Treatment &amp; ASC 835 OID Workpaper</p>
       <p><strong>Official Agency Form / Workpaper Standard:</strong> <code>FASB ASC 470-50-40 Debt Modification &amp; ASC 835-30 Effective-Interest Schedule</code></p>
       <p><strong>Governing Accounting, Tax &amp; Statutory Authorities:</strong> FASB ASC 470-50-40 (Debt Modifications &amp; Extinguishments); FASB ASC 835-30 (Effective-Interest OID); FASB ASC 470-60</p>
@@ -277,7 +277,7 @@ footer {
 
     <h2>1. Deterministic Statutory &amp; Regulatory Laws Executed</h2>
     <p>Unlike prompt-only LLM skills that approximate multi-period schedules in token space, <code>BI-62</code> executes exact pure-Python and NumPy statutory rules in volatile container RAM:</p>
-    <ul><li>(1) FASB ASC 470-50-40-10 Syndicate Lender-by-Lender 10% Cash-Flow Test [FASB ASC 470-50-40-10 &amp; ASC 470-50-40-12 Syndicate Debt Test] — Pct_PV_Diff,l = |PV(CF_New,l + Fees_Net,l ; r_EIR_orig) - PV(CF_Old_Rem,l ; r_EIR_orig)| / PV(CF_Old_Rem,l ; r_EIR_orig)</li><li>(2) FASB ASC 835-30-35 Effective-Interest Rate (EIR) &amp; OID Accretion [FASB ASC 835-30-35-2 Effective-Interest Amortization Method] — Net_Carrying_0 = sum_{t=1}^T CF_Contractual,t / (1 + r_EIR_new)^t; OID_Amort_t = Carrying_{t-1} * r_EIR_new - Cash_Int_t</li><li>(3) FASB ASC 470-50-40-17 Lender vs. Third-Party Fee Bifurcation Rule [FASB ASC 470-50-40-17 to 40-18 Debt Issuance Cost Rules] — Modification: Lender_Fees -&gt; Defer/OID, 3rdParty_Fees -&gt; Expense; Extinguishment: Old_OID -&gt; WriteOff, 3rdParty -&gt; Defer</li><li>(4) OCC Bulletin 2013-9 Leveraged-Lending Fixed-Charge &amp; Leverage Test [OCC Bulletin 2013-9 Interagency Leveraged-Lending Guidance] — FCCR_post = (EBITDA_Adj - CapEx_Maint - Cash_Tax) / (Int_Cash_Post + Prin_Sched_Post); Net_Lev = Debt_Net / EBITDA_Adj</li></ul>
+    <ul><li>(1) FASB ASC 470-50-40-10 Syndicate Lender-by-Lender 10% Cash-Flow Test [FASB ASC 470-50-40-10 &amp; ASC 470-50-40-12 Syndicate Debt Test]</li><li>(2) FASB ASC 835-30-35 Effective-Interest Rate (EIR) &amp; OID Accretion [FASB ASC 835-30-35-2 Effective-Interest Amortization Method]</li><li>(3) FASB ASC 470-50-40-17 Lender vs. Third-Party Fee Bifurcation Rule [FASB ASC 470-50-40-17 to 40-18 Debt Issuance Cost Rules]</li><li>(4) OCC Bulletin 2013-9 Leveraged-Lending Fixed-Charge &amp; Leverage Test [OCC Bulletin 2013-9 Interagency Leveraged-Lending Guidance]</li></ul>
 
     <h2>2. Input Schema &amp; Workpaper Output Schedules</h2>
     <h3>Structured Input Datasets (<code>structured_inputs</code>)</h3>

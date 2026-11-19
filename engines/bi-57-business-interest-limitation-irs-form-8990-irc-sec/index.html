@@ -191,7 +191,7 @@ footer {
 <body>
   <header class="top">
     <div class="wrap nav">
-      <a class="brand" href="https://quantledgerapi.github.io/">QuantLedger API &amp; MCP Docs <span style="color:#9fb0d9;font-weight:400;font-size:0.84rem;">v2.8.0</span></a>
+      <a class="brand" href="https://quantledgerapi.github.io/">QuantLedger API &amp; MCP Docs <span style="color:#9fb0d9;font-weight:400;font-size:0.84rem;">v2.8.2</span></a>
       <nav class="nav-links">
         <a href="https://quantledgerapi.github.io/#engines">All Engines</a>
         <a href="https://quantledgerapi.github.io/us-kyb-ofac-sanctions-screener/">US KYB &amp; OFAC</a>
@@ -210,7 +210,7 @@ footer {
     <section class="hero">
       <span class="badge">BI-57 &middot; National IRC Tax Code, Valuation &amp; Municipal Finance Suite</span>
       <h1>Business Interest Limitation (IRS Form 8990 / IRC Sec. 163(j) 30% ATI) &amp; Real-Property Election — Calculator, Excel Workpaper &amp; API (BI-57)</h1>
-      <p class="lead">Cap_163j = BII + 0.30 * max(0, EBIT_ATI); Disallowed_CF = max(0, BIE - Cap_163j. Applies IRS Form 8990 Sec. 163(j) 30% ATI Cap [26 U.S.C. Secs. 163(j)(1), 163(j)(8)(A)(v) &amp; IRS Form 8990]; IRC Sec. 163(j)(7)(B) Electing Real Property Trade or Business vs. Sec. 168(g) ADS Switch [26 U.S.C. Secs. 163(j)(7)(B) &amp; 168(g)(1)(F), (g)(8)]; Treas. Reg. Sec. 1.163(j)-5 Consolidated Group Single-Entity ATI &amp; SRLY Absorption [Treas. Reg. Secs. 1.163(j)-4(d) &amp; 1.163(j)-5(b)]; IRC Sec. 163(j)(4)(B) Partnership Excess Business Interest Expense (EBIE) &amp; ETI Release [26 U.S.C. Sec. 163(j)(4)(B) &amp; Schedule K-1 Rules]. Outputs: Form8990 Summary Budget Bridge, RPTOB 163j7 ADS Crossover Model, Consolidated 163j4 Group Alloc, Partnership EBIE Schedule K1. Calibrated across all 57 US States, Washington, D.C., US Territories, and Federal IRC &sect; 11 baselines in sub-millisecond deterministic Python &amp; NumPy CPU execution.</p>
+      <p class="lead">Evaluates IRS Form 8990 Sec. 163(j) 30% ATI Cap; IRC Sec. 163(j)(7)(B) Electing Real Property Trade or Business vs. Sec. 168(g) ADS Switch; Treas. Reg. Sec. 1.163(j)-5 Consolidated Group Single-Entity ATI &amp; SRLY Absorption; IRC Sec. 163(j)(4)(B) Partnership Excess Business Interest Expense (EBIE) &amp; ETI Release. Submit: Debt Principal, Blended Spread, Business Interest Income, Ebit Ati. Excel Tabs: Form 8990 Summary Budget Bridge, RPTOB 163j7 ADS Crossover Model, Consolidated 163j4 Group Alloc, Partnership EBIE Schedule K1. Calibrated across all 57 US States, Washington, D.C., US Territories, and Federal IRC &sect; 11 baselines in sub-millisecond deterministic Python &amp; NumPy CPU execution.</p>
       <p><strong>Official Statutory &amp; Regulatory Workpaper Title:</strong> 26 U.S.C. Sec. 163(j) 30% Adjusted Taxable Income Cap, ADS Depreciation Crossover &amp; Form 8990 Workpaper</p>
       <p><strong>Official Agency Form / Workpaper Standard:</strong> <code>IRS Form 8990 (IRC Sec. 163(j) Limitation &amp; Sec. 163(j)(7)(B) RPTOB Election)</code></p>
       <p><strong>Governing Accounting, Tax &amp; Statutory Authorities:</strong> 26 U.S.C. § 163(j) &amp; Treas. Reg. §§ 1.163(j)-1 to -10; IRS Form 8990; IRC § 163(j)(7)(B) Real-Property Election &amp; IRC § 168(g) ADS</p>
@@ -277,7 +277,7 @@ footer {
 
     <h2>1. Deterministic Statutory &amp; Regulatory Laws Executed</h2>
     <p>Unlike prompt-only LLM skills that approximate multi-period schedules in token space, <code>BI-57</code> executes exact pure-Python and NumPy statutory rules in volatile container RAM:</p>
-    <ul><li>(1) IRS Form 8990 Sec. 163(j) 30% ATI Cap [26 U.S.C. Secs. 163(j)(1), 163(j)(8)(A)(v) &amp; IRS Form 8990] — Cap_163j = BII + 0.30 * max(0, EBIT_ATI); Disallowed_CF = max(0, BIE - Cap_163j)</li><li>(2) IRC Sec. 163(j)(7)(B) Electing Real Property Trade or Business vs. Sec. 168(g) ADS Switch [26 U.S.C. Secs. 163(j)(7)(B) &amp; 168(g)(1)(F), (g)(8)] — Delta_NPV_RPTOB = sum_{t=1}^{10} tau * [(BIE_Uncapped,t - BIE_Cap,t) - (Depr_MACRS,t - Depr_ADS,t)] / (1 + r)^t</li><li>(3) Treas. Reg. Sec. 1.163(j)-5 Consolidated Group Single-Entity ATI &amp; SRLY Absorption [Treas. Reg. Secs. 1.163(j)-4(d) &amp; 1.163(j)-5(b)] — Cap_Consol = BII_Group + 0.30 * ATI_Consol; Absorb_SRLY = min(CF_Member, Residual_Lim)</li><li>(4) IRC Sec. 163(j)(4)(B) Partnership Excess Business Interest Expense (EBIE) &amp; ETI Release [26 U.S.C. Sec. 163(j)(4)(B) &amp; Schedule K-1 Rules] — Basis_Partner_Adj = Basis_Open - EBIE_Allocated; Freed_EBIE = min(EBIE_Susp, ETI_Alloc)</li></ul>
+    <ul><li>(1) IRS Form 8990 Sec. 163(j) 30% ATI Cap [26 U.S.C. Secs. 163(j)(1), 163(j)(8)(A)(v) &amp; IRS Form 8990]</li><li>(2) IRC Sec. 163(j)(7)(B) Electing Real Property Trade or Business vs. Sec. 168(g) ADS Switch [26 U.S.C. Secs. 163(j)(7)(B) &amp; 168(g)(1)(F), (g)(8)]</li><li>(3) Treas. Reg. Sec. 1.163(j)-5 Consolidated Group Single-Entity ATI &amp; SRLY Absorption [Treas. Reg. Secs. 1.163(j)-4(d) &amp; 1.163(j)-5(b)]</li><li>(4) IRC Sec. 163(j)(4)(B) Partnership Excess Business Interest Expense (EBIE) &amp; ETI Release [26 U.S.C. Sec. 163(j)(4)(B) &amp; Schedule K-1 Rules]</li></ul>
 
     <h2>2. Input Schema &amp; Workpaper Output Schedules</h2>
     <h3>Structured Input Datasets (<code>structured_inputs</code>)</h3>

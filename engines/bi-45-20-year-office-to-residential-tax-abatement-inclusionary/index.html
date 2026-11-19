@@ -191,7 +191,7 @@ footer {
 <body>
   <header class="top">
     <div class="wrap nav">
-      <a class="brand" href="https://quantledgerapi.github.io/">QuantLedger API &amp; MCP Docs <span style="color:#9fb0d9;font-weight:400;font-size:0.84rem;">v2.8.0</span></a>
+      <a class="brand" href="https://quantledgerapi.github.io/">QuantLedger API &amp; MCP Docs <span style="color:#9fb0d9;font-weight:400;font-size:0.84rem;">v2.8.2</span></a>
       <nav class="nav-links">
         <a href="https://quantledgerapi.github.io/#engines">All Engines</a>
         <a href="https://quantledgerapi.github.io/us-kyb-ofac-sanctions-screener/">US KYB &amp; OFAC</a>
@@ -210,7 +210,7 @@ footer {
     <section class="hero">
       <span class="badge">BI-45 &middot; National IRC Tax Code, Valuation &amp; Municipal Finance Suite</span>
       <h1>20-Year Office-to-Residential Tax Abatement, Inclusionary Zoning &amp; Conversion Feasibility — Calculator, Excel Workpaper &amp; API (BI-45)</h1>
-      <p class="lead">PV_HID = sum_{t=1}^{20} min(Tax_Class1_t, Cap_RSF * RSF_conv) / (1 + r_disc)^t. Applies DMPED Housing in Downtown (HID) 20-Year Real Property Tax Abatement Schedule [D.C. Official Code Sec. 47-860.02 &amp; 10-B DCMR Ch. 62]; 11-C DCMR Ch. 10 Inclusionary Zoning (IZ) 60%/80% MFI Rent Restriction [D.C. Official Code Sec. 47-860.02(a)(2) &amp; 11-C DCMR Ch. 10]; Stabilized Yield-on-Cost vs. Exit Cap Spread Underwriting Rule [CREFC / HUD Multifamily Adaptive-Reuse Yield-on-Cost Standard]; Fannie Mae / Freddie Mac Permanent Takeout LTC &amp; DSCR Loan Sizing [Fannie Mae Multifamily Selling &amp; Servicing Guide Part III (DSCR &gt;= 1.25x)]. Outputs: 01 Summary Budget Bridge, 02 DMPED 20Yr HID Abatement, 03 IZ 60 80 MFI Rent Matrix, 04 Conversion HardSoft Cost. Calibrated across all 57 US States, Washington, D.C., US Territories, and Federal IRC &sect; 11 baselines in sub-millisecond deterministic Python &amp; NumPy CPU execution.</p>
+      <p class="lead">Evaluates DMPED Housing in Downtown (HID) 20-Year Real Property Tax Abatement Schedule; 11-C DCMR Ch. 10 Inclusionary Zoning (IZ) 60%/80% MFI Rent Restriction; Stabilized Yield-on-Cost vs. Exit Cap Spread Underwriting Rule; Fannie Mae / Freddie Mac Permanent Takeout LTC &amp; DSCR Loan Sizing. Submit: Rsf Conv, Total Units, Iz Share, Rent Mkt Monthly. Excel Tabs: Summary Budget Bridge, DMPED 20Yr HID Abatement, IZ 60 80 MFI Rent Matrix, Conversion Hard Soft Cost. Calibrated across all 57 US States, Washington, D.C., US Territories, and Federal IRC &sect; 11 baselines in sub-millisecond deterministic Python &amp; NumPy CPU execution.</p>
       <p><strong>Official Statutory &amp; Regulatory Workpaper Title:</strong> 20-Year Adaptive-Reuse Property Tax Abatement, 60%/80% MFI Affordable Rent Cap &amp; Agency Takeout Schedule</p>
       <p><strong>Official Agency Form / Workpaper Standard:</strong> <code>20-Year Adaptive-Reuse Tax-Abatement &amp; Inclusionary Zoning Rent Schedule</code></p>
       <p><strong>Governing Accounting, Tax &amp; Statutory Authorities:</strong> D.C. Official Code § 47-860.01 et seq. (Housing in Downtown 20-Year Tax Abatement); 10-B DCMR Chapter 62 (DMPED HID Rules); 11-C DCMR Chapter 10 (Inclusionary Zoning)</p>
@@ -277,7 +277,7 @@ footer {
 
     <h2>1. Deterministic Statutory &amp; Regulatory Laws Executed</h2>
     <p>Unlike prompt-only LLM skills that approximate multi-period schedules in token space, <code>BI-45</code> executes exact pure-Python and NumPy statutory rules in volatile container RAM:</p>
-    <ul><li>(1) DMPED Housing in Downtown (HID) 20-Year Real Property Tax Abatement Schedule [D.C. Official Code Sec. 47-860.02 &amp; 10-B DCMR Ch. 62] — PV_HID = sum_{t=1}^{20} min(Tax_Class1_t, Cap_RSF * RSF_conv) / (1 + r_disc)^t</li><li>(2) 11-C DCMR Ch. 10 Inclusionary Zoning (IZ) 60%/80% MFI Rent Restriction [D.C. Official Code Sec. 47-860.02(a)(2) &amp; 11-C DCMR Ch. 10] — Drag_IZ = 12 * sum_k N_IZ,k * max(0, Rent_mkt,k - Rent_MFI,k(0.60, 0.80))</li><li>(3) Stabilized Yield-on-Cost vs. Exit Cap Spread Underwriting Rule [CREFC / HUD Multifamily Adaptive-Reuse Yield-on-Cost Standard] — Spread_dev = (NOI_stab / Total_Dev_Cost) - Cap_exit &gt;= 150 bps</li><li>(4) Fannie Mae / Freddie Mac Permanent Takeout LTC &amp; DSCR Loan Sizing [Fannie Mae Multifamily Selling &amp; Servicing Guide Part III (DSCR &gt;= 1.25x)] — Loan_max = min(LTC_max * Total_Dev_Cost, NOI_stab / (DSCR_min * K_mort))</li></ul>
+    <ul><li>(1) DMPED Housing in Downtown (HID) 20-Year Real Property Tax Abatement Schedule [D.C. Official Code Sec. 47-860.02 &amp; 10-B DCMR Ch. 62]</li><li>(2) 11-C DCMR Ch. 10 Inclusionary Zoning (IZ) 60%/80% MFI Rent Restriction [D.C. Official Code Sec. 47-860.02(a)(2) &amp; 11-C DCMR Ch. 10]</li><li>(3) Stabilized Yield-on-Cost vs. Exit Cap Spread Underwriting Rule [CREFC / HUD Multifamily Adaptive-Reuse Yield-on-Cost Standard]</li><li>(4) Fannie Mae / Freddie Mac Permanent Takeout LTC &amp; DSCR Loan Sizing [Fannie Mae Multifamily Selling &amp; Servicing Guide Part III (DSCR &gt;= 1.25x)]</li></ul>
 
     <h2>2. Input Schema &amp; Workpaper Output Schedules</h2>
     <h3>Structured Input Datasets (<code>structured_inputs</code>)</h3>

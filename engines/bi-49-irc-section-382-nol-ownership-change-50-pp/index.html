@@ -191,7 +191,7 @@ footer {
 <body>
   <header class="top">
     <div class="wrap nav">
-      <a class="brand" href="https://quantledgerapi.github.io/">QuantLedger API &amp; MCP Docs <span style="color:#9fb0d9;font-weight:400;font-size:0.84rem;">v2.8.0</span></a>
+      <a class="brand" href="https://quantledgerapi.github.io/">QuantLedger API &amp; MCP Docs <span style="color:#9fb0d9;font-weight:400;font-size:0.84rem;">v2.8.2</span></a>
       <nav class="nav-links">
         <a href="https://quantledgerapi.github.io/#engines">All Engines</a>
         <a href="https://quantledgerapi.github.io/us-kyb-ofac-sanctions-screener/">US KYB &amp; OFAC</a>
@@ -210,7 +210,7 @@ footer {
     <section class="hero">
       <span class="badge">BI-49 &middot; National IRC Tax Code, Valuation &amp; Municipal Finance Suite</span>
       <h1>IRC Section 382 NOL Ownership-Change (&gt;50 pp) &amp; Annual Tax-Loss Limitation Schedule — Calculator, Excel Workpaper &amp; API (BI-49)</h1>
-      <p class="lead">Shift_3Yr(t) = sum_{g in 5Pct_Holders} max(0, Pct_g(t) - min_{tau} Pct_g(tau)) &gt; 50.00 pp. Applies IRC Sec. 382(g) Rolling 36-Month 5%-Shareholder 50-Percentage-Point Ownership Shift [26 U.S.C. Sec. 382(g) &amp; Treas. Reg. Sec. 1.382-2T]; IRC Sec. 382(b)(1) Long-Term Tax-Exempt Rate Annual NOL Limitation [26 U.S.C. Secs. 382(b)(1), 382(e) &amp; 382(l)(1)]; IRC Sec. 382(h) NUBIG Threshold &amp; IRS Notice 2003-65 Section 338 RBIG Uplift [26 U.S.C. Sec. 382(h)(3)(B) &amp; IRS Notice 2003-65, 2003-2 C.B. 747]; Treas. Reg. Sec. 1.383-1 Sequential Tax-Attribute Ordering &amp; R&amp;D Credit Limitation [26 U.S.C. Secs. 383, 163(j) &amp; Treas. Reg. Sec. 1.383-1(d)]. Outputs: 01 Summary Budget Bridge, 02 5Pct Shareholder 3Yr Grid, 03 Sec382 Base Annual Cap, 04 Notice2003 65 NUBIG 338. Calibrated across all 57 US States, Washington, D.C., US Territories, and Federal IRC &sect; 11 baselines in sub-millisecond deterministic Python &amp; NumPy CPU execution.</p>
+      <p class="lead">Evaluates IRC Sec. 382(g) Rolling 36-Month 5%-Shareholder 50-Percentage-Point Ownership Shift; IRC Sec. 382(b)(1) Long-Term Tax-Exempt Rate Annual NOL Limitation; IRC Sec. 382(h) NUBIG Threshold &amp; IRS Notice 2003-65 Section 338 RBIG Uplift; Treas. Reg. Sec. 1.383-1 Sequential Tax-Attribute Ordering &amp; R&amp;D Credit Limitation. Submit: FMV Prechange, Haircut 382l1, Adj 382l4, FMV Assets. Excel Tabs: Summary Budget Bridge, 5Pct Shareholder 3Yr Grid, Sec382 Base Annual Cap, Notice2003 65 NUBIG 338. Calibrated across all 57 US States, Washington, D.C., US Territories, and Federal IRC &sect; 11 baselines in sub-millisecond deterministic Python &amp; NumPy CPU execution.</p>
       <p><strong>Official Statutory &amp; Regulatory Workpaper Title:</strong> 26 U.S.C. Sec. 382 5%-Shareholder 3-Year Rolling Shift, LTTE Base Cap &amp; Notice 2003-65 NUBIG/RBIL Filing</p>
       <p><strong>Official Agency Form / Workpaper Standard:</strong> <code>IRC Sec. 382 Statement (Treas. Reg. 1.382-11 &amp; IRS Notice 2003-65 Schedule)</code></p>
       <p><strong>Governing Accounting, Tax &amp; Statutory Authorities:</strong> 26 U.S.C. §§ 382 &amp; 383 (Limitation on NOLs &amp; Tax Credits); Treas. Reg. § 1.382-2T &amp; § 1.382-3; IRS Notice 2003-65 (Section 338 / 1374 Built-In Gain Safe Harbors)</p>
@@ -277,7 +277,7 @@ footer {
 
     <h2>1. Deterministic Statutory &amp; Regulatory Laws Executed</h2>
     <p>Unlike prompt-only LLM skills that approximate multi-period schedules in token space, <code>BI-49</code> executes exact pure-Python and NumPy statutory rules in volatile container RAM:</p>
-    <ul><li>(1) IRC Sec. 382(g) Rolling 36-Month 5%-Shareholder 50-Percentage-Point Ownership Shift [26 U.S.C. Sec. 382(g) &amp; Treas. Reg. Sec. 1.382-2T] — Shift_3Yr(t) = sum_{g in 5Pct_Holders} max(0, Pct_g(t) - min_{tau} Pct_g(tau)) &gt; 50.00 pp</li><li>(2) IRC Sec. 382(b)(1) Long-Term Tax-Exempt Rate Annual NOL Limitation [26 U.S.C. Secs. 382(b)(1), 382(e) &amp; 382(l)(1)] — Cap_382_base = (FMV_PreChange - Haircut_382l1 - Adj_382l4) * r_LTTE</li><li>(3) IRC Sec. 382(h) NUBIG Threshold &amp; IRS Notice 2003-65 Section 338 RBIG Uplift [26 U.S.C. Sec. 382(h)(3)(B) &amp; IRS Notice 2003-65, 2003-2 C.B. 747] — Cap_382_aug,t = Cap_382_base + RBIG_338,t, if NUBIG &gt; min(0.15 * FMV_Assets, $10M)</li><li>(4) Treas. Reg. Sec. 1.383-1 Sequential Tax-Attribute Ordering &amp; R&amp;D Credit Limitation [26 U.S.C. Secs. 383, 163(j) &amp; Treas. Reg. Sec. 1.383-1(d)] — Cap_rem_383 = (Cap_382_aug - RBIL_used - NOL_used - Sec163j_used) * tau_corp</li></ul>
+    <ul><li>(1) IRC Sec. 382(g) Rolling 36-Month 5%-Shareholder 50-Percentage-Point Ownership Shift [26 U.S.C. Sec. 382(g) &amp; Treas. Reg. Sec. 1.382-2T]</li><li>(2) IRC Sec. 382(b)(1) Long-Term Tax-Exempt Rate Annual NOL Limitation [26 U.S.C. Secs. 382(b)(1), 382(e) &amp; 382(l)(1)]</li><li>(3) IRC Sec. 382(h) NUBIG Threshold &amp; IRS Notice 2003-65 Section 338 RBIG Uplift [26 U.S.C. Sec. 382(h)(3)(B) &amp; IRS Notice 2003-65, 2003-2 C.B. 747]</li><li>(4) Treas. Reg. Sec. 1.383-1 Sequential Tax-Attribute Ordering &amp; R&amp;D Credit Limitation [26 U.S.C. Secs. 383, 163(j) &amp; Treas. Reg. Sec. 1.383-1(d)]</li></ul>
 
     <h2>2. Input Schema &amp; Workpaper Output Schedules</h2>
     <h3>Structured Input Datasets (<code>structured_inputs</code>)</h3>

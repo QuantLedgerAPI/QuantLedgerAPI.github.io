@@ -1,6 +1,6 @@
 /**
  * QuantLedger Microsoft Excel Automate (Office Script) — 2D Statutory & Compliance Spill Writer
- * Version: 2.8.0 | Docs: https://quantledgerapi.github.io/google-sheets-excel-formulas-and-n8n/
+ * Version: 2.8.2 | Docs: https://quantledgerapi.github.io/google-sheets-excel-formulas-and-n8n/
  *
  * HOW TO USE IN EXCEL (WEB OR DESKTOP):
  *   1. Open Excel -> Automate tab -> New Script -> paste this TypeScript file and click Save.

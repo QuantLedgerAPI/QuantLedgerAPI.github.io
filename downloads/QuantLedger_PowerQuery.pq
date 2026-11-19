@@ -1,4 +1,4 @@
-// QuantLedger Microsoft Excel Desktop Power Query (M) Function — v2.8.0
+// QuantLedger Microsoft Excel Desktop Power Query (M) Function — v2.8.2
 // 1. In Excel Desktop: Data -> Get Data -> From Other Sources -> Blank Query -> Advanced Editor
 // 2. Paste this query, click Done, and invoke fnQuantLedger("ENGINE", "BI-17", "NY", "schedule", "")
 let

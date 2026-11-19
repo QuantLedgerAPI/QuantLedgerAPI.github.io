@@ -191,7 +191,7 @@ footer {
 <body>
   <header class="top">
     <div class="wrap nav">
-      <a class="brand" href="https://quantledgerapi.github.io/">QuantLedger API &amp; MCP Docs <span style="color:#9fb0d9;font-weight:400;font-size:0.84rem;">v2.8.0</span></a>
+      <a class="brand" href="https://quantledgerapi.github.io/">QuantLedger API &amp; MCP Docs <span style="color:#9fb0d9;font-weight:400;font-size:0.84rem;">v2.8.2</span></a>
       <nav class="nav-links">
         <a href="https://quantledgerapi.github.io/#engines">All Engines</a>
         <a href="https://quantledgerapi.github.io/us-kyb-ofac-sanctions-screener/">US KYB &amp; OFAC</a>
@@ -210,7 +210,7 @@ footer {
     <section class="hero">
       <span class="badge">BI-58 &middot; National IRC Tax Code, Valuation &amp; Municipal Finance Suite</span>
       <h1>Multi-State Unclaimed Property (Escheatment) Priority Routing &amp; Delaware SOS VDA Schedule — Calculator, Excel Workpaper &amp; API (BI-58)</h1>
-      <p class="lead">State_Due(item) = State_LastKnownAddress(Payee) if Known else State_CorporateDomicile(Holder. Applies Texas v. New Jersey Two-Tier Jurisdictional Escheat Priority Cascade [Texas v. New Jersey, 379 U.S. 674 (1965)]; RUUPA Sec. 201 Statutory Dormancy Period Cutoffs &amp; B2B Credit Exemption [Revised Uniform Unclaimed Property Act Sec. 201 &amp; D.C. Official Code Sec. 41-151.01]; 12 Del. C. Sec. 1172 Delaware SOS VDA Base-Period Gross Error Extrapolation [12 Del. C. Secs. 1172-1173 &amp; 1 Del. Admin. C. Sec. 301]; 12 Del. C. Sec. 1183 Statutory 50% Audit Interest Waiver via SOS VDA Settlement [12 Del. C. Secs. 1173(a) &amp; 1183(a)]. Outputs: 01 Summary Budget Bridge, 02 Texas v NJ Priority Routing, 03 Dormancy Trigger Aging Grid, 04 Base Period Extrapolation. Calibrated across all 57 US States, Washington, D.C., US Territories, and Federal IRC &sect; 11 baselines in sub-millisecond deterministic Python &amp; NumPy CPU execution.</p>
+      <p class="lead">Evaluates Texas v. New Jersey Two-Tier Jurisdictional Escheat Priority Cascade; RUUPA Sec. 201 Statutory Dormancy Period Cutoffs &amp; B2B Credit Exemption; 12 Del. C. Sec. 1172 Delaware SOS VDA Base-Period Gross Error Extrapolation; 12 Del. C. Sec. 1183 Statutory 50% Audit Interest Waiver via SOS VDA Settlement. Submit: Addressed Dormant (USD), Unaddressed Dormant (USD), B2b Exempt Share, Base Yrs Unremediated Error. Excel Tabs: Summary Budget Bridge, Texas V NJ Priority Routing, Dormancy Trigger Aging Grid, Base Period Extrapolation. Calibrated across all 57 US States, Washington, D.C., US Territories, and Federal IRC &sect; 11 baselines in sub-millisecond deterministic Python &amp; NumPy CPU execution.</p>
       <p><strong>Official Statutory &amp; Regulatory Workpaper Title:</strong> Texas v. New Jersey Priority Rules, RUUPA Dormancy Aging &amp; 12 Del. C. Sec. 1172 SOS VDA Filing</p>
       <p><strong>Official Agency Form / Workpaper Standard:</strong> <code>NAUPA Unclaimed Property Report &amp; Delaware SOS VDA 10-Year Lookback Schedule</code></p>
       <p><strong>Governing Accounting, Tax &amp; Statutory Authorities:</strong> 12 Del. C. §§ 1130–1190 (Delaware SOS VDA §§ 1172–1173); Revised Uniform Unclaimed Property Act (RUUPA); Texas v. New Jersey, 379 U.S. 674 &amp; D.C. Code § 41-151.01</p>
@@ -277,7 +277,7 @@ footer {
 
     <h2>1. Deterministic Statutory &amp; Regulatory Laws Executed</h2>
     <p>Unlike prompt-only LLM skills that approximate multi-period schedules in token space, <code>BI-58</code> executes exact pure-Python and NumPy statutory rules in volatile container RAM:</p>
-    <ul><li>(1) Texas v. New Jersey Two-Tier Jurisdictional Escheat Priority Cascade [Texas v. New Jersey, 379 U.S. 674 (1965)] — State_Due(item) = State_LastKnownAddress(Payee) if Known else State_CorporateDomicile(Holder)</li><li>(2) RUUPA Sec. 201 Statutory Dormancy Period Cutoffs &amp; B2B Credit Exemption [Revised Uniform Unclaimed Property Act Sec. 201 &amp; D.C. Official Code Sec. 41-151.01] — Is_Dormant(item, T_cut) = I((T_cut - Date_LastContact) &gt;= Dormancy_Statute(State, Prop_Code))</li><li>(3) 12 Del. C. Sec. 1172 Delaware SOS VDA Base-Period Gross Error Extrapolation [12 Del. C. Secs. 1172-1173 &amp; 1 Del. Admin. C. Sec. 301] — Est_Unresearched = Rev_Unresearched * [sum Unremediated_Error(b) / sum Sampled_Denom(b)]</li><li>(4) 12 Del. C. Sec. 1183 Statutory 50% Audit Interest Waiver via SOS VDA Settlement [12 Del. C. Secs. 1173(a) &amp; 1183(a)] — Savings_SOS_VDA = (Est_Exam_15Yr + Int_50Pct_Stat + Civil_Penalties) - Liability_VDA_10Yr_ZeroInt</li></ul>
+    <ul><li>(1) Texas v. New Jersey Two-Tier Jurisdictional Escheat Priority Cascade [Texas v. New Jersey, 379 U.S. 674 (1965)]</li><li>(2) RUUPA Sec. 201 Statutory Dormancy Period Cutoffs &amp; B2B Credit Exemption [Revised Uniform Unclaimed Property Act Sec. 201 &amp; D.C. Official Code Sec. 41-151.01]</li><li>(3) 12 Del. C. Sec. 1172 Delaware SOS VDA Base-Period Gross Error Extrapolation [12 Del. C. Secs. 1172-1173 &amp; 1 Del. Admin. C. Sec. 301]</li><li>(4) 12 Del. C. Sec. 1183 Statutory 50% Audit Interest Waiver via SOS VDA Settlement [12 Del. C. Secs. 1173(a) &amp; 1183(a)]</li></ul>
 
     <h2>2. Input Schema &amp; Workpaper Output Schedules</h2>
     <h3>Structured Input Datasets (<code>structured_inputs</code>)</h3>
